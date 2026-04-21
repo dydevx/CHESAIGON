@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dnešní menu - Chè Sài Gòn</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+    body{background:#f4f8f4;color:#333}
+    .container{max-width:1200px;margin:auto;padding:20px}
+
+    h1{text-align:center;color:#2e7d32;margin-bottom:20px}
+    h2{color:#2e7d32;margin:20px 0 10px}
+
+    .grid{display:grid;grid-template-columns:2fr 1fr;gap:20px}
+
+    .menu-section{background:#fff;padding:20px;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,0.1)}
+    .item{display:flex;justify-content:space-between;border-bottom:1px dashed #ccc;padding:8px 0}
+    .item:last-child{border:none}
+
+    .name{font-weight:500}
+    .desc{font-size:13px;color:#666}
+    .price{color:#2e7d32;font-weight:bold}
+
+    .topping{background:#2e7d32;color:#fff;padding:20px;border-radius:15px}
+    .topping h3{margin-bottom:10px}
+    .topping p{margin:5px 0}
+
+    @media(max-width:768px){
+      .grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>DNESNÍ MENU</h1>
+
+  <div class="grid">
+
+    <div>
+      <div class="menu-section">
+        <h2>HUSTÝ DEZERT</h2>
+        <div class="item"><div><div class="name">1. Speciální mix</div><div class="desc">fazole, želé, tapioka, taro, kokos</div></div><div class="price">100 Kč</div></div>
+        <div class="item"><div><div class="name">2. Jackfruitový dezert</div><div class="desc">jackfruit, kokos, želé</div></div><div class="price">100 Kč</div></div>
+        <div class="item"><div><div class="name">3. Taro dezert</div><div class="desc">taro, kokosové mléko</div></div><div class="price">100 Kč</div></div>
+        <div class="item"><div><div class="name">4. Speciální kokosový dezert</div><div class="desc">kokos, fazole, tapioka</div></div><div class="price">100 Kč</div></div>
+        <div class="item"><div><div class="name">5. Pomelo dezert</div><div class="desc">pomelo, kokosové mléko</div></div><div class="price">100 Kč</div></div>
+        <div class="item"><div><div class="name">6. Lepkavá rýže</div><div class="desc">rýže, kokos</div></div><div class="price">100 Kč</div></div>
+      </div>
+
+      <div class="menu-section">
+        <h2>TEKUTÝ DEZERT</h2>
+        <div class="item"><div><div class="name">7. Dezert po thajsku</div><div class="desc">ovoce, želé, kokos</div></div><div class="price">100 Kč</div></div>
+        <div class="item"><div><div class="name">8. Caramel dezert</div><div class="desc">karamel, tapioka, kokos</div></div><div class="price">100 Kč</div></div>
+      </div>
+
+      <div class="menu-section">
+        <h2>JOGURT</h2>
+        <div class="item"><div class="name">9. Jogurt s ovocem</div><div class="price">100 Kč</div></div>
+        <div class="item"><div class="name">10. Jogurt s karamelem</div><div class="price">100 Kč</div></div>
+        <div class="item"><div class="name">11. Jogurt s lepkavou rýží</div><div class="price">100 Kč</div></div>
+      </div>
+
+      <div class="menu-section">
+        <h2>MLÉČNÝ ČAJ</h2>
+        <div class="item"><div class="name">12. Mléčný čaj (matcha / taro)</div><div class="price">120 Kč</div></div>
+      </div>
+
+      <div class="menu-section">
+        <h2>ŽELÉ + FLAN</h2>
+        <div class="item"><div class="name">13. Caramel flan</div><div class="price">60 Kč</div></div>
+        <div class="item"><div class="name">14. Kokosové želé</div><div class="price">80 Kč</div></div>
+      </div>
+    </div>
+
+    <div class="topping">
+      <h3>TOPPING</h3>
+      <p>+ kokos</p>
+      <p>+ želé</p>
+      <p>+ tapioka</p>
+      <p>+ lepkavá rýže</p>
+      <p>+ jackfruit</p>
+      <p>+ fazole</p>
+      <br>
+      <p><strong>+10 Kč / 0.5€</strong></p>
+      <br>
+      <p><strong>Velké +20 Kč / 1€</strong></p>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
