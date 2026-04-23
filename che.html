@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Menu - Chè Sài Gòn Ngọc Thơ</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Playfair+Display&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+    background:#FDF9F3;
+    padding:40px 15px;
+    font-family:'Montserrat',sans-serif;
+}
+
+.section-title{
+    text-align:center;
+    font-family:'Playfair Display',serif;
+    font-size:36px;
+    color:#5D3A1A;
+    margin-bottom:40px;
+}
+
+.menu-container{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+    max-width:1200px;
+    margin:auto;
+}
+
+.menu-card{
+    background:#2e7d32;
+    padding:10px;
+    border-radius:12px;
+    width:calc(25% - 20px);
+    min-width:240px;
+    display:flex;
+    transition:0.3s;
+}
+
+.menu-card:hover{
+    transform:translateY(-5px) scale(1.02);
+}
+
+.card-inner{
+    background:#fff;
+    border-radius:8px;
+    padding:15px;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.product-img{
+    width:100%;
+    height:180px;
+    object-fit:contain;
+}
+
+.product-name{
+    font-family:'Playfair Display',serif;
+    font-size:20px;
+    text-align:center;
+    margin-top:10px;
+}
+
+.type-gold{color:#D4AF37;font-weight:bold;}
+.type-italic{font-style:italic;}
+
+@media (max-width:1024px){
+    .menu-card{width:calc(33.33% - 20px);}
+}
+
+@media (max-width:768px){
+    .menu-card{width:calc(50% - 20px);}
+}
+
+@media (max-width:480px){
+    .menu-card{width:100%;}
+}
+</style>
+</head>
+
+<body>
+
+<h2 class="section-title">DNESNÍ MENU</h2>
+
+<div class="menu-container">
+<div class="menu-card">
+    <div class="card-inner">
+        <img src="new2.jpg" class="product-img">
+        <div class="product-name ">Kokosový Dezert</div>
+    </div>
+</div>
+
+<div class="menu-card">
+    <div class="card-inner">
+        <img src="new3.jpg" class="product-img">
+        <div class="product-name ">JackFruit</div>
+    </div>
+</div>
+
+<div class="menu-card"><div class="card-inner"><img src="new4.jpg" class="product-img"><div class="product-name">Caramel Dezert</div></div></div>
+<div class="menu-card"><div class="card-inner"><img src="new5.jpg" class="product-img"><div class="product-name">Speciální Mix</div></div></div>
+<div class="menu-card"><div class="card-inner"><img src="new6.jpg" class="product-img"><div class="product-name">Pomelo Dezert</div></div></div>
+<div class="menu-card"><div class="card-inner"><img src="new7.jpg" class="product-img"><div class="product-name">Dezert Po Thajsku</div></div></div>
+<div class="menu-card"><div class="card-inner"><img src="new8.jpg" class="product-img"><div class="product-name">Taro Dezert</div></div></div>
+<div class="menu-card"><div class="card-inner"><img src="new9.jpg" class="product-img"><div class="product-name">Jogurt S Ovocem</div></div></div>
+<div class="menu-card"><div class="card-inner"><img src="new10.jpg" class="product-img"><div class="product-name">Jogurt S Lepivou Rýži</div></div></div>
+<div class="menu-card"><div class="card-inner"><img src="new11.jpg" class="product-img"><div class="product-name">Jogurt S Caramelem</div></div></div>
+<div class="menu-card"><div class="card-inner"><img src="new12.jpg" class="product-img"><div class="product-name">Zelená rýže s lotosovými semínky</div></div></div>
+<div class="menu-card"><div class="card-inner"><img src="new13.jpg" class="product-img"><div class="product-name">CARAMEL</div></div></div>
+<div class="menu-card"><div class="card-inner"><img src="new14.jpg" class="product-img"><div class="product-name">Černé fazole a lotosová semínka</div></div></div>
+<div class="menu-card"><div class="card-inner"><img src="new15.jpg" class="product-img"><div class="product-name">Mladý kokosový želé</div></div></div>
+<div class="menu-card"><div class="card-inner"><img src="new16.jpg" class="product-img"><div class="product-name">Mladý kokosový želé</div></div></div>
+<!-- <div class="menu-card"><div class="card-inner"><img src="new17.jpg" class="product-img"><div class="product-name">Chè Nếp Cẩm</div></div></div> -->
+<div class="menu-card"><div class="card-inner"><img src="new18.jpg" class="product-img"><div class="product-name">Palmový cukrový sirup</div></div></div>
+
+</div>
+
+</body>
+</html>
