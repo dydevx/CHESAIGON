@@ -3,346 +3,1082 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chè Sài Gòn </title>
+<title>Chè Sài Gòn</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
-  /* --- Reset & Global --- */
-  :root {
-    --primary-color: #355E3B; /* Xanh lá thẫm sang trọng (Hunter Green) */
-    --accent-color: #C19A6B;  /* Màu đồng/be đậm (Camel) */
-    --text-main: #355E3B;     /* Đen nhẹ (Charcoal) */
-    --text-muted: #355E3B;   /* Xám (Muted Grey) */
-    --bg-light: #ffffff;      /* Màu kem nhạt (Off-White) */
-    --bg-white: #ffffff;
-    --font-heading: 'Playfair Display', serif;
-    --font-body: 'Inter', sans-serif;
-    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+:root{
+  --ink:#050505;
+  --muted:#29231f;
+  --paper:#fffbea;
+  --soft:#fff8c9;
+  --red:#e02017;
+  --yellow:#fff6a3;
+  --line:rgba(5,5,5,.14);
+  --shadow:0 18px 50px rgba(5,5,5,.13);
+  --font-heading:'Playfair Display',serif;
+  --font-body:'Inter',sans-serif;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font-body);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+img{display:block;max-width:100%}
+a{color:inherit}
+
+.site-nav{
+  position:fixed;
+  inset:0 0 auto;
+  z-index:20;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  padding:16px clamp(18px,4vw,56px);
+  background:rgba(255,251,234,.92);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(16px);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  font-weight:800;
+  letter-spacing:.02em;
+  color:var(--ink);
+}
+
+.brand-mark{
+  display:grid;
+  place-items:center;
+  width:38px;
+  height:38px;
+  border-radius:8px;
+  background:var(--yellow);
+  border:2px solid var(--red);
+  color:var(--ink);
+  font-family:var(--font-heading);
+  font-size:22px;
+  line-height:1;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  list-style:none;
+}
+
+.nav-links a,
+.nav-order{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:40px;
+  padding:0 14px;
+  border-radius:8px;
+  color:var(--ink);
+  font-size:14px;
+  font-weight:700;
+  text-decoration:none;
+}
+
+.nav-links a:hover{background:rgba(255,246,163,.7)}
+
+.nav-order{
+  border:1px solid var(--red);
+  background:var(--red);
+  color:var(--ink);
+  cursor:pointer;
+}
+
+.hero{
+  position:relative;
+  min-height:86svh;
+  display:flex;
+  align-items:flex-end;
+  padding:120px clamp(18px,6vw,88px) 58px;
+  overflow:hidden;
+  isolation:isolate;
+  background:
+    linear-gradient(90deg,rgba(255,251,234,.9),rgba(255,251,234,.58) 48%,rgba(255,251,234,.08)),
+    url("24.jpg") center/cover no-repeat;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:auto 0 0;
+  z-index:-1;
+  height:120px;
+  background:linear-gradient(0deg,var(--paper),rgba(255,251,234,0));
+}
+
+.hero-content{
+  width:min(720px,100%);
+  min-width:0;
+  color:var(--ink);
+}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:18px;
+  color:var(--red);
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.eyebrow::before{
+  content:"";
+  width:36px;
+  height:2px;
+  background:currentColor;
+}
+
+h1{
+  max-width:760px;
+  font-family:var(--font-heading);
+  font-size:clamp(48px,9vw,112px);
+  line-height:.93;
+  overflow-wrap:break-word;
+}
+
+h1 span{display:block}
+
+.hero-text{
+  max-width:590px;
+  margin-top:24px;
+  color:rgba(5,5,5,.86);
+  font-size:clamp(17px,2vw,21px);
+  overflow-wrap:break-word;
+}
+
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:30px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:52px;
+  padding:0 24px;
+  border:1px solid transparent;
+  border-radius:8px;
+  cursor:pointer;
+  font:700 15px/1 var(--font-body);
+  text-decoration:none;
+  transition:transform .2s ease,box-shadow .2s ease,background .2s ease,color .2s ease;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 30px rgba(0,0,0,.18);
+}
+
+.btn-primary{
+  background:var(--red);
+  color:var(--ink);
+  border-color:var(--red);
+}
+
+.btn-secondary{
+  background:rgba(255,255,255,.38);
+  color:var(--ink);
+  border-color:rgba(5,5,5,.32);
+  backdrop-filter:blur(8px);
+}
+
+.info-band{
+  padding:0 clamp(18px,6vw,88px) 54px;
+  background:var(--paper);
+}
+
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--line);
+  box-shadow:var(--shadow);
+}
+
+.info-item{
+  min-height:118px;
+  padding:22px;
+  background:#fffef7;
+}
+
+.info-label{
+  margin-bottom:8px;
+  color:var(--red);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.info-value{
+  color:var(--ink);
+  font-size:17px;
+  font-weight:700;
+}
+
+.section{
+  scroll-margin-top:76px;
+  padding:74px clamp(18px,6vw,88px);
+}
+
+.section.alt{background:#fffef7}
+
+.section-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:28px;
+  margin-bottom:30px;
+}
+
+.section-title{
+  font-family:var(--font-heading);
+  font-size:clamp(34px,5vw,58px);
+  line-height:1;
+}
+
+.section-copy{
+  max-width:540px;
+  color:var(--muted);
+  font-size:16px;
+}
+
+.menu-toolbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  margin-bottom:22px;
+}
+
+.menu-toolbar p{
+  color:var(--muted);
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.menu-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:18px;
+}
+
+.menu-card,
+.feature-photo,
+.order-panel,
+.menu-item{
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#fffef7;
+  box-shadow:0 14px 38px rgba(5,5,5,.1);
+}
+
+.menu-card{
+  overflow:hidden;
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+
+.menu-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 22px 54px rgba(5,5,5,.18);
+}
+
+.menu-card img{
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:cover;
+  object-position:center 18%;
+  background:#fff4a6;
+}
+
+.menu-card h3{
+  min-height:76px;
+  display:flex;
+  align-items:center;
+  padding:16px;
+  color:var(--ink);
+  font-size:18px;
+  line-height:1.2;
+}
+
+.menu-card h3 span{
+  color:var(--red);
+  margin-right:8px;
+  font-weight:800;
+}
+
+.price-section{
+  background:linear-gradient(180deg,var(--yellow),var(--paper));
+}
+
+.notice{
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  margin-bottom:22px;
+  padding:18px 20px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#fffef7;
+  box-shadow:var(--shadow);
+  color:var(--muted);
+  font-weight:700;
+}
+
+.notice strong{color:var(--red)}
+
+.price-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
+
+.menu-item{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto;
+  gap:16px;
+  align-items:start;
+  padding:18px;
+}
+
+.menu-item > div{min-width:0}
+
+.number{
+  display:grid;
+  place-items:center;
+  width:36px;
+  height:36px;
+  border-radius:8px;
+  background:var(--soft);
+  color:var(--red);
+  font-weight:800;
+}
+
+.name{
+  color:var(--ink);
+  font-size:16px;
+  font-weight:800;
+  text-transform:uppercase;
+}
+
+.desc{
+  margin-top:5px;
+  color:var(--muted);
+  font-size:14px;
+  overflow-wrap:break-word;
+}
+
+.price{
+  color:var(--ink);
+  font-size:16px;
+  font-weight:800;
+  text-align:right;
+  white-space:nowrap;
+}
+
+.topping{
+  margin-top:22px;
+  padding:24px;
+  border:1px solid rgba(229,41,32,.24);
+  border-radius:8px;
+  background:#fffef7;
+}
+
+.topping h3{
+  margin-bottom:12px;
+  font-family:var(--font-heading);
+  font-size:32px;
+}
+
+.topping-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.topping-grid p{
+  padding:14px;
+  border-radius:8px;
+  background:var(--soft);
+  color:var(--ink);
+  font-weight:700;
+}
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:24px;
+}
+
+.feature-photo{overflow:hidden}
+
+.feature-photo img{
+  width:100%;
+  height:100%;
+  min-height:420px;
+  object-fit:cover;
+}
+
+.order-panel{
+  padding:30px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:34px;
+  background:linear-gradient(160deg,#fffef7 0%,var(--yellow) 100%);
+}
+
+.order-panel h2{
+  font-family:var(--font-heading);
+  font-size:clamp(30px,4vw,46px);
+  line-height:1.08;
+}
+
+.order-panel p{color:var(--muted)}
+
+.order-highlights{
+  display:grid;
+  margin-top:26px;
+  border-top:1px solid rgba(5,5,5,.18);
+  border-bottom:1px solid rgba(5,5,5,.18);
+}
+
+.order-highlight{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr);
+  gap:14px;
+  align-items:start;
+  padding:14px 0;
+  border-bottom:1px solid rgba(5,5,5,.12);
+}
+
+.order-highlight:last-child{border-bottom:0}
+
+.order-dot{
+  width:12px;
+  height:12px;
+  margin-top:7px;
+  border-radius:50%;
+  background:var(--red);
+  box-shadow:0 0 0 5px rgba(255,246,163,.85);
+}
+
+.order-highlight strong{
+  display:block;
+  color:var(--ink);
+  font-size:14px;
+  line-height:1.25;
+}
+
+.order-highlight div span{
+  display:block;
+  margin-top:3px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.35;
+}
+
+.platform-list{
+  display:grid;
+  gap:14px;
+}
+
+.platform-pill{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  min-height:66px;
+  padding:18px 22px;
+  border-radius:8px;
+  border:2px solid var(--line);
+  background:#fffef7;
+  color:var(--ink);
+  font-size:18px;
+  font-weight:800;
+  text-decoration:none;
+}
+
+.platform-pill span{
+  color:var(--red);
+  font-size:14px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.footer{
+  scroll-margin-top:76px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  overflow:hidden;
+  border-top:1px solid var(--line);
+  background:var(--line);
+}
+
+.footer p{
+  min-height:104px;
+  padding:24px clamp(18px,6vw,88px);
+  background:#fffef7;
+  color:var(--muted);
+  font-weight:700;
+}
+
+.footer strong{
+  display:block;
+  color:var(--red);
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.map-section{
+  background:#fffef7;
+}
+
+.map-frame{
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#fffef7;
+  box-shadow:var(--shadow);
+}
+
+.map-frame iframe{
+  display:block;
+  width:100%;
+  height:min(58vw,460px);
+  min-height:320px;
+  border:0;
+}
+
+.popup{
+  position:fixed;
+  inset:0;
+  z-index:40;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(23,21,19,.72);
+  backdrop-filter:blur(10px);
+}
+
+.popup-box{
+  position:relative;
+  width:min(420px,100%);
+  padding:34px;
+  border-radius:8px;
+  background:#fffef7;
+  box-shadow:0 24px 70px rgba(0,0,0,.28);
+}
+
+.popup-close-icon{
+  position:absolute;
+  top:14px;
+  right:16px;
+  width:36px;
+  height:36px;
+  display:grid;
+  place-items:center;
+  border-radius:8px;
+  color:var(--muted);
+  cursor:pointer;
+  font-size:26px;
+}
+
+.popup-close-icon:hover{background:rgba(23,21,19,.06);color:var(--ink)}
+
+.popup-box h3{
+  margin:12px 0 24px;
+  font-family:var(--font-heading);
+  font-size:32px;
+  line-height:1.1;
+}
+
+.platform-link{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  margin-top:10px;
+  padding:16px;
+  border-radius:8px;
+  color:var(--ink);
+  font-weight:800;
+  text-decoration:none;
+}
+
+.foodora{background:var(--red)}
+.wolt{background:var(--yellow)}
+
+.close-btn{
+  width:100%;
+  margin-top:12px;
+  background:var(--soft);
+  color:var(--ink);
+}
+
+@media(max-width:1100px){
+  .menu-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+
+@media(max-width:920px){
+  .site-nav{align-items:flex-start}
+  .nav-links{display:none}
+  .info-grid,
+  .price-grid,
+  .topping-grid,
+  .footer,
+  .feature-grid{
+    grid-template-columns:1fr;
   }
+  .section-head{display:block}
+  .section-copy{margin-top:14px}
+  .feature-photo img{min-height:300px}
+}
 
-  *{margin:0;padding:0;box-sizing:border-box;}
-
-  body{
-    background-color: var(--bg-light);
-    color: var(--text-main);
-    font-family: var(--font-body);
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+@media(max-width:780px){
+  .menu-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .menu-toolbar{
+    display:grid;
+    grid-template-columns:1fr;
+    align-items:stretch;
   }
+  .menu-toolbar .btn{width:100%}
+  .notice{display:block}
+  .notice span{display:block;margin-top:6px}
+}
 
-  /* --- Navbar (Thanh điều hướng) --- */
-  .navbar {
-    position: fixed;
-    top: 0; width: 100%;
-    padding: 20px 10%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(251, 249, 246, 0.95); /* Semi-transparent */
-    backdrop-filter: blur(10px);
-    z-index: 1000;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-  }
-
-  .logo {
-    font-family: var(--font-heading);
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--primary-color);
-    text-decoration: none;
-    letter-spacing: -0.5px;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 30px;
-    list-style: none;
-  }
-
-  .nav-links a {
-    text-decoration: none;
-    color: var(--text-main);
-    font-size: 14px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: var(--transition);
-  }
-
-  .nav-links a:hover {
-    color: var(--accent-color);
-  }
-
-  /* --- HERO SECTION --- */
+@media(max-width:680px){
   .hero{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding: 140px 10% 60px; /* Thêm padding top cho Navbar */
-    min-height:100vh;
-    background-color: var(--bg-light);
+    min-height:82svh;
+    padding-top:104px;
+    background:
+      linear-gradient(0deg,rgba(255,251,234,.88),rgba(255,251,234,.22)),
+      url("24.jpg") center/cover no-repeat;
   }
+  .menu-item{
+    grid-template-columns:auto minmax(0,1fr);
+  }
+  .price{
+    grid-column:2;
+    text-align:left;
+  }
+}
 
+@media(max-width:520px){
+  .brand span:last-child{display:none}
+  .nav-order{display:none}
+  .hero{padding:104px 20px 46px}
+  h1{
+    font-size:clamp(42px,15vw,54px);
+    line-height:.98;
+  }
   .hero-text{
-    max-width:580px;
-    flex: 1;
+    font-size:16px;
+    line-height:1.55;
   }
-
-  .hero-text h1{
-    font-family: var(--font-heading);
-    font-size: clamp(40px, 6vw, 64px); /* Responzivní, lớn hơn */
-    color: var(--primary-color);
-    margin-bottom: 25px;
-    line-height: 1.1;
-    font-weight: 500;
-    letter-spacing: -1px;
-  }
-
-  .hero-text p{
-    font-size: 19px;
-    color: var(--text-muted);
-    margin-bottom: 40px;
-    line-height: 1.7;
-    font-weight: 300;
-    max-width: 500px;
-  }
-
-  /* --- BUTTONS --- */
-  .btn{
-    display: inline-block;
-    background-color: var(--primary-color);
-    color: var(--bg-white);
-    padding: 18px 45px;
-    border: 1px solid var(--primary-color);
-    border-radius: 4px; /* Bo góc vuông vắn hơn */
-    cursor:pointer;
-    font-size: 15px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    transition: var(--transition);
-    text-decoration: none;
-    box-shadow: 0 4px 15px rgba(53, 94, 59, 0.15);
-  }
-
-  .btn:hover{
-    background-color: transparent;
-    color: var(--primary-color);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(53, 94, 59, 0.2);
-  }
-
-  /* --- IMAGE --- */
-  .hero-img {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-
-  /* .hero-img::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    
-    transform: scale(1.2); 
-  
-    background-color: #EAE3D9;
-    border-radius: 15%;
-  
-    z-index: 1;
-  }   
-  /* Ảnh chính */
-  .hero-img img{
-    width: 500px;
-    max-width: 100%;
-  
-    position: relative;
-    z-index: 2;
-  
-    object-fit: cover;
-    border-radius: 15%; /* TRÒN CHUẨN */
-  
-    filter: drop-shadow(0 15px 35px rgba(0,0,0,0.12));
-    animation: float 5s ease-in-out infinite;
-  }
-
-  @keyframes float{
-    0%, 100%{transform:translateY(0) rotate(0deg)}
-    50%{transform:translateY(-20px) rotate(1deg)}
-  }
-
-  /* --- POPUP (Minimal & Elegant) --- */
-  .popup{
-    position:fixed;
-    top:0;left:0;
-    width:100%;height:100%;
-    background: rgba(44, 44, 44, 0.8); /* Tối hơn và mờ hơn */
-    display:none;
-    justify-content:center;
-    align-items:center;
-    z-index: 2000;
-    backdrop-filter: blur(8px);
-  }
-
-  .popup-box{
-    background: var(--bg-white);
-    padding: 60px 50px;
-    border-radius: 8px; /* Vuông vắn hơn */
-    text-align:center;
-    width: 90%;
-    max-width: 420px;
-    box-shadow: 0 25px 60px rgba(0,0,0,0.2);
-    animation: zoomIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-    position: relative;
-  }
-
-  @keyframes zoomIn {
-    from { opacity: 0; transform: scale(0.9) translateY(20px); }
-    to { opacity: 1; transform: scale(1) translateY(0); }
-  }
-
-  .popup-box h3{
-    font-family: var(--font-heading);
-    font-size: 28px;
-    font-weight: 500;
-    margin-bottom: 30px;
-    color: var(--text-main);
-    letter-spacing: -0.5px;
-  }
-
-  .platform-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 15px 0;
-    padding: 18px;
-    border-radius: 4px;
-    text-decoration: none;
-    color: var(--bg-white);
-    font-weight: 600;
-    font-size: 16px;
-    letter-spacing: 0.5px;
-    transition: var(--transition);
-    border: 1px solid transparent;
-  }
-
-  .platform-link:hover {
-    transform: translateY(-3px);
-    opacity: 0.95;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  }
-
-  /* Màu sắc nền nã hơn cho nền tảng */
-  .foodora{background-color: #D61F69; border-color: #D61F69;}
-  .wolt{background-color: #0084BF; border-color: #0084BF;}
-
-  .close-btn{
-    margin-top: 25px;
-    background-color: transparent;
-    color: var(--text-muted);
-    padding: 10px 20px;
-    border: none;
-    box-shadow: none;
-    font-size: 13px;
-    letter-spacing: 1px;
-  }
-  
-  .close-btn:hover {
-    background-color: #d9f1da;
-    color: var(--text-main);
-    box-shadow: none;
-    transform: none;
-  }
-
-  /* X nút đóng ở góc */
-  .popup-close-icon {
-    position: absolute;
-    top: 20px; right: 20px;
-    font-size: 24px;
-    cursor: pointer;
-    color: var(--text-muted);
-    transition: var(--transition);
-  }
-  .popup-close-icon:hover { color: var(--text-main); }
-
-  /* --- RESPONSIVE --- */
-  @media(max-width: 1024px){
-    .hero { padding: 120px 5% 60px; }
-    .hero-img img { width: 450px; }
-  }
-
-  @media(max-width: 900px){
-    .navbar { padding: 15px 5%; }
-    .nav-links { display: none; } /* Ẩn menu trên mobile cho đơn giản */
-    
-    .hero{
-      flex-direction: column-reverse; /* Đưa hình ảnh lên trên trên mobile */
-      text-align:center;
-      padding-top: 100px;
-      justify-content: center;
-    }
-    .hero-img{
-        justify-content: center;
-      }
-    
-      .hero-img::after{
-        left: 50%;  /* 🔥 đưa về giữa */
-        transform: translate(-50%, -50%) scale(1.2);
-      }
-    
-      .hero-img img{
-        transform: translateX(0); /* 🔥 bỏ lệch trái */
-      }
-    
-    .hero-text { display: flex; flex-direction: column; align-items: center; }
-    .hero-text p { margin-left: auto; margin-right: auto; }
-  }
+  .hero-actions .btn{width:100%}
+  .section{padding-top:54px;padding-bottom:54px}
+  .info-item{min-height:auto}
+  .menu-grid{grid-template-columns:1fr}
+  .menu-card h3{min-height:auto}
+  .map-frame iframe{min-height:280px}
+  .popup-box{padding:28px 20px 22px}
+}
 </style>
 </head>
 
 <body>
-
-<!-- <nav class="navbar">
-  <a href="#" class="logo">Chè Sài Gòn</a>
+<nav class="site-nav" aria-label="Hlavní navigace">
+  <a class="brand" href="#home">
+    <span class="brand-mark">S</span>
+    <span>Chè Sài Gòn</span>
+  </a>
   <ul class="nav-links">
-    <li><a href="#">Domů</a></li>
-    <li><a href="#">Menu</a></li>
-    <li><a href="#">O nás</a></li>
-    <li><a href="#">Kontakt</a></li>
+    <li><a href="#home">Domů</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#cena">Cena</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
   </ul>
-</nav> -->
+  <button class="nav-order" type="button" onclick="openPopup()">Objednat</button>
+</nav>
 
-<section class="hero">
-  <div class="hero-text">
-    <h1>Chè Sài Gòn</h1>
-    <p>Objevte sofistikovanou harmonii chutí v srdci Prahy. Tradiční receptury v moderním, elegantním pojetí.</p>
-    <button class="btn" onclick="openPopup()">Objednat online</button>
-  </div>
+<main>
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="eyebrow">Vietnamské dezerty v Praze</div>
+      <h1><span>Chè Sài Gòn</span></h1>
+      <p class="hero-text">Tradiční sladké dezerty, kokosové mléko, tapioca, taro, ovoce a želé připravené svěže pro každý den.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" type="button" onclick="openPopup()">Objednat online</button>
+        <a class="btn btn-secondary" href="#menu">Zobrazit menu</a>
+      </div>
+    </div>
+  </section>
 
-  <div class="hero-img">
-    <img src="25.jpg" alt="Elegatní vietnamský dezert Chè Sài Gòn">
-  </div>
-</section>
+  <section class="info-band">
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="info-label">Adresa</div>
+        <div class="info-value">OC SAPA, Libušská 319, Praha-Libuš</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Telefon</div>
+        <div class="info-value">+420 723 313 032</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Otevírací doba</div>
+        <div class="info-value">Léto 10:00-20:00, zima 11:00-19:00</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="menu">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow" style="color:var(--red)">Dnešní výběr</div>
+        <h2 class="section-title">Menu dezertů</h2>
+      </div>
+      <p class="section-copy">Fotky, názvy a rychlý přehled oblíbených pohárů Chè Sài Gòn Ngọc Thơ.</p>
+    </div>
+    <div class="menu-toolbar">
+      <p>16 položek v nabídce</p>
+      <a class="btn btn-primary" href="#cena">Zobrazit ceny</a>
+    </div>
+    <div class="menu-grid">
+      <article class="menu-card">
+        <img src="new2.jpg" alt="Kokosový dezert">
+        <h3><span>01</span>Kokosový dezert</h3>
+      </article>
+      <article class="menu-card">
+        <img src="new3.jpg" alt="Jackfruit">
+        <h3><span>02</span>Jackfruit</h3>
+      </article>
+      <article class="menu-card">
+        <img src="new4.jpg" alt="Caramel dezert">
+        <h3><span>03</span>Caramel dezert</h3>
+      </article>
+      <article class="menu-card">
+        <img src="new5.jpg" alt="Speciální mix">
+        <h3><span>04</span>Speciální mix</h3>
+      </article>
+      <article class="menu-card">
+        <img src="new6.jpg" alt="Pomelo dezert">
+        <h3><span>05</span>Pomelo dezert</h3>
+      </article>
+      <article class="menu-card">
+        <img src="new7.jpg" alt="Dezert po thajsku">
+        <h3><span>06</span>Dezert po thajsku</h3>
+      </article>
+      <article class="menu-card">
+        <img src="new8.jpg" alt="Taro dezert">
+        <h3><span>07</span>Taro dezert</h3>
+      </article>
+      <article class="menu-card">
+        <img src="new9.jpg" alt="Jogurt s ovocem">
+        <h3><span>08</span>Jogurt s ovocem</h3>
+      </article>
+      <article class="menu-card">
+        <img src="new10.jpg" alt="Jogurt s lepivou rýží">
+        <h3><span>09</span>Jogurt s lepivou rýží</h3>
+      </article>
+      <article class="menu-card">
+        <img src="new11.jpg" alt="Jogurt s caramelem">
+        <h3><span>10</span>Jogurt s caramelem</h3>
+      </article>
+      <article class="menu-card">
+        <img src="new12.jpg" alt="Zelená rýže s lotosovými semínky">
+        <h3><span>11</span>Zelená rýže s lotosovými semínky</h3>
+      </article>
+      <article class="menu-card">
+        <img src="new13.jpg" alt="Caramel">
+        <h3><span>12</span>Caramel</h3>
+      </article>
+      <article class="menu-card">
+        <img src="new14.jpg" alt="Černé fazole a lotosová semínka">
+        <h3><span>13</span>Černé fazole a lotosová semínka</h3>
+      </article>
+      <article class="menu-card">
+        <img src="new15.jpg" alt="Mladý kokosový želé">
+        <h3><span>14</span>Mladý kokosový želé</h3>
+      </article>
+      <article class="menu-card">
+        <img src="new16.jpg" alt="Mladý kokosový želé">
+        <h3><span>15</span>Mladý kokosový želé</h3>
+      </article>
+      <article class="menu-card">
+        <img src="new18.jpg" alt="Palmový cukrový sirup">
+        <h3><span>16</span>Palmový cukrový sirup</h3>
+      </article>
+    </div>
+  </section>
+
+  <section class="section price-section" id="cena">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow" style="color:var(--red)">Ceník</div>
+        <h2 class="section-title">Dnešní menu</h2>
+      </div>
+      <p class="section-copy">Číslo kelímku odpovídá jménovému lístku.</p>
+    </div>
+
+    <div class="notice">
+      <span><strong>Většina dezertů:</strong> 100Kč / 4,5€</span>
+      <span><strong>Mléčný čaj:</strong> 120Kč / 5€</span>
+    </div>
+
+    <div class="price-grid" aria-label="Ceník dezertů">
+      <article class="menu-item">
+        <span class="number">1</span>
+        <div>
+          <h3 class="name">Speciální mix</h3>
+          <p class="desc">fazole, želé, tapioca, taro, kokos</p>
+        </div>
+        <div class="price">100Kč / 4,5€</div>
+      </article>
+
+      <article class="menu-item">
+        <span class="number">2</span>
+        <div>
+          <h3 class="name">Dezert po thajsku</h3>
+          <p class="desc">durian, jackfruit, želé, mungo fazole, tapioca, kokosové mléko</p>
+        </div>
+        <div class="price">100Kč / 4,5€</div>
+      </article>
+
+      <article class="menu-item">
+        <span class="number">3</span>
+        <div>
+          <h3 class="name">Caramel dezert</h3>
+          <p class="desc">caramel, tapioca, želé, kokos, kokosové mléko</p>
+        </div>
+        <div class="price">100Kč / 4,5€</div>
+      </article>
+
+      <article class="menu-item">
+        <span class="number">4</span>
+        <div>
+          <h3 class="name">Jackfruitový dezert</h3>
+          <p class="desc">jackfruit, černá tapioca, kokos, kokosové mléko, tapioca</p>
+        </div>
+        <div class="price">100Kč / 4,5€</div>
+      </article>
+
+      <article class="menu-item">
+        <span class="number">5</span>
+        <div>
+          <h3 class="name">Taro dezert</h3>
+          <p class="desc">taro, kokosový pudink, černá lepkavá rýže</p>
+        </div>
+        <div class="price">100Kč / 4,5€</div>
+      </article>
+
+      <article class="menu-item">
+        <span class="number">6</span>
+        <div>
+          <h3 class="name">Jogurt s ovocem</h3>
+          <p class="desc">jogurt, jackfruit, želé, kokos</p>
+        </div>
+        <div class="price">100Kč / 4,5€</div>
+      </article>
+
+      <article class="menu-item">
+        <span class="number">7</span>
+        <div>
+          <h3 class="name">Jogurt s caramel</h3>
+          <p class="desc">jogurt, caramel, želé, tapioca, kokos</p>
+        </div>
+        <div class="price">100Kč / 4,5€</div>
+      </article>
+
+      <article class="menu-item">
+        <span class="number">8</span>
+        <div>
+          <h3 class="name">Jogurt s lepkavou rýží</h3>
+          <p class="desc">jogurt, lepkavá rýže, želé</p>
+        </div>
+        <div class="price">100Kč / 4,5€</div>
+      </article>
+
+      <article class="menu-item">
+        <span class="number">9</span>
+        <div>
+          <h3 class="name">Speciální kokosový dezert</h3>
+          <p class="desc">kokos, kokosové mléko, tapioca</p>
+        </div>
+        <div class="price">100Kč / 4,5€</div>
+      </article>
+
+      <article class="menu-item">
+        <span class="number">10</span>
+        <div>
+          <h3 class="name">Pomelo dezert</h3>
+          <p class="desc">pomelo kůra, mungo fazole, husté kokosové mléko</p>
+        </div>
+        <div class="price">100Kč / 4,5€</div>
+      </article>
+
+      <article class="menu-item">
+        <span class="number">11</span>
+        <div>
+          <h3 class="name">Pomelo dezert s mladou rýží</h3>
+          <p class="desc">rýže, pomelo kůra, husté kokosové mléko</p>
+        </div>
+        <div class="price">100Kč / 4,5€</div>
+      </article>
+
+      <article class="menu-item">
+        <span class="number">12</span>
+        <div>
+          <h3 class="name">Mléčný čaj</h3>
+          <p class="desc">černá tapioca a želé, matcha / mango / taro</p>
+        </div>
+        <div class="price">120Kč / 5€</div>
+      </article>
+
+      <article class="menu-item">
+        <span class="number">13</span>
+        <div>
+          <h3 class="name">Caramel flan</h3>
+        </div>
+        <div class="price">60Kč / 2,5€</div>
+      </article>
+
+      <article class="menu-item">
+        <span class="number">14</span>
+        <div>
+          <h3 class="name">Kokosové želé</h3>
+          <p class="desc">želé z čerstvého kokosu</p>
+        </div>
+        <div class="price">90Kč / 4€<br>120Kč / 5€</div>
+      </article>
+    </div>
+
+    <div class="topping">
+      <h3>Přidané toppingy</h3>
+      <div class="topping-grid">
+        <p>Želé, strouhaný kokos, poleva 10Kč</p>
+        <p>Fazole, rýže, tapioca, jackfruit, durian 20Kč</p>
+        <p>Plastový kelímek 10Kč</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="feature-grid">
+      <div class="feature-photo">
+        <img src="25.jpg" alt="Objednávka Chè Sài Gòn přes Wolt a Foodora">
+      </div>
+      <div class="order-panel">
+        <div>
+          <div class="eyebrow" style="color:var(--red)">Online</div>
+          <h2>Vyzvednutí i rozvoz bez čekání.</h2>
+          <p>Vyberte platformu, objednejte oblíbený dezert a my ho připravíme čerstvý.</p>
+          <div class="order-highlights" aria-label="Rychlé informace k objednávce">
+            <div class="order-highlight">
+              <span class="order-dot" aria-hidden="true"></span>
+              <div>
+                <strong>Vyzvednutí v OC SAPA</strong>
+                <span>Objednávku připravíme k rychlému vyzvednutí na provozovně.</span>
+              </div>
+            </div>
+            <div class="order-highlight">
+              <span class="order-dot" aria-hidden="true"></span>
+              <div>
+                <strong>Rozvoz přes Foodora a Wolt</strong>
+                <span>Pohodlně si vyberete platformu podle vaší lokality.</span>
+              </div>
+            </div>
+            <div class="order-highlight">
+              <span class="order-dot" aria-hidden="true"></span>
+              <div>
+                <strong>Čerstvě připravené dezerty</strong>
+                <span>Kokosové mléko, želé, ovoce a toppingy chystáme každý den.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="platform-list">
+          <a class="platform-pill" href="https://www.foodora.cz/restaurant/x06o/che-sai-gon-sapa" target="_blank" rel="noopener">
+            Foodora <span>Objednat</span>
+          </a>
+          <a class="platform-pill" href="https://wolt.com/cs/cze/prague/restaurant/che-sai-gon" target="_blank" rel="noopener">
+            Wolt <span>Objednat</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section map-section" id="kontakt">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow" style="color:var(--red)">Mapa</div>
+        <h2 class="section-title">Najdete nás v SAPA</h2>
+      </div>
+      <p class="section-copy">OC SAPA, Libušská 319, Praha-Libuš. Otevřete mapu přímo na stránce a snadno si naplánujte cestu.</p>
+    </div>
+    <div class="map-frame">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2564.5016738482113!2d14.4749269!3d50.0019516!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b91fe0ad0d347%3A0xa4872401e3b7c09c!2zQ2jDqCBTw6BpIEfDsm4!5e0!3m2!1svi!2s!4v1777967602279!5m2!1svi!2s" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Bản đồ Chè Sài Gòn Ngọc Thơ"></iframe>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p><strong>Otevírací doba</strong>Léto 10:00-20:00, zima 11:00-19:00</p>
+  <p><strong>Adresa</strong>OC SAPA, Libušská 319, Praha-Libuš</p>
+  <p><strong>Telefon</strong>+420 723 313 032</p>
+</footer>
 
 <div class="popup" id="popup" onclick="closePopupOutside(event)">
   <div class="popup-box" onclick="event.stopPropagation()">
-    <div class="popup-close-icon" onclick="closePopup()">&times;</div>
+    <div class="popup-close-icon" onclick="closePopup()" aria-label="Zavřít">&times;</div>
     <h3>Vyberte platformu</h3>
 
-    <a class="platform-link foodora" href="https://www.foodora.cz/restaurant/x06o/che-sai-gon-sapa" target="_blank">
-      Objednat přes Foodora
+    <a class="platform-link foodora" href="https://www.foodora.cz/restaurant/x06o/che-sai-gon-sapa" target="_blank" rel="noopener">
+      Objednat přes Foodora <span>&gt;</span>
     </a>
 
-    <a class="platform-link wolt" href="https://wolt.com/cs/cze/prague/restaurant/che-sai-gon" target="_blank">
-      Objednat přes Wolt
+    <a class="platform-link wolt" href="https://wolt.com/cs/cze/prague/restaurant/che-sai-gon" target="_blank" rel="noopener">
+      Objednat přes Wolt <span>&gt;</span>
     </a>
 
-    <button class="btn close-btn" onclick="closePopup()">Zavřít</button>
+    <button class="btn close-btn" type="button" onclick="closePopup()">Zavřít</button>
   </div>
 </div>
 
@@ -359,8 +1095,8 @@ function closePopup(){
   document.body.style.overflow = 'auto';
 }
 
-function closePopupOutside(event) {
-  if (event.target === popup) {
+function closePopupOutside(event){
+  if(event.target === popup){
     closePopup();
   }
 }
