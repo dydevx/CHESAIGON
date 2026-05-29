@@ -329,15 +329,22 @@ h1 span{display:block}
   overflow:hidden;
   border:1px solid var(--line);
   border-radius:8px;
-  background:#fffef7;
+  background:#f7efd7;
   box-shadow:0 14px 38px rgba(5,5,5,.1);
 }
 
-.storefront-photo img,
-.customer-photo img{
+.storefront-photo img{
   width:100%;
   height:100%;
   object-fit:cover;
+}
+
+.customer-photo img{
+  position:relative;
+  z-index:1;
+  width:100%;
+  height:100%;
+  object-fit:contain;
 }
 
 .storefront-main{
@@ -374,26 +381,36 @@ h1 span{display:block}
 .customer-gallery{
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
-  grid-auto-rows:210px;
-  grid-auto-flow:dense;
   gap:14px;
 }
 
 .customer-photo{
+  display:grid;
+  place-items:center;
+  aspect-ratio:1;
   min-height:0;
 }
 
+.customer-photo::before{
+  content:"";
+  position:absolute;
+  inset:-18px;
+  background:var(--photo) center/cover no-repeat;
+  filter:blur(18px);
+  opacity:.34;
+  transform:scale(1.08);
+}
+
 .customer-photo.large{
-  grid-column:span 2;
-  grid-row:span 2;
+  aspect-ratio:1;
 }
 
 .customer-photo.tall{
-  grid-row:span 1;
+  aspect-ratio:1;
 }
 
 .customer-photo.wide{
-  grid-column:span 2;
+  aspect-ratio:1;
 }
 
 .menu-toolbar{
@@ -414,7 +431,7 @@ h1 span{display:block}
 
 .menu-grid{
   display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-columns:repeat(4,minmax(0,1fr));
   gap:18px;
 }
 
@@ -786,7 +803,6 @@ h1 span{display:block}
 @media(max-width:1100px){
   .menu-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .customer-gallery{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .customer-photo.large{grid-column:span 2}
 }
 
 @media(max-width:920px){
@@ -870,17 +886,13 @@ h1 span{display:block}
   .storefront-stack .storefront-photo{min-height:260px}
   .customer-gallery{
     grid-template-columns:1fr;
-    grid-auto-rows:auto;
   }
   .customer-photo,
   .customer-photo.large,
   .customer-photo.tall,
   .customer-photo.wide{
-    grid-column:auto;
-    grid-row:auto;
-    aspect-ratio:4/5;
+    aspect-ratio:auto;
   }
-  .customer-photo.wide{aspect-ratio:4/3}
   .menu-card h3{min-height:auto}
   .map-frame iframe{min-height:280px}
   .popup-box{padding:28px 20px 22px}
@@ -975,35 +987,41 @@ h1 span{display:block}
       <p class="section-copy">Reálné fotky kelímků, vitríny a toppingů dávají návštěvníkům rychlý pocit, co si u stánku vyberou.</p>
     </div>
     <div class="customer-gallery">
-      <figure class="customer-photo large">
+      <figure class="customer-photo large" style="--photo:url('optimized/gallery-flower-cups.jpg')">
         <img src="optimized/gallery-flower-cups.jpg" alt="Kelímky Chè Sài Gòn focené u květinové dekorace" loading="lazy" decoding="async">
       </figure>
-      <figure class="customer-photo">
+      <figure class="customer-photo" style="--photo:url('optimized/gallery-sky-cups.jpg')">
         <img src="optimized/gallery-sky-cups.jpg" alt="Dva kelímky Chè Sài Gòn na venkovním stole" loading="lazy" decoding="async">
       </figure>
-      <figure class="customer-photo">
+      <figure class="customer-photo" style="--photo:url('optimized/gallery-branded-cups.jpg')">
         <img src="optimized/gallery-branded-cups.jpg" alt="Kelímky chè s ovocem a kokosovým mlékem" loading="lazy" decoding="async">
       </figure>
-      <figure class="customer-photo">
+      <figure class="customer-photo" style="--photo:url('optimized/gallery-milk-tea.jpg')">
         <img src="optimized/gallery-milk-tea.jpg" alt="Mléčný čaj Chè Sài Gòn s tapiokou" loading="lazy" decoding="async">
       </figure>
-      <figure class="customer-photo">
+      <figure class="customer-photo" style="--photo:url('optimized/gallery-orange-cups.jpg')">
         <img src="optimized/gallery-orange-cups.jpg" alt="Oranžové dezerty Chè Sài Gòn na venkovním stole" loading="lazy" decoding="async">
       </figure>
-      <figure class="customer-photo wide">
+      <figure class="customer-photo wide" style="--photo:url('optimized/gallery-dessert-tray.jpg')">
         <img src="optimized/gallery-dessert-tray.jpg" alt="Podnos plný připravených dezertů Chè Sài Gòn" loading="lazy" decoding="async">
       </figure>
-      <figure class="customer-photo">
+      <figure class="customer-photo" style="--photo:url('optimized/gallery-display-cups.jpg')">
         <img src="optimized/gallery-display-cups.jpg" alt="Kelímky Chè Sài Gòn vystavené ve vitríně" loading="lazy" decoding="async">
       </figure>
-      <figure class="customer-photo">
+      <figure class="customer-photo" style="--photo:url('optimized/gallery-bottles.jpg')">
         <img src="optimized/gallery-bottles.jpg" alt="Lahve s nápoji Chè Sài Gòn" loading="lazy" decoding="async">
       </figure>
-      <figure class="customer-photo wide">
+      <figure class="customer-photo wide" style="--photo:url('optimized/gallery-black-dessert.jpg')">
         <img src="optimized/gallery-black-dessert.jpg" alt="Černý fazolový dezert v kelímku Chè Sài Gòn" loading="lazy" decoding="async">
       </figure>
-      <figure class="customer-photo wide">
+      <figure class="customer-photo wide" style="--photo:url('optimized/gallery-topping.jpg')">
         <img src="optimized/gallery-topping.jpg" alt="Miska s toppingem pro dezerty Chè Sài Gòn" loading="lazy" decoding="async">
+      </figure>
+      <figure class="customer-photo" style="--photo:url('optimized/feature-ready-cups.jpg')">
+        <img src="optimized/feature-ready-cups.jpg" alt="Kelímky Chè Sài Gòn připravené k podávání" loading="lazy" decoding="async">
+      </figure>
+      <figure class="customer-photo" style="--photo:url('optimized/visit-table.jpg')">
+        <img src="optimized/visit-table.jpg" alt="Kelímky Chè Sài Gòn na stolku u květin" loading="lazy" decoding="async">
       </figure>
     </div>
   </section>
