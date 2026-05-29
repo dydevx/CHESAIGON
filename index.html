@@ -120,9 +120,17 @@ a{color:inherit}
   padding:120px clamp(18px,6vw,88px) 58px;
   overflow:hidden;
   isolation:isolate;
+  background:#17120f;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-2;
   background:
-    linear-gradient(90deg,rgba(255,251,234,.9),rgba(255,251,234,.58) 48%,rgba(255,251,234,.08)),
-    url("24.jpg") center/cover no-repeat;
+    linear-gradient(90deg,rgba(255,251,234,.94),rgba(255,251,234,.72) 38%,rgba(255,251,234,.18) 72%,rgba(255,251,234,.04)),
+    linear-gradient(0deg,rgba(5,5,5,.52),rgba(5,5,5,0) 48%);
 }
 
 .hero::after{
@@ -134,7 +142,35 @@ a{color:inherit}
   background:linear-gradient(0deg,var(--paper),rgba(255,251,234,0));
 }
 
+.hero-media{
+  position:absolute;
+  inset:0;
+  z-index:-3;
+  display:grid;
+  grid-template-columns:minmax(0,1.55fr) minmax(280px,.9fr);
+  grid-template-rows:1fr 1fr;
+  gap:10px;
+  padding:10px;
+  background:#17120f;
+}
+
+.hero-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.hero-main{
+  grid-row:1/-1;
+  object-position:center;
+}
+
+.hero-side-top{object-position:center 36%}
+.hero-side-bottom{object-position:center}
+
 .hero-content{
+  position:relative;
+  z-index:1;
   width:min(720px,100%);
   min-width:0;
   color:var(--ink);
@@ -280,6 +316,86 @@ h1 span{display:block}
   font-size:16px;
 }
 
+.storefront-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.28fr) minmax(280px,.72fr);
+  gap:18px;
+  align-items:stretch;
+}
+
+.storefront-photo,
+.customer-photo{
+  position:relative;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#fffef7;
+  box-shadow:0 14px 38px rgba(5,5,5,.1);
+}
+
+.storefront-photo img,
+.customer-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.storefront-main{
+  min-height:520px;
+}
+
+.storefront-main img{object-position:center bottom}
+
+.storefront-stack{
+  display:grid;
+  grid-template-rows:1fr 1fr;
+  gap:18px;
+}
+
+.storefront-stack .storefront-photo{
+  min-height:250px;
+}
+
+.photo-label{
+  position:absolute;
+  left:16px;
+  right:16px;
+  bottom:16px;
+  padding:10px 12px;
+  border-radius:8px;
+  background:rgba(255,251,234,.9);
+  color:var(--ink);
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.02em;
+  box-shadow:0 10px 24px rgba(5,5,5,.12);
+}
+
+.customer-gallery{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  grid-auto-rows:210px;
+  grid-auto-flow:dense;
+  gap:14px;
+}
+
+.customer-photo{
+  min-height:0;
+}
+
+.customer-photo.large{
+  grid-column:span 2;
+  grid-row:span 2;
+}
+
+.customer-photo.tall{
+  grid-row:span 1;
+}
+
+.customer-photo.wide{
+  grid-column:span 2;
+}
+
 .menu-toolbar{
   display:flex;
   align-items:center;
@@ -298,7 +414,7 @@ h1 span{display:block}
 
 .menu-grid{
   display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
+  grid-template-columns:repeat(3,minmax(0,1fr));
   gap:18px;
 }
 
@@ -668,7 +784,9 @@ h1 span{display:block}
 }
 
 @media(max-width:1100px){
-  .menu-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .menu-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .customer-gallery{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .customer-photo.large{grid-column:span 2}
 }
 
 @media(max-width:920px){
@@ -683,6 +801,8 @@ h1 span{display:block}
   }
   .section-head{display:block}
   .section-copy{margin-top:14px}
+  .storefront-grid{grid-template-columns:1fr}
+  .storefront-main{min-height:420px}
   .feature-photo img{min-height:300px}
 }
 
@@ -702,9 +822,23 @@ h1 span{display:block}
   .hero{
     min-height:82svh;
     padding-top:104px;
+  }
+  .hero::before{
     background:
-      linear-gradient(0deg,rgba(255,251,234,.88),rgba(255,251,234,.22)),
-      url("24.jpg") center/cover no-repeat;
+      linear-gradient(0deg,rgba(255,251,234,.92),rgba(255,251,234,.5) 48%,rgba(255,251,234,.08)),
+      linear-gradient(90deg,rgba(5,5,5,.32),rgba(5,5,5,0));
+  }
+  .hero-media{
+    grid-template-columns:1fr;
+    grid-template-rows:1.35fr .75fr;
+    gap:6px;
+    padding:6px;
+  }
+  .hero-main{
+    grid-row:auto;
+  }
+  .hero-side-bottom{
+    display:none;
   }
   .menu-item{
     grid-template-columns:auto minmax(0,1fr);
@@ -731,6 +865,22 @@ h1 span{display:block}
   .section{padding-top:54px;padding-bottom:54px}
   .info-item{min-height:auto}
   .menu-grid{grid-template-columns:1fr}
+  .storefront-main{min-height:340px}
+  .storefront-stack{grid-template-rows:auto}
+  .storefront-stack .storefront-photo{min-height:260px}
+  .customer-gallery{
+    grid-template-columns:1fr;
+    grid-auto-rows:auto;
+  }
+  .customer-photo,
+  .customer-photo.large,
+  .customer-photo.tall,
+  .customer-photo.wide{
+    grid-column:auto;
+    grid-row:auto;
+    aspect-ratio:4/5;
+  }
+  .customer-photo.wide{aspect-ratio:4/3}
   .menu-card h3{min-height:auto}
   .map-frame iframe{min-height:280px}
   .popup-box{padding:28px 20px 22px}
@@ -741,11 +891,13 @@ h1 span{display:block}
 <body>
 <nav class="site-nav" aria-label="Hlavní navigace">
   <a class="brand" href="#home">
-    <span class="brand-mark"><img src="avartar.jpg" alt="Logo Chè Sài Gòn"></span>
+    <span class="brand-mark"><img src="optimized/brand-wall.jpg" alt="Logo Chè Sài Gòn"></span>
     <span>Chè Sài Gòn</span>
   </a>
   <ul class="nav-links">
     <li><a href="#home">Domů</a></li>
+    <li><a href="#provozovna">Provozovna</a></li>
+    <li><a href="#galerie">Galerie</a></li>
     <li><a href="#menu">Menu</a></li>
     <li><a href="#cena">Cena</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
@@ -755,10 +907,15 @@ h1 span{display:block}
 
 <main>
   <section class="hero" id="home">
+    <div class="hero-media" aria-hidden="true">
+      <img class="hero-main" src="optimized/hero-facade-market.jpg" alt="" fetchpriority="high">
+      <img class="hero-side-top" src="optimized/hero-cup-facade.jpg" alt="" fetchpriority="high">
+      <img class="hero-side-bottom" src="optimized/hero-cups-flower.jpg" alt="" fetchpriority="high">
+    </div>
     <div class="hero-content">
-      <div class="eyebrow">Vietnamské dezerty v Praze</div>
+      <div class="eyebrow">Vietnamské dezerty v OC SAPA</div>
       <h1><span>Chè Sài Gòn</span></h1>
-      <p class="hero-text">Tradiční sladké dezerty, kokosové mléko, tapioca, taro, ovoce a želé připravené svěže pro každý den.</p>
+      <p class="hero-text">Červený nápis Chè Sài Gòn v tržnici SAPA, kelímky plné kokosu, tapioky, ovoce a želé připravené každý den.</p>
       <div class="hero-actions">
         <button class="btn btn-primary" type="button" onclick="openPopup()">Objednat online</button>
         <a class="btn btn-secondary" href="#menu">Zobrazit menu</a>
@@ -783,6 +940,74 @@ h1 span{display:block}
     </div>
   </section>
 
+  <section class="section alt" id="provozovna">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow" style="color:var(--red)">Provozovna</div>
+        <h2 class="section-title">Poznáte nás podle nápisu u SAPA</h2>
+      </div>
+      <p class="section-copy">Před návštěvou uvidíte skutečnou fasádu, vchod i místo, kde se fotí čerstvé kelímky Chè Sài Gòn Ngọc Thơ.</p>
+    </div>
+    <div class="storefront-grid">
+      <figure class="storefront-photo storefront-main">
+        <img src="optimized/visit-facade-wide.jpg" alt="Fasáda Chè Sài Gòn s červeným nápisem v tržnici SAPA" loading="lazy" decoding="async">
+        <figcaption class="photo-label">Červený nápis Chè Sài Gòn u tržnice SAPA</figcaption>
+      </figure>
+      <div class="storefront-stack">
+        <figure class="storefront-photo">
+          <img src="optimized/visit-door.jpg" alt="Vchod do provozovny Chè Sài Gòn v OC SAPA" loading="lazy" decoding="async">
+          <figcaption class="photo-label">Vchod do provozovny</figcaption>
+        </figure>
+        <figure class="storefront-photo">
+          <img src="optimized/visit-table.jpg" alt="Stůl s kelímky Chè Sài Gòn a květinovou výzdobou" loading="lazy" decoding="async">
+          <figcaption class="photo-label">Kelímky focené přímo u výlohy</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="galerie">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow" style="color:var(--red)">Fotky zákazníků</div>
+        <h2 class="section-title">Chè, které si lidé fotí u nás</h2>
+      </div>
+      <p class="section-copy">Reálné fotky kelímků, vitríny a toppingů dávají návštěvníkům rychlý pocit, co si u stánku vyberou.</p>
+    </div>
+    <div class="customer-gallery">
+      <figure class="customer-photo large">
+        <img src="optimized/gallery-flower-cups.jpg" alt="Kelímky Chè Sài Gòn focené u květinové dekorace" loading="lazy" decoding="async">
+      </figure>
+      <figure class="customer-photo">
+        <img src="optimized/gallery-sky-cups.jpg" alt="Dva kelímky Chè Sài Gòn na venkovním stole" loading="lazy" decoding="async">
+      </figure>
+      <figure class="customer-photo">
+        <img src="optimized/gallery-branded-cups.jpg" alt="Kelímky chè s ovocem a kokosovým mlékem" loading="lazy" decoding="async">
+      </figure>
+      <figure class="customer-photo">
+        <img src="optimized/gallery-milk-tea.jpg" alt="Mléčný čaj Chè Sài Gòn s tapiokou" loading="lazy" decoding="async">
+      </figure>
+      <figure class="customer-photo">
+        <img src="optimized/gallery-orange-cups.jpg" alt="Oranžové dezerty Chè Sài Gòn na venkovním stole" loading="lazy" decoding="async">
+      </figure>
+      <figure class="customer-photo wide">
+        <img src="optimized/gallery-dessert-tray.jpg" alt="Podnos plný připravených dezertů Chè Sài Gòn" loading="lazy" decoding="async">
+      </figure>
+      <figure class="customer-photo">
+        <img src="optimized/gallery-display-cups.jpg" alt="Kelímky Chè Sài Gòn vystavené ve vitríně" loading="lazy" decoding="async">
+      </figure>
+      <figure class="customer-photo">
+        <img src="optimized/gallery-bottles.jpg" alt="Lahve s nápoji Chè Sài Gòn" loading="lazy" decoding="async">
+      </figure>
+      <figure class="customer-photo wide">
+        <img src="optimized/gallery-black-dessert.jpg" alt="Černý fazolový dezert v kelímku Chè Sài Gòn" loading="lazy" decoding="async">
+      </figure>
+      <figure class="customer-photo wide">
+        <img src="optimized/gallery-topping.jpg" alt="Miska s toppingem pro dezerty Chè Sài Gòn" loading="lazy" decoding="async">
+      </figure>
+    </div>
+  </section>
+
   <section class="section alt" id="menu">
     <div class="section-head">
       <div>
@@ -797,67 +1022,67 @@ h1 span{display:block}
     </div>
     <div class="menu-grid">
       <article class="menu-card">
-        <img src="new2.jpg" alt="Kokosový dezert">
+        <img src="optimized/new2.jpg" alt="Kokosový dezert" loading="lazy" decoding="async">
         <h3><span>01</span>Kokosový dezert</h3>
       </article>
       <article class="menu-card">
-        <img src="new3.jpg" alt="Jackfruit">
+        <img src="optimized/new3.jpg" alt="Jackfruit" loading="lazy" decoding="async">
         <h3><span>02</span>Jackfruit</h3>
       </article>
       <article class="menu-card">
-        <img src="new4.jpg" alt="Caramel dezert">
+        <img src="optimized/new4.jpg" alt="Caramel dezert" loading="lazy" decoding="async">
         <h3><span>03</span>Caramel dezert</h3>
       </article>
       <article class="menu-card">
-        <img src="new5.jpg" alt="Speciální mix">
+        <img src="optimized/new5.jpg" alt="Speciální mix" loading="lazy" decoding="async">
         <h3><span>04</span>Speciální mix</h3>
       </article>
       <article class="menu-card">
-        <img src="new6.jpg" alt="Pomelo dezert">
+        <img src="optimized/new6.jpg" alt="Pomelo dezert" loading="lazy" decoding="async">
         <h3><span>05</span>Pomelo dezert</h3>
       </article>
       <article class="menu-card">
-        <img src="new7.jpg" alt="Dezert po thajsku">
+        <img src="optimized/new7.jpg" alt="Dezert po thajsku" loading="lazy" decoding="async">
         <h3><span>06</span>Dezert po thajsku</h3>
       </article>
       <article class="menu-card">
-        <img src="new8.jpg" alt="Taro dezert">
+        <img src="optimized/new8.jpg" alt="Taro dezert" loading="lazy" decoding="async">
         <h3><span>07</span>Taro dezert</h3>
       </article>
       <article class="menu-card">
-        <img src="new9.jpg" alt="Jogurt s ovocem">
+        <img src="optimized/new9.jpg" alt="Jogurt s ovocem" loading="lazy" decoding="async">
         <h3><span>08</span>Jogurt s ovocem</h3>
       </article>
       <article class="menu-card">
-        <img src="new10.jpg" alt="Jogurt s lepivou rýží">
+        <img src="optimized/new10.jpg" alt="Jogurt s lepivou rýží" loading="lazy" decoding="async">
         <h3><span>09</span>Jogurt s lepivou rýží</h3>
       </article>
       <article class="menu-card">
-        <img src="new11.jpg" alt="Jogurt s caramelem">
+        <img src="optimized/new11.jpg" alt="Jogurt s caramelem" loading="lazy" decoding="async">
         <h3><span>10</span>Jogurt s caramelem</h3>
       </article>
       <article class="menu-card">
-        <img src="new12.jpg" alt="Zelená rýže s lotosovými semínky">
+        <img src="optimized/new12.jpg" alt="Zelená rýže s lotosovými semínky" loading="lazy" decoding="async">
         <h3><span>11</span>Zelená rýže s lotosovými semínky</h3>
       </article>
       <article class="menu-card">
-        <img src="new13.jpg" alt="Caramel">
+        <img src="optimized/new13.jpg" alt="Caramel" loading="lazy" decoding="async">
         <h3><span>12</span>Caramel</h3>
       </article>
       <article class="menu-card">
-        <img src="new14.jpg" alt="Černé fazole a lotosová semínka">
+        <img src="optimized/new14.jpg" alt="Černé fazole a lotosová semínka" loading="lazy" decoding="async">
         <h3><span>13</span>Černé fazole a lotosová semínka</h3>
       </article>
       <article class="menu-card">
-        <img src="new15.jpg" alt="Mladý kokosový želé">
+        <img src="optimized/new15.jpg" alt="Mladý kokosový želé" loading="lazy" decoding="async">
         <h3><span>14</span>Mladý kokosový želé</h3>
       </article>
       <article class="menu-card">
-        <img src="new16.jpg" alt="Mladý kokosový želé">
+        <img src="optimized/new16.jpg" alt="Mladý kokosový želé" loading="lazy" decoding="async">
         <h3><span>15</span>Mladý kokosový želé</h3>
       </article>
       <article class="menu-card">
-        <img src="new18.jpg" alt="Palmový cukrový sirup">
+        <img src="optimized/new18.jpg" alt="Palmový cukrový sirup" loading="lazy" decoding="async">
         <h3><span>16</span>Palmový cukrový sirup</h3>
       </article>
     </div>
@@ -1017,7 +1242,7 @@ h1 span{display:block}
   <section class="section">
     <div class="feature-grid">
       <div class="feature-photo">
-        <img src="25.jpg" alt="Objednávka Chè Sài Gòn přes Wolt a Foodora">
+        <img src="optimized/feature-ready-cups.jpg" alt="Čerstvě připravené kelímky Chè Sài Gòn ve vitríně" loading="lazy" decoding="async">
       </div>
       <div class="order-panel">
         <div>
