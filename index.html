@@ -35,7 +35,8 @@ body{
   overflow-x:hidden;
 }
 
-img{display:block;max-width:100%}
+img,
+video{display:block;max-width:100%}
 a{color:inherit}
 
 .site-nav{
@@ -115,7 +116,7 @@ a{color:inherit}
 .hero{
   position:relative;
   min-height:86svh;
-  display:flex;
+  display:grid;
   align-items:flex-end;
   padding:120px clamp(18px,6vw,88px) 58px;
   overflow:hidden;
@@ -129,8 +130,8 @@ a{color:inherit}
   inset:0;
   z-index:-2;
   background:
-    linear-gradient(90deg,rgba(255,251,234,.94),rgba(255,251,234,.72) 38%,rgba(255,251,234,.18) 72%,rgba(255,251,234,.04)),
-    linear-gradient(0deg,rgba(5,5,5,.52),rgba(5,5,5,0) 48%);
+    linear-gradient(90deg,rgba(5,5,5,.72),rgba(5,5,5,.42) 36%,rgba(5,5,5,.08) 72%,rgba(5,5,5,.02)),
+    linear-gradient(0deg,rgba(5,5,5,.62),rgba(5,5,5,0) 54%);
 }
 
 .hero::after{
@@ -146,11 +147,6 @@ a{color:inherit}
   position:absolute;
   inset:0;
   z-index:-3;
-  display:grid;
-  grid-template-columns:minmax(0,1.55fr) minmax(280px,.9fr);
-  grid-template-rows:1fr 1fr;
-  gap:10px;
-  padding:10px;
   background:#17120f;
 }
 
@@ -158,22 +154,16 @@ a{color:inherit}
   width:100%;
   height:100%;
   object-fit:cover;
+  object-position:center center;
 }
-
-.hero-main{
-  grid-row:1/-1;
-  object-position:center;
-}
-
-.hero-side-top{object-position:center 36%}
-.hero-side-bottom{object-position:center}
 
 .hero-content{
   position:relative;
   z-index:1;
-  width:min(720px,100%);
+  width:100%;
+  max-width:720px;
   min-width:0;
-  color:var(--ink);
+  color:#fffef7;
 }
 
 .eyebrow{
@@ -208,7 +198,7 @@ h1 span{display:block}
 .hero-text{
   max-width:590px;
   margin-top:24px;
-  color:rgba(5,5,5,.86);
+  color:rgba(255,254,247,.92);
   font-size:clamp(17px,2vw,21px);
   overflow-wrap:break-word;
 }
@@ -246,9 +236,9 @@ h1 span{display:block}
 }
 
 .btn-secondary{
-  background:rgba(255,255,255,.38);
+  background:rgba(255,254,247,.9);
   color:var(--ink);
-  border-color:rgba(5,5,5,.32);
+  border-color:rgba(255,254,247,.72);
   backdrop-filter:blur(8px);
 }
 
@@ -411,6 +401,28 @@ h1 span{display:block}
 
 .customer-photo.wide{
   aspect-ratio:1;
+}
+
+.video-gallery{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+  margin-top:14px;
+}
+
+.video-card{
+  overflow:hidden;
+  aspect-ratio:9/16;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#17120f;
+  box-shadow:0 14px 38px rgba(5,5,5,.1);
+}
+
+.video-card video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
 .menu-toolbar{
@@ -650,6 +662,45 @@ h1 span{display:block}
   line-height:1.35;
 }
 
+.signature-highlight{
+  display:grid;
+  gap:8px;
+  margin-top:22px;
+  padding:20px;
+  border-radius:8px;
+  background:linear-gradient(135deg,var(--red),#aa130e);
+  color:#fffef7;
+  box-shadow:0 18px 44px rgba(224,32,23,.28);
+}
+
+.signature-highlight span{
+  width:max-content;
+  padding:7px 10px;
+  border-radius:8px;
+  background:var(--yellow);
+  color:var(--ink);
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.12em;
+  line-height:1;
+  text-transform:uppercase;
+}
+
+.signature-highlight strong{
+  display:block;
+  max-width:420px;
+  font-family:var(--font-heading);
+  font-size:clamp(26px,3vw,36px);
+  line-height:1.02;
+}
+
+.signature-highlight p{
+  max-width:460px;
+  color:rgba(255,254,247,.9);
+  font-weight:800;
+  line-height:1.45;
+}
+
 .platform-list{
   display:grid;
   gap:14px;
@@ -803,6 +854,7 @@ h1 span{display:block}
 @media(max-width:1100px){
   .menu-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .customer-gallery{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .video-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 
 @media(max-width:920px){
@@ -841,20 +893,11 @@ h1 span{display:block}
   }
   .hero::before{
     background:
-      linear-gradient(0deg,rgba(255,251,234,.92),rgba(255,251,234,.5) 48%,rgba(255,251,234,.08)),
-      linear-gradient(90deg,rgba(5,5,5,.32),rgba(5,5,5,0));
+      linear-gradient(0deg,rgba(5,5,5,.74),rgba(5,5,5,.3) 54%,rgba(5,5,5,.04)),
+      linear-gradient(90deg,rgba(5,5,5,.52),rgba(5,5,5,0) 74%);
   }
-  .hero-media{
-    grid-template-columns:1fr;
-    grid-template-rows:1.35fr .75fr;
-    gap:6px;
-    padding:6px;
-  }
-  .hero-main{
-    grid-row:auto;
-  }
-  .hero-side-bottom{
-    display:none;
+  .hero-media img{
+    object-position:center center;
   }
   .menu-item{
     grid-template-columns:auto minmax(0,1fr);
@@ -869,8 +912,14 @@ h1 span{display:block}
   .brand span:last-child{display:none}
   .nav-order{display:none}
   .hero{padding:104px 20px 46px}
+  .hero-content{
+    max-width:100%;
+  }
+  .hero-text{
+    max-width:100%;
+  }
   h1{
-    font-size:clamp(42px,15vw,54px);
+    font-size:clamp(38px,13vw,50px);
     line-height:.98;
   }
   .hero-text{
@@ -887,6 +936,7 @@ h1 span{display:block}
   .customer-gallery{
     grid-template-columns:1fr;
   }
+  .video-gallery{grid-template-columns:1fr}
   .customer-photo,
   .customer-photo.large,
   .customer-photo.tall,
@@ -920,9 +970,7 @@ h1 span{display:block}
 <main>
   <section class="hero" id="home">
     <div class="hero-media" aria-hidden="true">
-      <img class="hero-main" src="optimized/hero-facade-market.jpg" alt="" fetchpriority="high">
-      <img class="hero-side-top" src="optimized/hero-cup-facade.jpg" alt="" fetchpriority="high">
-      <img class="hero-side-bottom" src="optimized/hero-cups-flower.jpg" alt="" fetchpriority="high">
+      <img class="hero-main" src="optimized/hero-dessert-cups.jpg" alt="" fetchpriority="high">
     </div>
     <div class="hero-content">
       <div class="eyebrow">Vietnamské dezerty v OC SAPA</div>
@@ -981,10 +1029,10 @@ h1 span{display:block}
   <section class="section" id="galerie">
     <div class="section-head">
       <div>
-        <div class="eyebrow" style="color:var(--red)">Fotky zákazníků</div>
-        <h2 class="section-title">Chè, které si lidé fotí u nás</h2>
+        <div class="eyebrow" style="color:var(--red)">Fotky a videa zákazníků</div>
+        <h2 class="section-title">Chè, které lidé sdílí u nás</h2>
       </div>
-      <p class="section-copy">Reálné fotky kelímků, vitríny a toppingů dávají návštěvníkům rychlý pocit, co si u stánku vyberou.</p>
+      <p class="section-copy">Reálné fotky a videa kelímků, vitríny a toppingů dávají návštěvníkům rychlý pocit, co si u stánku vyberou.</p>
     </div>
     <div class="customer-gallery">
       <figure class="customer-photo large" style="--photo:url('optimized/gallery-flower-cups.jpg')">
@@ -1023,6 +1071,28 @@ h1 span{display:block}
       <figure class="customer-photo" style="--photo:url('optimized/visit-table.jpg')">
         <img src="optimized/visit-table.jpg" alt="Kelímky Chè Sài Gòn na stolku u květin" loading="lazy" decoding="async">
       </figure>
+    </div>
+    <div class="video-gallery" aria-label="Video galerie Chè Sài Gòn">
+      <article class="video-card">
+        <video controls muted playsinline preload="metadata" aria-label="Video Chè Sài Gòn 1">
+          <source src="videos/che-sai-gon-video-1.mp4" type="video/mp4">
+        </video>
+      </article>
+      <article class="video-card">
+        <video controls muted playsinline preload="metadata" aria-label="Video Chè Sài Gòn 2">
+          <source src="videos/che-sai-gon-video-2.mp4" type="video/mp4">
+        </video>
+      </article>
+      <article class="video-card">
+        <video controls muted playsinline preload="metadata" aria-label="Video Chè Sài Gòn 3">
+          <source src="videos/che-sai-gon-video-3.mp4" type="video/mp4">
+        </video>
+      </article>
+      <article class="video-card">
+        <video controls muted playsinline preload="metadata" aria-label="Video Chè Sài Gòn 4">
+          <source src="videos/che-sai-gon-video-4.mp4" type="video/mp4">
+        </video>
+      </article>
     </div>
   </section>
 
@@ -1267,6 +1337,11 @@ h1 span{display:block}
           <div class="eyebrow" style="color:var(--red)">Online</div>
           <h2>Vyzvednutí i rozvoz bez čekání.</h2>
           <p>Vyberte platformu, objednejte oblíbený dezert a my ho připravíme čerstvý.</p>
+          <div class="signature-highlight">
+            <span>20+ let</span>
+            <strong>První pravé Chè Sài Gòn v Česku</strong>
+            <p>Už více než 20 let si držíme stálou kvalitu a jedinečnou chuť.</p>
+          </div>
           <div class="order-highlights" aria-label="Rychlé informace k objednávce">
             <div class="order-highlight">
               <span class="order-dot" aria-hidden="true"></span>
