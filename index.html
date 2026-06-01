@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chè Sài Gòn</title>
+<title>CHÈ SÀI GÒN PRAHA | Vietnamské dezerty</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -117,8 +117,8 @@ a{color:inherit}
   position:relative;
   min-height:86svh;
   display:grid;
-  align-items:flex-end;
-  padding:120px clamp(18px,6vw,88px) 58px;
+  align-items:center;
+  padding:128px clamp(18px,6vw,88px) 88px;
   overflow:hidden;
   isolation:isolate;
   background:#17120f;
@@ -130,8 +130,8 @@ a{color:inherit}
   inset:0;
   z-index:-2;
   background:
-    linear-gradient(90deg,rgba(5,5,5,.72),rgba(5,5,5,.42) 36%,rgba(5,5,5,.08) 72%,rgba(5,5,5,.02)),
-    linear-gradient(0deg,rgba(5,5,5,.62),rgba(5,5,5,0) 54%);
+    linear-gradient(90deg,rgba(5,5,5,.76),rgba(5,5,5,.48) 34%,rgba(5,5,5,.1) 72%,rgba(5,5,5,.02)),
+    linear-gradient(0deg,rgba(5,5,5,.58),rgba(5,5,5,0) 54%);
 }
 
 .hero::after{
@@ -161,9 +161,14 @@ a{color:inherit}
   position:relative;
   z-index:1;
   width:100%;
-  max-width:720px;
+  max-width:1120px;
   min-width:0;
   color:#fffef7;
+}
+
+.hero .eyebrow{
+  color:var(--yellow);
+  text-shadow:0 3px 14px rgba(0,0,0,.45);
 }
 
 .eyebrow{
@@ -186,14 +191,41 @@ a{color:inherit}
 }
 
 h1{
-  max-width:760px;
-  font-family:var(--font-heading);
-  font-size:clamp(48px,9vw,112px);
-  line-height:.93;
+  max-width:1120px;
+  font-family:var(--font-body);
+  font-size:clamp(46px,7.8vw,108px);
+  font-weight:900;
+  line-height:.88;
+  letter-spacing:0;
+  text-transform:uppercase;
   overflow-wrap:break-word;
 }
 
 h1 span{display:block}
+
+.hero-title-main{
+  color:var(--yellow);
+  -webkit-text-stroke:1px rgba(5,5,5,.42);
+  text-shadow:
+    0 5px 0 var(--red),
+    0 16px 36px rgba(0,0,0,.58),
+    0 0 26px rgba(255,246,163,.34);
+}
+
+.hero-title-sub{
+  width:fit-content;
+  max-width:100%;
+  margin-top:18px;
+  padding:12px 16px;
+  border:3px solid var(--yellow);
+  border-radius:8px;
+  background:var(--red);
+  color:#fffef7;
+  font-size:clamp(18px,2.6vw,34px);
+  line-height:1;
+  box-shadow:0 16px 42px rgba(224,32,23,.36), inset 0 -5px 0 rgba(5,5,5,.16);
+  text-shadow:0 2px 0 rgba(5,5,5,.3);
+}
 
 .hero-text{
   max-width:590px;
@@ -919,8 +951,13 @@ h1 span{display:block}
     max-width:100%;
   }
   h1{
-    font-size:clamp(38px,13vw,50px);
-    line-height:.98;
+    font-size:clamp(38px,12.4vw,54px);
+    line-height:.94;
+  }
+  .hero-title-sub{
+    margin-top:14px;
+    padding:10px 12px;
+    font-size:clamp(17px,5.2vw,23px);
   }
   .hero-text{
     font-size:16px;
@@ -954,7 +991,7 @@ h1 span{display:block}
 <nav class="site-nav" aria-label="Hlavní navigace">
   <a class="brand" href="#home">
     <span class="brand-mark"><img src="optimized/brand-wall.jpg" alt="Logo Chè Sài Gòn"></span>
-    <span>Chè Sài Gòn</span>
+    <span>CHÈ SÀI GÒN PRAHA</span>
   </a>
   <ul class="nav-links">
     <li><a href="#home">Domů</a></li>
@@ -970,11 +1007,13 @@ h1 span{display:block}
 <main>
   <section class="hero" id="home">
     <div class="hero-media" aria-hidden="true">
-      <img class="hero-main" src="optimized/hero-dessert-cups.jpg" alt="" fetchpriority="high">
+      <img class="hero-main" src="hình nền.jpg" alt="" fetchpriority="high">
     </div>
     <div class="hero-content">
-      <div class="eyebrow">Vietnamské dezerty v OC SAPA</div>
-      <h1><span>Chè Sài Gòn</span></h1>
+      <h1 aria-label="CHÈ SÀI GÒN PRAHA (VIETNAMSKÉ DEZERTY)">
+        <span class="hero-title-main">CHÈ SÀI GÒN PRAHA</span>
+        <span class="hero-title-sub">(VIETNAMSKÉ DEZERTY)</span>
+      </h1>
       <p class="hero-text">Červený nápis Chè Sài Gòn v tržnici SAPA, kelímky plné kokosu, tapioky, ovoce a želé připravené každý den.</p>
       <div class="hero-actions">
         <button class="btn btn-primary" type="button" onclick="openPopup()">Objednat online</button>
