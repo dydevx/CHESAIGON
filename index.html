@@ -117,9 +117,9 @@ a{color:inherit}
   position:relative;
   min-height:86svh;
   display:grid;
-  grid-template-columns:minmax(320px,.8fr) minmax(0,1.2fr);
+  grid-template-columns:minmax(330px,430px) clamp(220px,17vw,280px) minmax(0,1fr);
   align-items:center;
-  gap:clamp(24px,4vw,56px);
+  gap:clamp(18px,2.4vw,32px);
   padding:112px clamp(18px,6vw,88px) 76px;
   overflow:hidden;
   isolation:isolate;
@@ -149,7 +149,7 @@ a{color:inherit}
 
 .hero-media{
   position:relative;
-  order:2;
+  order:3;
   z-index:0;
   align-self:center;
   min-height:0;
@@ -170,6 +170,60 @@ a{color:inherit}
   height:100%;
   object-fit:cover;
   object-position:center center;
+}
+
+.hero-spotlight{
+  position:relative;
+  order:2;
+  z-index:3;
+  justify-self:center;
+  width:100%;
+  max-width:280px;
+  aspect-ratio:3/4;
+  padding:6px;
+  border-radius:8px;
+  background:#fffef7;
+  outline:2px solid var(--red);
+  box-shadow:
+    -8px -8px 0 var(--yellow),
+    10px 10px 0 rgba(224,32,23,.9),
+    0 22px 52px rgba(5,5,5,.2);
+  transform:rotate(-2deg);
+}
+
+.hero-spotlight img{
+  width:100%;
+  height:100%;
+  border-radius:5px;
+  object-fit:cover;
+  object-position:center top;
+  filter:brightness(1.08) contrast(1.05);
+}
+
+.hero-spotlight-arrow{
+  position:absolute;
+  left:clamp(-94px,-6vw,-68px);
+  top:48%;
+  z-index:2;
+  width:clamp(66px,6vw,94px);
+  height:4px;
+  border-radius:999px;
+  background:var(--red);
+  box-shadow:0 0 0 6px rgba(255,246,163,.7);
+  transform:translateY(-50%);
+  pointer-events:none;
+}
+
+.hero-spotlight-arrow::after{
+  content:"";
+  position:absolute;
+  right:-2px;
+  top:50%;
+  width:16px;
+  height:16px;
+  border-top:4px solid var(--red);
+  border-right:4px solid var(--red);
+  transform:translateY(-50%) rotate(45deg);
 }
 
 .hero-content{
@@ -230,7 +284,7 @@ h1{
 
 .hero h1{
   max-width:560px;
-  font-size:clamp(44px,4.7vw,74px);
+  font-size:clamp(42px,4.1vw,64px);
   line-height:.94;
 }
 
@@ -253,7 +307,7 @@ h1 span{display:block}
   border-radius:8px;
   background:var(--yellow);
   color:var(--ink);
-  font-size:clamp(18px,2.6vw,34px);
+  font-size:clamp(18px,2.2vw,30px);
   line-height:1;
   box-shadow:0 16px 34px rgba(224,32,23,.18), inset 0 -5px 0 rgba(5,5,5,.08);
   text-shadow:none;
@@ -918,8 +972,8 @@ h1 span{display:block}
 
 @media(max-width:1100px){
   .hero{
-    grid-template-columns:minmax(300px,.82fr) minmax(0,1.18fr);
-    gap:34px;
+    grid-template-columns:minmax(280px,.78fr) clamp(190px,18vw,230px) minmax(0,1.22fr);
+    gap:22px;
   }
   .hero-media{
     box-shadow:
@@ -949,8 +1003,17 @@ h1 span{display:block}
     min-height:0;
     aspect-ratio:3/2;
   }
-  .hero-content{
+  .hero-spotlight{
     order:2;
+    width:min(280px,68vw);
+    max-width:none;
+  }
+  .hero-spotlight-arrow{
+    left:clamp(-62px,-12vw,-42px);
+    width:clamp(42px,12vw,62px);
+  }
+  .hero-content{
+    order:3;
     max-width:760px;
   }
   .info-grid,
@@ -1019,6 +1082,18 @@ h1 span{display:block}
     box-shadow:
       8px 8px 0 var(--yellow),
       0 18px 42px rgba(5,5,5,.16);
+  }
+  .hero-spotlight{
+    width:min(270px,76vw);
+    padding:5px;
+    box-shadow:
+      -6px -6px 0 var(--yellow),
+      8px 8px 0 rgba(224,32,23,.9),
+      0 18px 40px rgba(5,5,5,.18);
+  }
+  .hero-spotlight-arrow{
+    left:-54px;
+    width:56px;
   }
   .hero-content::before{
     width:64px;
@@ -1092,9 +1167,6 @@ h1 span{display:block}
 
 <main>
   <section class="hero" id="home">
-    <div class="hero-media" aria-hidden="true">
-      <img class="hero-main" src="hình nền.jpg" alt="" fetchpriority="high">
-    </div>
     <div class="hero-content">
       <h1 aria-label="CHÈ SÀI GÒN PRAHA (VIETNAMSKÉ DEZERTY)">
         <span class="hero-title-main">CHÈ SÀI GÒN<br>PRAHA</span>
@@ -1105,6 +1177,13 @@ h1 span{display:block}
         <button class="btn btn-primary" type="button" onclick="openPopup()">Objednat online</button>
         <a class="btn btn-secondary" href="#menu">Zobrazit menu</a>
       </div>
+    </div>
+    <figure class="hero-spotlight">
+      <span class="hero-spotlight-arrow" aria-hidden="true"></span>
+      <img src="Ảnh mới/image_1780042229481.jpg" alt="Mặt tiền cửa hàng Chè Sài Gòn tại SAPA" decoding="async">
+    </figure>
+    <div class="hero-media" aria-hidden="true">
+      <img class="hero-main" src="hình nền.jpg" alt="" fetchpriority="high">
     </div>
   </section>
 
