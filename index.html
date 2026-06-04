@@ -117,11 +117,15 @@ a{color:inherit}
   position:relative;
   min-height:86svh;
   display:grid;
+  grid-template-columns:minmax(320px,.8fr) minmax(0,1.2fr);
   align-items:center;
-  padding:128px clamp(18px,6vw,88px) 88px;
+  gap:clamp(24px,4vw,56px);
+  padding:112px clamp(18px,6vw,88px) 76px;
   overflow:hidden;
   isolation:isolate;
-  background:#17120f;
+  background:
+    linear-gradient(90deg,#fffef7 0 50%,rgba(255,246,163,.72) 50% 100%),
+    linear-gradient(135deg,#fffbea 0%,#fffef7 100%);
 }
 
 .hero::before{
@@ -130,8 +134,8 @@ a{color:inherit}
   inset:0;
   z-index:-2;
   background:
-    linear-gradient(90deg,rgba(5,5,5,.76),rgba(5,5,5,.48) 34%,rgba(5,5,5,.1) 72%,rgba(5,5,5,.02)),
-    linear-gradient(0deg,rgba(5,5,5,.58),rgba(5,5,5,0) 54%);
+    linear-gradient(90deg,transparent 0 calc(50% - 6px),var(--red) calc(50% - 6px) 50%,transparent 50% 100%),
+    linear-gradient(135deg,rgba(224,32,23,.08),rgba(255,254,247,.64) 48%,rgba(255,246,163,.26));
 }
 
 .hero::after{
@@ -144,10 +148,21 @@ a{color:inherit}
 }
 
 .hero-media{
-  position:absolute;
-  inset:0;
-  z-index:-3;
-  background:#17120f;
+  position:relative;
+  order:2;
+  z-index:0;
+  align-self:center;
+  min-height:0;
+  aspect-ratio:3/2;
+  height:auto;
+  overflow:hidden;
+  border:6px solid #fffef7;
+  border-radius:8px;
+  background:#f7efd7;
+  outline:2px solid var(--red);
+  box-shadow:
+    18px 18px 0 var(--yellow),
+    0 26px 70px rgba(5,5,5,.2);
 }
 
 .hero-media img{
@@ -159,16 +174,28 @@ a{color:inherit}
 
 .hero-content{
   position:relative;
+  order:1;
   z-index:1;
   width:100%;
-  max-width:1120px;
+  max-width:560px;
   min-width:0;
-  color:#fffef7;
+  color:var(--ink);
+}
+
+.hero-content::before{
+  content:"";
+  display:block;
+  width:84px;
+  height:8px;
+  margin-bottom:24px;
+  border-radius:999px;
+  background:var(--red);
+  box-shadow:34px 0 0 var(--yellow);
 }
 
 .hero .eyebrow{
-  color:var(--yellow);
-  text-shadow:0 3px 14px rgba(0,0,0,.45);
+  color:var(--red);
+  text-shadow:none;
 }
 
 .eyebrow{
@@ -201,15 +228,20 @@ h1{
   overflow-wrap:break-word;
 }
 
+.hero h1{
+  max-width:560px;
+  font-size:clamp(44px,4.7vw,74px);
+  line-height:.94;
+}
+
 h1 span{display:block}
 
 .hero-title-main{
-  color:var(--yellow);
-  -webkit-text-stroke:1px rgba(5,5,5,.42);
+  color:var(--red);
+  -webkit-text-stroke:0;
   text-shadow:
-    0 5px 0 var(--red),
-    0 16px 36px rgba(0,0,0,.58),
-    0 0 26px rgba(255,246,163,.34);
+    0 6px 0 var(--yellow),
+    0 20px 40px rgba(224,32,23,.18);
 }
 
 .hero-title-sub{
@@ -217,21 +249,22 @@ h1 span{display:block}
   max-width:100%;
   margin-top:18px;
   padding:12px 16px;
-  border:3px solid var(--yellow);
+  border:3px solid var(--red);
   border-radius:8px;
-  background:var(--red);
-  color:#fffef7;
+  background:var(--yellow);
+  color:var(--ink);
   font-size:clamp(18px,2.6vw,34px);
   line-height:1;
-  box-shadow:0 16px 42px rgba(224,32,23,.36), inset 0 -5px 0 rgba(5,5,5,.16);
-  text-shadow:0 2px 0 rgba(5,5,5,.3);
+  box-shadow:0 16px 34px rgba(224,32,23,.18), inset 0 -5px 0 rgba(5,5,5,.08);
+  text-shadow:none;
 }
 
 .hero-text{
-  max-width:590px;
-  margin-top:24px;
-  color:rgba(255,254,247,.92);
+  max-width:500px;
+  margin-top:28px;
+  color:var(--muted);
   font-size:clamp(17px,2vw,21px);
+  font-weight:600;
   overflow-wrap:break-word;
 }
 
@@ -884,6 +917,15 @@ h1 span{display:block}
 }
 
 @media(max-width:1100px){
+  .hero{
+    grid-template-columns:minmax(300px,.82fr) minmax(0,1.18fr);
+    gap:34px;
+  }
+  .hero-media{
+    box-shadow:
+      12px 12px 0 var(--yellow),
+      0 22px 56px rgba(5,5,5,.18);
+  }
   .menu-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .customer-gallery{grid-template-columns:repeat(3,minmax(0,1fr))}
   .video-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -892,6 +934,25 @@ h1 span{display:block}
 @media(max-width:920px){
   .site-nav{align-items:flex-start}
   .nav-links{display:none}
+  .hero{
+    grid-template-columns:1fr;
+    min-height:auto;
+    padding:110px clamp(18px,6vw,64px) 64px;
+    background:linear-gradient(180deg,#fffef7 0%,rgba(255,246,163,.68) 100%);
+  }
+  .hero::before{
+    background:linear-gradient(180deg,rgba(224,32,23,.08),rgba(255,246,163,.22));
+  }
+  .hero-media{
+    order:1;
+    width:100%;
+    min-height:0;
+    aspect-ratio:3/2;
+  }
+  .hero-content{
+    order:2;
+    max-width:760px;
+  }
   .info-grid,
   .price-grid,
   .topping-grid,
@@ -920,13 +981,17 @@ h1 span{display:block}
 
 @media(max-width:680px){
   .hero{
-    min-height:82svh;
+    gap:22px;
     padding-top:104px;
   }
   .hero::before{
-    background:
-      linear-gradient(0deg,rgba(5,5,5,.74),rgba(5,5,5,.3) 54%,rgba(5,5,5,.04)),
-      linear-gradient(90deg,rgba(5,5,5,.52),rgba(5,5,5,0) 74%);
+    background:linear-gradient(180deg,rgba(255,254,247,.74),rgba(255,246,163,.38));
+  }
+  .hero-media{
+    width:100%;
+    min-height:0;
+    height:auto;
+    aspect-ratio:3/2;
   }
   .hero-media img{
     object-position:center center;
@@ -943,16 +1008,37 @@ h1 span{display:block}
 @media(max-width:520px){
   .brand span:last-child{display:none}
   .nav-order{display:none}
-  .hero{padding:104px 20px 46px}
+  .hero{padding:96px 20px 46px}
+  .hero-media,
   .hero-content{
+    width:calc(100vw - 40px);
     max-width:100%;
   }
+  .hero-media{
+    border-width:4px;
+    box-shadow:
+      8px 8px 0 var(--yellow),
+      0 18px 42px rgba(5,5,5,.16);
+  }
+  .hero-content::before{
+    width:64px;
+    height:6px;
+    margin-bottom:18px;
+    box-shadow:26px 0 0 var(--yellow);
+  }
   .hero-text{
+    width:100%;
     max-width:100%;
+    overflow-wrap:anywhere;
   }
   h1{
     font-size:clamp(38px,12.4vw,54px);
     line-height:.94;
+  }
+  .hero h1{
+    max-width:100%;
+    font-size:clamp(34px,10vw,40px);
+    line-height:1.03;
   }
   .hero-title-sub{
     margin-top:14px;
@@ -1011,7 +1097,7 @@ h1 span{display:block}
     </div>
     <div class="hero-content">
       <h1 aria-label="CHÈ SÀI GÒN PRAHA (VIETNAMSKÉ DEZERTY)">
-        <span class="hero-title-main">CHÈ SÀI GÒN PRAHA</span>
+        <span class="hero-title-main">CHÈ SÀI GÒN<br>PRAHA</span>
         <span class="hero-title-sub">(VIETNAMSKÉ DEZERTY)</span>
       </h1>
       <p class="hero-text">Červený nápis Chè Sài Gòn v tržnici SAPA, kelímky plné kokosu, tapioky, ovoce a želé připravené každý den.</p>
