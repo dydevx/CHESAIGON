@@ -13,12 +13,12 @@
 :root{
   --ink:#050505;
   --muted:#29231f;
-  --paper:#fffbea;
-  --soft:#fff8c9;
+  --paper:#fffdf3;
+  --soft:#fff8dc;
   --red:#e02017;
-  --yellow:#fff6a3;
-  --line:rgba(5,5,5,.14);
-  --shadow:0 18px 50px rgba(5,5,5,.13);
+  --yellow:#fff4ad;
+  --line:rgba(5,5,5,.1);
+  --shadow:0 14px 38px rgba(5,5,5,.09);
   --font-heading:'Playfair Display',serif;
   --font-body:'Inter',sans-serif;
 }
@@ -48,7 +48,7 @@ a{color:inherit}
   justify-content:space-between;
   gap:24px;
   padding:16px clamp(18px,4vw,56px);
-  background:rgba(255,251,234,.92);
+  background:rgba(255,253,243,.94);
   border-bottom:1px solid var(--line);
   backdrop-filter:blur(16px);
 }
@@ -109,7 +109,7 @@ a{color:inherit}
 .nav-order{
   border:1px solid var(--red);
   background:var(--red);
-  color:var(--ink);
+  color:#fffef7;
   cursor:pointer;
 }
 
@@ -123,9 +123,7 @@ a{color:inherit}
   padding:112px clamp(18px,6vw,88px) 76px;
   overflow:hidden;
   isolation:isolate;
-  background:
-    linear-gradient(90deg,#fffef7 0 50%,rgba(255,246,163,.72) 50% 100%),
-    linear-gradient(135deg,#fffbea 0%,#fffef7 100%);
+  background:linear-gradient(180deg,#fffdf4 0%,#fff9d6 100%);
 }
 
 .hero::before{
@@ -133,9 +131,7 @@ a{color:inherit}
   position:absolute;
   inset:0;
   z-index:-2;
-  background:
-    linear-gradient(90deg,transparent 0 calc(50% - 6px),var(--red) calc(50% - 6px) 50%,transparent 50% 100%),
-    linear-gradient(135deg,rgba(224,32,23,.08),rgba(255,254,247,.64) 48%,rgba(255,246,163,.26));
+  background:linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,255,255,0));
 }
 
 .hero::after{
@@ -152,6 +148,7 @@ a{color:inherit}
   order:3;
   z-index:0;
   align-self:center;
+  min-width:0;
   min-height:0;
   aspect-ratio:3/2;
   height:auto;
@@ -159,10 +156,8 @@ a{color:inherit}
   border:6px solid #fffef7;
   border-radius:8px;
   background:#f7efd7;
-  outline:2px solid var(--red);
-  box-shadow:
-    18px 18px 0 var(--yellow),
-    0 26px 70px rgba(5,5,5,.2);
+  outline:1px solid rgba(224,32,23,.55);
+  box-shadow:0 18px 46px rgba(5,5,5,.13);
 }
 
 .hero-media img{
@@ -179,16 +174,14 @@ a{color:inherit}
   justify-self:center;
   width:100%;
   max-width:280px;
+  min-width:0;
   aspect-ratio:3/4;
   padding:6px;
   border-radius:8px;
-  background:transparent;
-  outline:4px solid #fffef7;
-  box-shadow:
-    -8px -8px 0 rgba(255,254,247,.92),
-    10px 10px 0 var(--yellow),
-    0 22px 52px rgba(5,5,5,.2);
-  transform:rotate(-2deg);
+  background:#fffef7;
+  outline:2px solid #fffef7;
+  box-shadow:0 16px 38px rgba(5,5,5,.13);
+  transform:none;
 }
 
 .hero-spotlight img{
@@ -212,7 +205,7 @@ a{color:inherit}
 
 .hero-content::before{
   content:"";
-  display:block;
+  display:none;
   width:84px;
   height:8px;
   margin-bottom:24px;
@@ -267,9 +260,7 @@ h1 span{display:block}
 .hero-title-main{
   color:var(--red);
   -webkit-text-stroke:0;
-  text-shadow:
-    0 6px 0 var(--yellow),
-    0 20px 40px rgba(224,32,23,.18);
+  text-shadow:none;
 }
 
 .hero-title-sub{
@@ -279,11 +270,11 @@ h1 span{display:block}
   padding:12px 16px;
   border:3px solid var(--red);
   border-radius:8px;
-  background:var(--yellow);
+  background:rgba(255,255,246,.9);
   color:var(--ink);
   font-size:clamp(18px,2.2vw,30px);
   line-height:1;
-  box-shadow:0 16px 34px rgba(224,32,23,.18), inset 0 -5px 0 rgba(5,5,5,.08);
+  box-shadow:none;
   text-shadow:none;
 }
 
@@ -950,9 +941,7 @@ h1 span{display:block}
     gap:14px;
   }
   .hero-media{
-    box-shadow:
-      12px 12px 0 var(--yellow),
-      0 22px 56px rgba(5,5,5,.18);
+    box-shadow:0 16px 38px rgba(5,5,5,.12);
   }
   .menu-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .customer-gallery{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -966,13 +955,13 @@ h1 span{display:block}
     grid-template-columns:1fr;
     min-height:auto;
     padding:110px clamp(18px,6vw,64px) 64px;
-    background:linear-gradient(180deg,#fffef7 0%,rgba(255,246,163,.68) 100%);
+    background:linear-gradient(180deg,#fffdf4 0%,#fff9d6 100%);
   }
   .hero::before{
-    background:linear-gradient(180deg,rgba(224,32,23,.08),rgba(255,246,163,.22));
+    background:linear-gradient(180deg,rgba(255,255,255,.72),rgba(255,255,255,0));
   }
   .hero-media{
-    order:1;
+    order:3;
     width:100%;
     min-height:0;
     aspect-ratio:3/2;
@@ -983,7 +972,7 @@ h1 span{display:block}
     max-width:none;
   }
   .hero-content{
-    order:3;
+    order:1;
     max-width:760px;
   }
   .info-grid,
@@ -1018,7 +1007,7 @@ h1 span{display:block}
     padding-top:104px;
   }
   .hero::before{
-    background:linear-gradient(180deg,rgba(255,254,247,.74),rgba(255,246,163,.38));
+    background:linear-gradient(180deg,rgba(255,255,255,.74),rgba(255,255,255,0));
   }
   .hero-media{
     width:100%;
@@ -1044,23 +1033,18 @@ h1 span{display:block}
   .hero{padding:96px 20px 46px}
   .hero-media,
   .hero-content{
-    width:calc(100vw - 40px);
+    width:100%;
     max-width:100%;
   }
   .hero-media{
     border-width:4px;
-    box-shadow:
-      8px 8px 0 var(--yellow),
-      0 18px 42px rgba(5,5,5,.16);
+    box-shadow:0 14px 34px rgba(5,5,5,.12);
   }
   .hero-spotlight{
     width:min(270px,76vw);
     padding:5px;
-    outline:4px solid #fffef7;
-    box-shadow:
-      -6px -6px 0 rgba(255,254,247,.92),
-      8px 8px 0 var(--yellow),
-      0 18px 40px rgba(5,5,5,.18);
+    outline:2px solid #fffef7;
+    box-shadow:0 14px 34px rgba(5,5,5,.12);
   }
   .hero-content::before{
     width:64px;
@@ -1070,8 +1054,12 @@ h1 span{display:block}
   }
   .hero-text{
     width:100%;
-    max-width:100%;
+    max-width:350px;
     overflow-wrap:anywhere;
+  }
+  .hero-actions{
+    width:100%;
+    max-width:350px;
   }
   h1{
     font-size:clamp(38px,12.4vw,54px);
@@ -1126,7 +1114,7 @@ h1 span{display:block}
     <li><a href="#provozovna">Provozovna</a></li>
     <li><a href="#galerie">Galerie</a></li>
     <li><a href="#menu">Menu</a></li>
-    <li><a href="#cena">Cena</a></li>
+    <li><a href="#cena">Ceník</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
   </ul>
   <button class="nav-order" type="button" onclick="openPopup()">Objednat</button>
@@ -1139,14 +1127,14 @@ h1 span{display:block}
         <span class="hero-title-main">CHÈ SÀI GÒN<br>PRAHA</span>
         <span class="hero-title-sub">(VIETNAMSKÉ DEZERTY)</span>
       </h1>
-      <p class="hero-text">Červený nápis Chè Sài Gòn v tržnici SAPA, kelímky plné kokosu, tapioky, ovoce a želé připravené každý den.</p>
+      <p class="hero-text">Vietnamské dezerty z OC SAPA: kokosové mléko, tapioka, ovoce a želé připravujeme čerstvé každý den.</p>
       <div class="hero-actions">
-        <button class="btn btn-primary" type="button" onclick="openPopup()">Objednat online</button>
+        <button class="btn btn-primary" type="button" onclick="openPopup()">Objednat teď</button>
         <a class="btn btn-secondary" href="#menu">Zobrazit menu</a>
       </div>
     </div>
     <figure class="hero-spotlight">
-      <img src="Ảnh mới/image_1780042229481-cutout.png" alt="Mặt tiền cửa hàng Chè Sài Gòn tại SAPA" decoding="async">
+      <img src="Ảnh mới/image_1780042229481-cutout.png" alt="Výloha provozovny Chè Sài Gòn v OC SAPA" decoding="async">
     </figure>
     <div class="hero-media" aria-hidden="true">
       <img class="hero-main" src="hình nền.jpg" alt="" fetchpriority="high">
@@ -1176,7 +1164,7 @@ h1 span{display:block}
         <div class="eyebrow" style="color:var(--red)">Provozovna</div>
         <h2 class="section-title">Poznáte nás podle nápisu u SAPA</h2>
       </div>
-      <p class="section-copy">Před návštěvou uvidíte skutečnou fasádu, vchod i místo, kde se fotí čerstvé kelímky Chè Sài Gòn Ngọc Thơ.</p>
+      <p class="section-copy">Před návštěvou uvidíte skutečnou fasádu, vchod i místo, kde se fotí čerstvé vietnamské dezerty.</p>
     </div>
     <div class="storefront-grid">
       <figure class="storefront-photo storefront-main">
@@ -1199,10 +1187,10 @@ h1 span{display:block}
   <section class="section" id="galerie">
     <div class="section-head">
       <div>
-        <div class="eyebrow" style="color:var(--red)">Fotky a videa zákazníků</div>
-        <h2 class="section-title">Chè, které lidé sdílí u nás</h2>
+        <div class="eyebrow" style="color:var(--red)">Fotky a videa od zákazníků</div>
+        <h2 class="section-title">Dezerty, které u nás lidé sdílejí</h2>
       </div>
-      <p class="section-copy">Reálné fotky a videa kelímků, vitríny a toppingů dávají návštěvníkům rychlý pocit, co si u stánku vyberou.</p>
+      <p class="section-copy">Reálné fotky a videa kelímků, vitríny a přísad pomáhají návštěvníkům rychle vybrat, na co mají chuť.</p>
     </div>
     <div class="customer-gallery">
       <figure class="customer-photo large" style="--photo:url('optimized/gallery-flower-cups.jpg')">
@@ -1212,7 +1200,7 @@ h1 span{display:block}
         <img src="optimized/gallery-sky-cups.jpg" alt="Dva kelímky Chè Sài Gòn na venkovním stole" loading="lazy" decoding="async">
       </figure>
       <figure class="customer-photo" style="--photo:url('optimized/gallery-branded-cups.jpg')">
-        <img src="optimized/gallery-branded-cups.jpg" alt="Kelímky chè s ovocem a kokosovým mlékem" loading="lazy" decoding="async">
+        <img src="optimized/gallery-branded-cups.jpg" alt="Kelímky s ovocem a kokosovým mlékem" loading="lazy" decoding="async">
       </figure>
       <figure class="customer-photo" style="--photo:url('optimized/gallery-milk-tea.jpg')">
         <img src="optimized/gallery-milk-tea.jpg" alt="Mléčný čaj Chè Sài Gòn s tapiokou" loading="lazy" decoding="async">
@@ -1233,19 +1221,19 @@ h1 span{display:block}
         <img src="optimized/gallery-black-dessert.jpg" alt="Černý fazolový dezert v kelímku Chè Sài Gòn" loading="lazy" decoding="async">
       </figure>
       <figure class="customer-photo wide" style="--photo:url('optimized/gallery-topping.jpg')">
-        <img src="optimized/gallery-topping.jpg" alt="Miska s toppingem pro dezerty Chè Sài Gòn" loading="lazy" decoding="async">
+        <img src="optimized/gallery-topping.jpg" alt="Miska s přísadami pro dezerty Chè Sài Gòn" loading="lazy" decoding="async">
       </figure>
       <figure class="customer-photo" style="--photo:url('optimized/feature-ready-cups.jpg')">
         <img src="optimized/feature-ready-cups.jpg" alt="Kelímky Chè Sài Gòn připravené k podávání" loading="lazy" decoding="async">
       </figure>
       <figure class="customer-photo" style="--photo:url('optimized/gallery-latest-facade.jpg')">
-        <img src="optimized/gallery-latest-facade.jpg" alt="Che Sai Gon storefront with customers outside" loading="lazy" decoding="async">
+        <img src="optimized/gallery-latest-facade.jpg" alt="Provozovna Chè Sài Gòn se zákazníky před vstupem" loading="lazy" decoding="async">
       </figure>
       <figure class="customer-photo" style="--photo:url('optimized/gallery-latest-cups.jpg')">
-        <img src="optimized/gallery-latest-cups.jpg" alt="Fresh Che Sai Gon dessert cups in the display fridge" loading="lazy" decoding="async">
+        <img src="optimized/gallery-latest-cups.jpg" alt="Čerstvé dezerty Chè Sài Gòn ve vitríně" loading="lazy" decoding="async">
       </figure>
       <figure class="customer-photo" style="--photo:url('optimized/gallery-latest-green-dessert.jpg')">
-        <img src="optimized/gallery-latest-green-dessert.jpg" alt="Green Che Sai Gon dessert cup held in the kitchen" loading="lazy" decoding="async">
+        <img src="optimized/gallery-latest-green-dessert.jpg" alt="Zelený dezert Chè Sài Gòn v kelímku" loading="lazy" decoding="async">
       </figure>
       <figure class="customer-photo" style="--photo:url('optimized/visit-table.jpg')">
         <img src="optimized/visit-table.jpg" alt="Kelímky Chè Sài Gòn na stolku u květin" loading="lazy" decoding="async">
@@ -1281,7 +1269,7 @@ h1 span{display:block}
         <div class="eyebrow" style="color:var(--red)">Dnešní výběr</div>
         <h2 class="section-title">Menu dezertů</h2>
       </div>
-      <p class="section-copy">Fotky, názvy a rychlý přehled oblíbených pohárů Chè Sài Gòn Ngọc Thơ.</p>
+      <p class="section-copy">Fotky, názvy a rychlý přehled oblíbených vietnamských dezertů.</p>
     </div>
     <div class="menu-toolbar">
       <p>16 položek v nabídce</p>
@@ -1293,24 +1281,24 @@ h1 span{display:block}
         <h3><span>01</span>Kokosový dezert</h3>
       </article>
       <article class="menu-card">
-        <img src="optimized/new3.jpg" alt="Jackfruit" loading="lazy" decoding="async">
-        <h3><span>02</span>Jackfruit</h3>
+        <img src="optimized/new3.jpg" alt="Dezert s jackfruitem" loading="lazy" decoding="async">
+        <h3><span>02</span>Dezert s jackfruitem</h3>
       </article>
       <article class="menu-card">
-        <img src="optimized/new4.jpg" alt="Caramel dezert" loading="lazy" decoding="async">
-        <h3><span>03</span>Caramel dezert</h3>
+        <img src="optimized/new4.jpg" alt="Karamelový dezert" loading="lazy" decoding="async">
+        <h3><span>03</span>Karamelový dezert</h3>
       </article>
       <article class="menu-card">
         <img src="optimized/new5.jpg" alt="Speciální mix" loading="lazy" decoding="async">
         <h3><span>04</span>Speciální mix</h3>
       </article>
       <article class="menu-card">
-        <img src="optimized/new6.jpg" alt="Pomelo dezert" loading="lazy" decoding="async">
-        <h3><span>05</span>Pomelo dezert</h3>
+        <img src="optimized/new6.jpg" alt="Pomelový dezert" loading="lazy" decoding="async">
+        <h3><span>05</span>Pomelový dezert</h3>
       </article>
       <article class="menu-card">
-        <img src="optimized/new7.jpg" alt="Dezert po thajsku" loading="lazy" decoding="async">
-        <h3><span>06</span>Dezert po thajsku</h3>
+        <img src="optimized/new7.jpg" alt="Thajský dezert" loading="lazy" decoding="async">
+        <h3><span>06</span>Thajský dezert</h3>
       </article>
       <article class="menu-card">
         <img src="optimized/new8.jpg" alt="Taro dezert" loading="lazy" decoding="async">
@@ -1321,36 +1309,36 @@ h1 span{display:block}
         <h3><span>08</span>Jogurt s ovocem</h3>
       </article>
       <article class="menu-card">
-        <img src="optimized/new10.jpg" alt="Jogurt s lepivou rýží" loading="lazy" decoding="async">
-        <h3><span>09</span>Jogurt s lepivou rýží</h3>
+        <img src="optimized/new10.jpg" alt="Jogurt s lepkavou rýží" loading="lazy" decoding="async">
+        <h3><span>09</span>Jogurt s lepkavou rýží</h3>
       </article>
       <article class="menu-card">
-        <img src="optimized/new11.jpg" alt="Jogurt s caramelem" loading="lazy" decoding="async">
-        <h3><span>10</span>Jogurt s caramelem</h3>
+        <img src="optimized/new11.jpg" alt="Jogurt s karamelem" loading="lazy" decoding="async">
+        <h3><span>10</span>Jogurt s karamelem</h3>
       </article>
       <article class="menu-card">
-        <img src="optimized/new12.jpg" alt="Zelená rýže s lotosovými semínky" loading="lazy" decoding="async">
-        <h3><span>11</span>Zelená rýže s lotosovými semínky</h3>
+        <img src="optimized/new12.jpg" alt="Zelená lepkavá rýže s lotosovými semínky" loading="lazy" decoding="async">
+        <h3><span>11</span>Zelená lepkavá rýže s lotosovými semínky</h3>
       </article>
       <article class="menu-card">
-        <img src="optimized/new13.jpg" alt="Caramel" loading="lazy" decoding="async">
-        <h3><span>12</span>Caramel</h3>
+        <img src="optimized/new13.jpg" alt="Karamelový flan" loading="lazy" decoding="async">
+        <h3><span>12</span>Karamelový flan</h3>
       </article>
       <article class="menu-card">
         <img src="optimized/new14.jpg" alt="Černé fazole a lotosová semínka" loading="lazy" decoding="async">
         <h3><span>13</span>Černé fazole a lotosová semínka</h3>
       </article>
       <article class="menu-card">
-        <img src="optimized/new15.jpg" alt="Mladý kokosový želé" loading="lazy" decoding="async">
-        <h3><span>14</span>Mladý kokosový želé</h3>
+        <img src="optimized/new15.jpg" alt="Želé z mladého kokosu" loading="lazy" decoding="async">
+        <h3><span>14</span>Želé z mladého kokosu</h3>
       </article>
       <article class="menu-card">
-        <img src="optimized/new16.jpg" alt="Mladý kokosový želé" loading="lazy" decoding="async">
-        <h3><span>15</span>Mladý kokosový želé</h3>
+        <img src="optimized/new16.jpg" alt="Želé z mladého kokosu" loading="lazy" decoding="async">
+        <h3><span>15</span>Želé z mladého kokosu</h3>
       </article>
       <article class="menu-card">
-        <img src="optimized/new18.jpg" alt="Palmový cukrový sirup" loading="lazy" decoding="async">
-        <h3><span>16</span>Palmový cukrový sirup</h3>
+        <img src="optimized/new18.jpg" alt="Sirup z palmového cukru" loading="lazy" decoding="async">
+        <h3><span>16</span>Sirup z palmového cukru</h3>
       </article>
     </div>
   </section>
@@ -1361,12 +1349,12 @@ h1 span{display:block}
         <div class="eyebrow" style="color:var(--red)">Ceník</div>
         <h2 class="section-title">Dnešní menu</h2>
       </div>
-      <p class="section-copy">Číslo kelímku odpovídá jménovému lístku.</p>
+      <p class="section-copy">Číslo kelímku odpovídá štítku v nabídce.</p>
     </div>
 
     <div class="notice">
-      <span><strong>Většina dezertů:</strong> 100Kč / 4,5€</span>
-      <span><strong>Mléčný čaj:</strong> 120Kč / 5€</span>
+      <span><strong>Většina dezertů:</strong> 100 Kč / 4,50 €</span>
+      <span><strong>Mléčný čaj:</strong> 120 Kč / 5 €</span>
     </div>
 
     <div class="price-grid" aria-label="Ceník dezertů">
@@ -1374,36 +1362,36 @@ h1 span{display:block}
         <span class="number">1</span>
         <div>
           <h3 class="name">Speciální mix</h3>
-          <p class="desc">fazole, želé, tapioca, taro, kokos</p>
+          <p class="desc">fazole, želé, tapioka, taro, kokos</p>
         </div>
-        <div class="price">100Kč / 4,5€</div>
+        <div class="price">100 Kč / 4,50 €</div>
       </article>
 
       <article class="menu-item">
         <span class="number">2</span>
         <div>
-          <h3 class="name">Dezert po thajsku</h3>
-          <p class="desc">durian, jackfruit, želé, mungo fazole, tapioca, kokosové mléko</p>
+          <h3 class="name">Thajský dezert</h3>
+          <p class="desc">durian, jackfruit, želé, fazole mungo, tapioka, kokosové mléko</p>
         </div>
-        <div class="price">100Kč / 4,5€</div>
+        <div class="price">100 Kč / 4,50 €</div>
       </article>
 
       <article class="menu-item">
         <span class="number">3</span>
         <div>
-          <h3 class="name">Caramel dezert</h3>
-          <p class="desc">caramel, tapioca, želé, kokos, kokosové mléko</p>
+          <h3 class="name">Karamelový dezert</h3>
+          <p class="desc">karamel, tapioka, želé, kokos, kokosové mléko</p>
         </div>
-        <div class="price">100Kč / 4,5€</div>
+        <div class="price">100 Kč / 4,50 €</div>
       </article>
 
       <article class="menu-item">
         <span class="number">4</span>
         <div>
           <h3 class="name">Jackfruitový dezert</h3>
-          <p class="desc">jackfruit, černá tapioca, kokos, kokosové mléko, tapioca</p>
+          <p class="desc">jackfruit, černá tapioka, kokos, kokosové mléko, tapioka</p>
         </div>
-        <div class="price">100Kč / 4,5€</div>
+        <div class="price">100 Kč / 4,50 €</div>
       </article>
 
       <article class="menu-item">
@@ -1412,7 +1400,7 @@ h1 span{display:block}
           <h3 class="name">Taro dezert</h3>
           <p class="desc">taro, kokosový pudink, černá lepkavá rýže</p>
         </div>
-        <div class="price">100Kč / 4,5€</div>
+        <div class="price">100 Kč / 4,50 €</div>
       </article>
 
       <article class="menu-item">
@@ -1421,16 +1409,16 @@ h1 span{display:block}
           <h3 class="name">Jogurt s ovocem</h3>
           <p class="desc">jogurt, jackfruit, želé, kokos</p>
         </div>
-        <div class="price">100Kč / 4,5€</div>
+        <div class="price">100 Kč / 4,50 €</div>
       </article>
 
       <article class="menu-item">
         <span class="number">7</span>
         <div>
-          <h3 class="name">Jogurt s caramel</h3>
-          <p class="desc">jogurt, caramel, želé, tapioca, kokos</p>
+          <h3 class="name">Jogurt s karamelem</h3>
+          <p class="desc">jogurt, karamel, želé, tapioka, kokos</p>
         </div>
-        <div class="price">100Kč / 4,5€</div>
+        <div class="price">100 Kč / 4,50 €</div>
       </article>
 
       <article class="menu-item">
@@ -1439,51 +1427,51 @@ h1 span{display:block}
           <h3 class="name">Jogurt s lepkavou rýží</h3>
           <p class="desc">jogurt, lepkavá rýže, želé</p>
         </div>
-        <div class="price">100Kč / 4,5€</div>
+        <div class="price">100 Kč / 4,50 €</div>
       </article>
 
       <article class="menu-item">
         <span class="number">9</span>
         <div>
           <h3 class="name">Speciální kokosový dezert</h3>
-          <p class="desc">kokos, kokosové mléko, tapioca</p>
+          <p class="desc">kokos, kokosové mléko, tapioka</p>
         </div>
-        <div class="price">100Kč / 4,5€</div>
+        <div class="price">100 Kč / 4,50 €</div>
       </article>
 
       <article class="menu-item">
         <span class="number">10</span>
         <div>
-          <h3 class="name">Pomelo dezert</h3>
-          <p class="desc">pomelo kůra, mungo fazole, husté kokosové mléko</p>
+          <h3 class="name">Pomelový dezert</h3>
+          <p class="desc">pomelová kůra, fazole mungo, husté kokosové mléko</p>
         </div>
-        <div class="price">100Kč / 4,5€</div>
+        <div class="price">100 Kč / 4,50 €</div>
       </article>
 
       <article class="menu-item">
         <span class="number">11</span>
         <div>
-          <h3 class="name">Pomelo dezert s mladou rýží</h3>
-          <p class="desc">rýže, pomelo kůra, husté kokosové mléko</p>
+          <h3 class="name">Pomelový dezert s mladou rýží</h3>
+          <p class="desc">rýže, pomelová kůra, husté kokosové mléko</p>
         </div>
-        <div class="price">100Kč / 4,5€</div>
+        <div class="price">100 Kč / 4,50 €</div>
       </article>
 
       <article class="menu-item">
         <span class="number">12</span>
         <div>
           <h3 class="name">Mléčný čaj</h3>
-          <p class="desc">černá tapioca a želé, matcha / mango / taro</p>
+          <p class="desc">černá tapioka a želé, matcha / mango / taro</p>
         </div>
-        <div class="price">120Kč / 5€</div>
+        <div class="price">120 Kč / 5 €</div>
       </article>
 
       <article class="menu-item">
         <span class="number">13</span>
         <div>
-          <h3 class="name">Caramel flan</h3>
+          <h3 class="name">Karamelový flan</h3>
         </div>
-        <div class="price">60Kč / 2,5€</div>
+        <div class="price">60 Kč / 2,50 €</div>
       </article>
 
       <article class="menu-item">
@@ -1492,16 +1480,16 @@ h1 span{display:block}
           <h3 class="name">Kokosové želé</h3>
           <p class="desc">želé z čerstvého kokosu</p>
         </div>
-        <div class="price">90Kč / 4€<br>120Kč / 5€</div>
+        <div class="price">90 Kč / 4 €<br>120 Kč / 5 €</div>
       </article>
     </div>
 
     <div class="topping">
-      <h3>Přidané toppingy</h3>
+      <h3>Přidané suroviny</h3>
       <div class="topping-grid">
-        <p>Želé, strouhaný kokos, poleva 10Kč</p>
-        <p>Fazole, rýže, tapioca, jackfruit, durian 20Kč</p>
-        <p>Plastový kelímek 10Kč</p>
+        <p>Želé, strouhaný kokos, poleva 10 Kč</p>
+        <p>Fazole, rýže, tapioka, jackfruit, durian 20 Kč</p>
+        <p>Plastový kelímek 10 Kč</p>
       </div>
     </div>
   </section>
@@ -1513,7 +1501,7 @@ h1 span{display:block}
       </div>
       <div class="order-panel">
         <div>
-          <div class="eyebrow" style="color:var(--red)">Online</div>
+          <div class="eyebrow" style="color:var(--red)">Objednávky</div>
           <h2>Vyzvednutí i rozvoz bez čekání.</h2>
           <p>Vyberte platformu, objednejte oblíbený dezert a my ho připravíme čerstvý.</p>
           <div class="signature-highlight">
@@ -1540,7 +1528,7 @@ h1 span{display:block}
               <span class="order-dot" aria-hidden="true"></span>
               <div>
                 <strong>Čerstvě připravené dezerty</strong>
-                <span>Kokosové mléko, želé, ovoce a toppingy chystáme každý den.</span>
+                <span>Kokosové mléko, želé, ovoce a přísady chystáme každý den.</span>
               </div>
             </div>
           </div>
@@ -1566,7 +1554,7 @@ h1 span{display:block}
       <p class="section-copy">OC SAPA, Libušská 319, Praha-Libuš. Otevřete mapu přímo na stránce a snadno si naplánujte cestu.</p>
     </div>
     <div class="map-frame">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2564.5016738482113!2d14.4749269!3d50.0019516!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b91fe0ad0d347%3A0xa4872401e3b7c09c!2zQ2jDqCBTw6BpIEfDsm4!5e0!3m2!1svi!2s!4v1777967602279!5m2!1svi!2s" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Bản đồ Chè Sài Gòn Ngọc Thơ"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2564.5016738482113!2d14.4749269!3d50.0019516!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b91fe0ad0d347%3A0xa4872401e3b7c09c!2zQ2jDqCBTw6BpIEfDsm4!5e0!3m2!1scs!2s!4v1777967602279!5m2!1scs!2s" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa Chè Sài Gòn v OC SAPA"></iframe>
     </div>
   </section>
 </main>
@@ -1575,7 +1563,7 @@ h1 span{display:block}
   <p><strong>Otevírací doba</strong>Léto 10:00-20:00, zima 11:00-19:00</p>
   <p><strong>Adresa</strong>OC SAPA, Libušská 319, Praha-Libuš</p>
   <p><strong>Telefon</strong>+420 723 313 032</p>
-  <p class="footer-credit">© 2026 All Rights Reserved<br>Designed by Hoangcaster</p>
+  <p class="footer-credit">© 2026 Všechna práva vyhrazena<br>Návrh webu: Hoangcaster</p>
 </footer>
 
 <div class="popup" id="popup" onclick="closePopupOutside(event)">
