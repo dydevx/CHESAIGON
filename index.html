@@ -3,31 +3,52 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CHÈ SÀI GÒN PRAHA | Vietnamské dezerty</title>
-
+<title>Chè Sài Gòn Praha | Vietnamské dezerty v OC SAPA</title>
+<meta name="description" content="Autentické vietnamské dezerty Chè Sài Gòn Praha v OC SAPA. Čerstvé kokosové mléko, ovoce, tapioka, želé, jogurty a mléčné čaje.">
+<link rel="preload" as="image" href="hình nền.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest" defer></script>
 
 <style>
 :root{
-  --ink:#050505;
-  --muted:#29231f;
-  --paper:#fffdf3;
-  --soft:#fff8dc;
-  --red:#e02017;
-  --yellow:#fff4ad;
-  --line:rgba(5,5,5,.1);
-  --shadow:0 14px 38px rgba(5,5,5,.09);
-  --font-heading:'Playfair Display',serif;
-  --font-body:'Inter',sans-serif;
+  --ink:#171313;
+  --charcoal:#24171a;
+  --muted:#675e61;
+  --paper:#fbfaf7;
+  --surface:#ffffff;
+  --surface-2:#f4f8f5;
+  --blush:#f8eef1;
+  --mint:#edf6f0;
+  --green:#164f42;
+  --green-2:#28715f;
+  --red:#a71930;
+  --rose:#d64b67;
+  --gold:#b98b38;
+  --line:rgba(23,19,19,.12);
+  --line-strong:rgba(23,19,19,.2);
+  --shadow:0 20px 60px rgba(36,23,26,.12);
+  --shadow-soft:0 12px 32px rgba(36,23,26,.08);
+  --page:clamp(20px,6vw,88px);
+  --radius:8px;
+  --nav-height:76px;
+  --dock-space:96px;
+  --font-heading:"Playfair Display",serif;
+  --font-body:"Inter",sans-serif;
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
+*{box-sizing:border-box}
 
-html{scroll-behavior:smooth}
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top:calc(var(--nav-height) + 18px);
+}
 
 body{
+  margin:0;
+  min-width:320px;
+  padding-bottom:var(--dock-space);
   background:var(--paper);
   color:var(--ink);
   font-family:var(--font-body);
@@ -35,129 +56,338 @@ body{
   overflow-x:hidden;
 }
 
+body.modal-open{overflow:hidden}
+
 img,
-video{display:block;max-width:100%}
+video{
+  display:block;
+  max-width:100%;
+}
+
 a{color:inherit}
+
+button,
+input,
+textarea,
+select{font:inherit}
+
+:focus-visible{
+  outline:3px solid rgba(40,113,95,.36);
+  outline-offset:3px;
+}
 
 .site-nav{
   position:fixed;
   inset:0 0 auto;
-  z-index:20;
+  z-index:30;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:24px;
-  padding:16px clamp(18px,4vw,56px);
-  background:rgba(255,253,243,.94);
-  border-bottom:1px solid var(--line);
-  backdrop-filter:blur(16px);
+  min-height:var(--nav-height);
+  padding:12px var(--page);
+  border-bottom:1px solid rgba(255,255,255,.22);
+  background:rgba(251,250,247,.88);
+  backdrop-filter:blur(18px);
+  box-shadow:0 10px 30px rgba(23,19,19,.06);
 }
 
 .brand{
-  display:flex;
+  display:inline-flex;
   align-items:center;
   gap:12px;
   text-decoration:none;
-  font-weight:800;
-  letter-spacing:.02em;
-  color:var(--ink);
 }
 
 .brand-mark{
-  display:grid;
-  place-items:center;
-  width:38px;
-  height:38px;
-  border-radius:8px;
-  background:var(--yellow);
-  border:2px solid var(--red);
-  display:grid;
-  place-items:center;
+  width:46px;
+  height:46px;
   overflow:hidden;
+  border:1px solid rgba(23,19,19,.16);
+  border-radius:8px;
+  background:var(--charcoal);
+  box-shadow:0 10px 24px rgba(23,19,19,.12);
 }
 
 .brand-mark img{
   width:100%;
   height:100%;
   object-fit:cover;
-  display:block;
+}
+
+.brand-text{
+  display:grid;
+  gap:1px;
+  color:var(--ink);
+  font-weight:800;
+  line-height:1.12;
+}
+
+.brand-text span{
+  color:var(--muted);
+  font-size:.72rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.12em;
 }
 
 .nav-links{
   display:flex;
   align-items:center;
-  gap:6px;
+  gap:4px;
+  margin:0;
+  padding:0;
   list-style:none;
 }
 
-.nav-links a,
-.nav-order{
+.nav-links a{
   display:inline-flex;
   align-items:center;
-  justify-content:center;
   min-height:40px;
-  padding:0 14px;
+  padding:0 13px;
   border-radius:8px;
-  color:var(--ink);
-  font-size:14px;
+  color:var(--charcoal);
+  font-size:.9rem;
   font-weight:700;
   text-decoration:none;
 }
 
-.nav-links a:hover{background:rgba(255,246,163,.7)}
+.nav-links a:hover{
+  background:rgba(22,79,66,.08);
+  color:var(--green);
+}
 
-.nav-order{
-  border:1px solid var(--red);
-  background:var(--red);
-  color:#fffef7;
+.nav-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.nav-phone{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  min-height:42px;
+  padding:0 14px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  color:var(--green);
+  font-size:.9rem;
+  font-weight:800;
+  text-decoration:none;
+  background:rgba(255,255,255,.72);
+}
+
+.icon,
+.btn svg,
+.dock-item svg,
+.contact-link svg{
+  width:18px;
+  height:18px;
+  flex:0 0 auto;
+  stroke-width:2.1;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  min-height:50px;
+  padding:0 20px;
+  border:1px solid transparent;
+  border-radius:8px;
+  color:var(--ink);
+  font-size:.95rem;
+  font-weight:800;
+  text-decoration:none;
   cursor:pointer;
+  transition:transform .22s ease,box-shadow .22s ease,background .22s ease,border-color .22s ease,color .22s ease;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:var(--shadow-soft);
+}
+
+.btn-primary{
+  background:var(--red);
+  color:#fff;
+  border-color:var(--red);
+}
+
+.btn-primary:hover{
+  background:#8f1328;
+  border-color:#8f1328;
+}
+
+.btn-dark{
+  background:var(--charcoal);
+  color:#fff;
+  border-color:var(--charcoal);
+}
+
+.btn-light{
+  background:rgba(255,255,255,.92);
+  color:var(--charcoal);
+  border-color:rgba(255,255,255,.82);
+}
+
+.btn-outline{
+  background:transparent;
+  color:var(--green);
+  border-color:rgba(22,79,66,.34);
 }
 
 .hero{
   position:relative;
-  min-height:86svh;
-  display:grid;
-  grid-template-columns:minmax(330px,430px) clamp(220px,17vw,280px) minmax(0,1fr);
-  align-items:center;
-  gap:clamp(10px,1.4vw,18px);
-  padding:112px clamp(18px,6vw,88px) 76px;
-  overflow:hidden;
+  min-height:82svh;
   isolation:isolate;
-  background:linear-gradient(180deg,#fffdf4 0%,#fff9d6 100%);
+  overflow:hidden;
+  color:var(--ink);
+  background:
+    linear-gradient(90deg,rgba(251,250,247,.96) 0%,rgba(251,250,247,.9) 46%,rgba(248,238,241,.72) 100%),
+    var(--paper);
 }
 
 .hero::before{
   content:"";
   position:absolute;
-  inset:0;
-  z-index:-2;
-  background:linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,255,255,0));
+  inset:var(--nav-height) 0 auto;
+  z-index:-1;
+  height:1px;
+  background:var(--line);
 }
 
-.hero::after{
+.hero-inner{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(330px,.92fr) minmax(190px,.38fr) minmax(380px,1fr);
+  gap:22px;
+  align-items:center;
+  max-width:1260px;
+  margin:0 auto;
+  padding:128px var(--page) 74px;
+}
+
+.hero-copy{
+  position:relative;
+  z-index:3;
+  max-width:540px;
+}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:18px;
+  color:var(--gold);
+  font-size:.78rem;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.eyebrow::before{
   content:"";
-  position:absolute;
-  inset:auto 0 0;
-  z-index:-1;
-  height:120px;
-  background:linear-gradient(0deg,var(--paper),rgba(255,251,234,0));
+  width:34px;
+  height:2px;
+  background:currentColor;
+}
+
+h1,
+h2,
+h3,
+p{margin:0}
+
+h1{
+  max-width:760px;
+  font-family:var(--font-heading);
+  font-size:4.6rem;
+  font-weight:700;
+  line-height:.94;
+  letter-spacing:0;
+}
+
+.hero-lead{
+  max-width:520px;
+  margin-top:22px;
+  color:var(--muted);
+  font-size:1.08rem;
+  font-weight:500;
+}
+
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:32px;
+}
+
+.hero-meta{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1px;
+  max-width:610px;
+  margin-top:34px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--surface);
+  box-shadow:var(--shadow-soft);
+}
+
+.hero-meta div{
+  min-height:86px;
+  padding:16px;
+  background:var(--surface);
+}
+
+.hero-meta strong{
+  display:block;
+  color:var(--charcoal);
+  font-size:1.08rem;
+  line-height:1.15;
+}
+
+.hero-meta span{
+  display:block;
+  margin-top:6px;
+  color:var(--muted);
+  font-size:.82rem;
+  font-weight:700;
+}
+
+.hero-cutout{
+  position:relative;
+  z-index:4;
+  align-self:center;
+  justify-self:center;
+  width:min(280px,100%);
+  aspect-ratio:3/4;
+  margin:0 -54px 0 -20px;
+  overflow:hidden;
+  border:6px solid #fff;
+  border-radius:8px;
+  background:#efe8df;
+  box-shadow:0 24px 54px rgba(36,23,26,.18);
+}
+
+.hero-cutout img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 56%;
 }
 
 .hero-media{
   position:relative;
-  order:3;
-  z-index:0;
-  align-self:center;
-  min-width:0;
-  min-height:0;
-  aspect-ratio:3/2;
-  height:auto;
+  z-index:2;
   overflow:hidden;
-  border:6px solid #fffef7;
+  aspect-ratio:4/3;
+  border:1px solid rgba(23,19,19,.12);
   border-radius:8px;
-  background:#f7efd7;
-  outline:1px solid rgba(224,32,23,.55);
-  box-shadow:0 18px 46px rgba(5,5,5,.13);
+  background:#efe8df;
+  box-shadow:var(--shadow);
 }
 
 .hero-media img{
@@ -167,362 +397,262 @@ a{color:inherit}
   object-position:center center;
 }
 
-.hero-spotlight{
-  position:relative;
-  order:2;
-  z-index:3;
-  justify-self:center;
-  width:100%;
-  max-width:280px;
-  min-width:0;
-  aspect-ratio:3/4;
-  padding:6px;
-  border-radius:8px;
-  background:#fffef7;
-  outline:2px solid #fffef7;
-  box-shadow:0 16px 38px rgba(5,5,5,.13);
-  transform:none;
-}
-
-.hero-spotlight img{
-  width:100%;
-  height:100%;
-  border-radius:5px;
-  object-fit:cover;
-  object-position:center top;
-  filter:brightness(1.08) contrast(1.05);
-}
-
-.hero-content{
-  position:relative;
-  order:1;
-  z-index:1;
-  width:100%;
-  max-width:560px;
-  min-width:0;
-  color:var(--ink);
-}
-
-.hero-content::before{
-  content:"";
-  display:none;
-  width:84px;
-  height:8px;
-  margin-bottom:24px;
-  border-radius:999px;
-  background:var(--red);
-  box-shadow:34px 0 0 var(--yellow);
-}
-
-.hero .eyebrow{
-  color:var(--red);
-  text-shadow:none;
-}
-
-.eyebrow{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  margin-bottom:18px;
-  color:var(--red);
-  font-size:13px;
-  font-weight:800;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-}
-
-.eyebrow::before{
-  content:"";
-  width:36px;
-  height:2px;
-  background:currentColor;
-}
-
-h1{
-  max-width:1120px;
-  font-family:var(--font-body);
-  font-size:clamp(46px,7.8vw,108px);
-  font-weight:900;
-  line-height:.88;
-  letter-spacing:0;
-  text-transform:uppercase;
-  overflow-wrap:break-word;
-}
-
-.hero h1{
-  max-width:560px;
-  font-size:clamp(42px,4.1vw,64px);
-  line-height:.94;
-}
-
-h1 span{display:block}
-
-.hero-title-main{
-  color:var(--red);
-  -webkit-text-stroke:0;
-  text-shadow:none;
-}
-
-.hero-title-sub{
-  width:fit-content;
-  max-width:100%;
-  margin-top:18px;
-  padding:12px 16px;
-  border:3px solid var(--red);
-  border-radius:8px;
-  background:rgba(255,255,246,.9);
-  color:var(--ink);
-  font-size:clamp(18px,2.2vw,30px);
-  line-height:1;
-  box-shadow:none;
-  text-shadow:none;
-}
-
-.hero-text{
-  max-width:500px;
-  margin-top:28px;
-  color:var(--muted);
-  font-size:clamp(17px,2vw,21px);
-  font-weight:600;
-  overflow-wrap:break-word;
-}
-
-.hero-actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-  margin-top:30px;
-}
-
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:52px;
-  padding:0 24px;
-  border:1px solid transparent;
-  border-radius:8px;
-  cursor:pointer;
-  font:700 15px/1 var(--font-body);
-  text-decoration:none;
-  transition:transform .2s ease,box-shadow .2s ease,background .2s ease,color .2s ease;
-}
-
-.btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 12px 30px rgba(0,0,0,.18);
-}
-
-.btn-primary{
-  background:var(--red);
-  color:var(--ink);
-  border-color:var(--red);
-}
-
-.btn-secondary{
-  background:rgba(255,254,247,.9);
-  color:var(--ink);
-  border-color:rgba(255,254,247,.72);
-  backdrop-filter:blur(8px);
-}
-
-.info-band{
-  padding:0 clamp(18px,6vw,88px) 54px;
+.quick-info{
+  padding:26px var(--page) 70px;
   background:var(--paper);
 }
 
 .info-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:1px;
-  overflow:hidden;
-  border:1px solid var(--line);
-  border-radius:8px;
-  background:var(--line);
-  box-shadow:var(--shadow);
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+  max-width:1260px;
+  margin:0 auto;
 }
 
 .info-item{
-  min-height:118px;
+  min-height:132px;
   padding:22px;
-  background:#fffef7;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--surface);
+  box-shadow:var(--shadow-soft);
 }
 
-.info-label{
+.info-item .label,
+.contact-card .label,
+.menu-note .label{
+  display:block;
   margin-bottom:8px;
   color:var(--red);
-  font-size:12px;
+  font-size:.75rem;
   font-weight:800;
   letter-spacing:.12em;
   text-transform:uppercase;
 }
 
-.info-value{
-  color:var(--ink);
-  font-size:17px;
-  font-weight:700;
+.info-item strong{
+  display:block;
+  color:var(--charcoal);
+  font-size:1.02rem;
+  line-height:1.35;
+}
+
+.info-item a{
+  color:inherit;
+  text-decoration:none;
 }
 
 .section{
-  scroll-margin-top:76px;
-  padding:74px clamp(18px,6vw,88px);
+  padding:86px var(--page);
+  background:var(--paper);
 }
 
-.section.alt{background:#fffef7}
+.section.alt{background:var(--surface)}
+
+.section.green{
+  background:var(--green);
+  color:#fff;
+}
+
+.section-inner{
+  max-width:1260px;
+  margin:0 auto;
+}
 
 .section-head{
   display:flex;
-  align-items:end;
+  align-items:flex-end;
   justify-content:space-between;
-  gap:28px;
-  margin-bottom:30px;
+  gap:40px;
+  margin-bottom:34px;
 }
 
 .section-title{
+  max-width:700px;
   font-family:var(--font-heading);
-  font-size:clamp(34px,5vw,58px);
-  line-height:1;
+  font-size:3.1rem;
+  font-weight:700;
+  line-height:1.04;
+  letter-spacing:0;
 }
 
 .section-copy{
-  max-width:540px;
+  max-width:570px;
   color:var(--muted);
-  font-size:16px;
+  font-size:1.02rem;
 }
 
-.storefront-grid{
+.green .section-copy,
+.green .eyebrow{
+  color:rgba(255,255,255,.82);
+}
+
+.story-grid{
   display:grid;
-  grid-template-columns:minmax(0,1.28fr) minmax(280px,.72fr);
-  gap:18px;
-  align-items:stretch;
+  grid-template-columns:minmax(320px,.82fr) minmax(0,1.18fr);
+  gap:42px;
+  align-items:center;
 }
 
-.storefront-photo,
-.customer-photo{
-  position:relative;
-  overflow:hidden;
-  border:1px solid var(--line);
-  border-radius:8px;
-  background:#f7efd7;
-  box-shadow:0 14px 38px rgba(5,5,5,.1);
-}
-
-.storefront-photo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.customer-photo img{
-  position:relative;
-  z-index:1;
-  width:100%;
-  height:100%;
-  object-fit:contain;
-}
-
-.storefront-main{
-  min-height:520px;
-}
-
-.storefront-main img{object-position:center bottom}
-
-.storefront-stack{
+.story-copy{
   display:grid;
-  grid-template-rows:1fr 1fr;
-  gap:18px;
+  gap:24px;
 }
 
-.storefront-stack .storefront-photo{
-  min-height:250px;
+.story-copy .section-title{
+  max-width:560px;
 }
 
-.photo-label{
-  position:absolute;
-  left:16px;
-  right:16px;
-  bottom:16px;
-  padding:10px 12px;
-  border-radius:8px;
-  background:rgba(255,251,234,.9);
-  color:var(--ink);
-  font-size:13px;
-  font-weight:800;
-  letter-spacing:.02em;
-  box-shadow:0 10px 24px rgba(5,5,5,.12);
-}
-
-.customer-gallery{
+.point-list{
   display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+
+.point{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr);
   gap:14px;
+  align-items:start;
+  padding:18px 0;
+  border-top:1px solid var(--line);
 }
 
-.customer-photo{
+.point:last-child{border-bottom:1px solid var(--line)}
+
+.point-icon{
   display:grid;
   place-items:center;
-  aspect-ratio:1;
-  min-height:0;
-}
-
-.customer-photo::before{
-  content:"";
-  position:absolute;
-  inset:-18px;
-  background:var(--photo) center/cover no-repeat;
-  filter:blur(18px);
-  opacity:.34;
-  transform:scale(1.08);
-}
-
-.customer-photo.large{
-  aspect-ratio:1;
-}
-
-.customer-photo.tall{
-  aspect-ratio:1;
-}
-
-.customer-photo.wide{
-  aspect-ratio:1;
-}
-
-.video-gallery{
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:14px;
-  margin-top:14px;
-}
-
-.video-card{
-  overflow:hidden;
-  aspect-ratio:9/16;
-  border:1px solid var(--line);
+  width:38px;
+  height:38px;
   border-radius:8px;
-  background:#17120f;
-  box-shadow:0 14px 38px rgba(5,5,5,.1);
+  background:var(--mint);
+  color:var(--green);
 }
 
-.video-card video{
+.point strong{
+  display:block;
+  font-size:1rem;
+  line-height:1.3;
+}
+
+.point span{
+  display:block;
+  margin-top:4px;
+  color:var(--muted);
+  font-size:.94rem;
+}
+
+.image-collage{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  grid-template-rows:260px 260px;
+  gap:14px;
+}
+
+.image-tile{
+  position:relative;
+  overflow:hidden;
+  border-radius:8px;
+  background:#e8e0d8;
+  box-shadow:var(--shadow-soft);
+}
+
+.image-tile.large{
+  grid-row:1/3;
+}
+
+.image-tile img{
   width:100%;
   height:100%;
   object-fit:cover;
+}
+
+.image-tile figcaption{
+  position:absolute;
+  left:14px;
+  right:14px;
+  bottom:14px;
+  padding:10px 12px;
+  border-radius:8px;
+  background:rgba(255,255,255,.88);
+  color:var(--charcoal);
+  font-size:.84rem;
+  font-weight:800;
+  box-shadow:0 10px 30px rgba(23,19,19,.12);
+}
+
+.signature-band{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:1px;
+  overflow:hidden;
+  margin-top:44px;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:8px;
+  background:rgba(255,255,255,.16);
+}
+
+.signature-item{
+  padding:26px;
+  background:rgba(255,255,255,.08);
+}
+
+.signature-item strong{
+  display:block;
+  color:#fff;
+  font-family:var(--font-heading);
+  font-size:2rem;
+  line-height:1.05;
+}
+
+.signature-item span{
+  display:block;
+  margin-top:8px;
+  color:rgba(255,255,255,.78);
+  font-size:.94rem;
+  font-weight:700;
 }
 
 .menu-toolbar{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:14px;
+  gap:16px;
   margin-bottom:22px;
 }
 
-.menu-toolbar p{
+.menu-section .section-head{
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:14px;
+  max-width:780px;
+  margin-bottom:22px;
+}
+
+.menu-section .section-copy{
+  max-width:720px;
+  font-size:1.06rem;
+}
+
+.menu-section .menu-toolbar{
+  justify-content:flex-start;
+  align-items:stretch;
+  gap:12px;
+  margin-bottom:30px;
+}
+
+.menu-section .menu-note{
+  min-width:min(360px,100%);
+}
+
+.menu-note{
+  padding:14px 18px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--surface);
   color:var(--muted);
-  font-size:14px;
-  font-weight:800;
-  letter-spacing:.08em;
-  text-transform:uppercase;
+  font-weight:700;
 }
 
 .menu-grid{
@@ -531,69 +661,90 @@ h1 span{display:block}
   gap:18px;
 }
 
-.menu-card,
-.feature-photo,
-.order-panel,
-.menu-item{
-  border:1px solid var(--line);
-  border-radius:8px;
-  background:#fffef7;
-  box-shadow:0 14px 38px rgba(5,5,5,.1);
-}
-
 .menu-card{
   overflow:hidden;
-  transition:transform .2s ease,box-shadow .2s ease;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--surface);
+  box-shadow:var(--shadow-soft);
+  transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;
 }
 
 .menu-card:hover{
   transform:translateY(-4px);
-  box-shadow:0 22px 54px rgba(5,5,5,.18);
+  border-color:rgba(167,25,48,.3);
+  box-shadow:var(--shadow);
 }
 
 .menu-card img{
   width:100%;
   aspect-ratio:4/5;
   object-fit:cover;
-  object-position:center 18%;
-  background:#fff4a6;
+  background:#eee7dd;
+}
+
+.menu-card-body{
+  display:grid;
+  gap:7px;
+  min-height:112px;
+  padding:16px;
+}
+
+.menu-number{
+  color:var(--gold);
+  font-size:.75rem;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
 }
 
 .menu-card h3{
-  min-height:76px;
-  display:flex;
-  align-items:center;
-  padding:16px;
-  color:var(--ink);
-  font-size:18px;
-  line-height:1.2;
+  color:var(--charcoal);
+  font-size:1.02rem;
+  line-height:1.25;
+  overflow-wrap:anywhere;
 }
 
-.menu-card h3 span{
-  color:var(--red);
-  margin-right:8px;
-  font-weight:800;
+.menu-card p{
+  color:var(--muted);
+  font-size:.88rem;
+  line-height:1.42;
 }
 
 .price-section{
-  background:linear-gradient(180deg,var(--yellow),var(--paper));
+  background:linear-gradient(180deg,var(--surface-2) 0%,var(--paper) 100%);
 }
 
-.notice{
-  display:flex;
-  justify-content:space-between;
-  gap:18px;
+.price-top{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
   margin-bottom:22px;
-  padding:18px 20px;
+}
+
+.price-summary{
+  padding:20px;
   border:1px solid var(--line);
   border-radius:8px;
-  background:#fffef7;
-  box-shadow:var(--shadow);
-  color:var(--muted);
-  font-weight:700;
+  background:var(--surface);
+  box-shadow:var(--shadow-soft);
 }
 
-.notice strong{color:var(--red)}
+.price-summary strong{
+  display:block;
+  color:var(--red);
+  font-size:.82rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.price-summary span{
+  display:block;
+  margin-top:8px;
+  color:var(--charcoal);
+  font-size:1.1rem;
+  font-weight:800;
+}
 
 .price-grid{
   display:grid;
@@ -601,1007 +752,1436 @@ h1 span{display:block}
   gap:14px;
 }
 
-.menu-item{
+.price-item{
   display:grid;
   grid-template-columns:auto minmax(0,1fr) auto;
-  gap:16px;
+  gap:14px;
   align-items:start;
   padding:18px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:rgba(255,255,255,.86);
 }
 
-.menu-item > div{min-width:0}
-
-.number{
+.price-item .number{
   display:grid;
   place-items:center;
-  width:36px;
-  height:36px;
+  width:38px;
+  height:38px;
   border-radius:8px;
-  background:var(--soft);
+  background:var(--blush);
   color:var(--red);
+  font-size:.9rem;
   font-weight:800;
 }
 
-.name{
-  color:var(--ink);
-  font-size:16px;
+.price-name{
+  color:var(--charcoal);
+  font-size:1rem;
   font-weight:800;
   text-transform:uppercase;
+  overflow-wrap:anywhere;
 }
 
-.desc{
-  margin-top:5px;
+.price-desc{
+  margin-top:4px;
   color:var(--muted);
-  font-size:14px;
-  overflow-wrap:break-word;
+  font-size:.9rem;
+  line-height:1.45;
 }
 
-.price{
-  color:var(--ink);
-  font-size:16px;
+.price-value{
+  color:var(--charcoal);
   font-weight:800;
   text-align:right;
   white-space:nowrap;
 }
 
 .topping{
-  margin-top:22px;
-  padding:24px;
-  border:1px solid rgba(229,41,32,.24);
+  margin-top:18px;
+  padding:22px;
+  border:1px solid rgba(22,79,66,.2);
   border-radius:8px;
-  background:#fffef7;
+  background:var(--surface);
 }
 
 .topping h3{
-  margin-bottom:12px;
+  margin-bottom:14px;
   font-family:var(--font-heading);
-  font-size:32px;
+  font-size:1.8rem;
 }
 
 .topping-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
 }
 
 .topping-grid p{
+  min-height:76px;
   padding:14px;
   border-radius:8px;
-  background:var(--soft);
-  color:var(--ink);
-  font-weight:700;
+  background:var(--mint);
+  color:var(--green);
+  font-weight:800;
 }
 
-.feature-grid{
+.gallery-layout{
   display:grid;
-  grid-template-columns:1.15fr .85fr;
-  gap:24px;
+  grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
+  gap:18px;
+  align-items:start;
 }
 
-.feature-photo{overflow:hidden}
+.gallery-column{
+  display:grid;
+  gap:18px;
+}
 
-.feature-photo img{
+.gallery-pair{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.gallery-item{
+  position:relative;
+  overflow:hidden;
+  min-height:0;
+  border-radius:8px;
+  background:#e8e0d8;
+  box-shadow:var(--shadow-soft);
+}
+
+.gallery-item::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(23,19,19,0) 58%,rgba(23,19,19,.22));
+  opacity:0;
+  transition:opacity .25s ease;
+}
+
+.gallery-item:hover::after{opacity:1}
+
+.gallery-item img{
   width:100%;
   height:100%;
-  min-height:420px;
+  object-fit:cover;
+  object-position:var(--pos,center center);
+  transition:transform .35s ease;
+}
+
+.gallery-item:hover img{transform:scale(1.035)}
+
+.gallery-main{aspect-ratio:4/5}
+.gallery-wide{aspect-ratio:16/9}
+.gallery-square{aspect-ratio:1}
+.gallery-soft{aspect-ratio:5/4}
+.gallery-panorama{aspect-ratio:21/9}
+
+.video-gallery{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+  margin-top:24px;
+}
+
+.video-card{
+  position:relative;
+  overflow:hidden;
+  aspect-ratio:9/16;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#161313;
+  box-shadow:var(--shadow-soft);
+}
+
+.video-card video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+}
+
+.order-grid{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:36px;
+  align-items:center;
+}
+
+.order-photo{
+  overflow:hidden;
+  border-radius:8px;
+  box-shadow:var(--shadow);
+}
+
+.order-photo img{
+  width:100%;
+  min-height:520px;
   object-fit:cover;
 }
 
-.order-panel{
-  padding:30px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  gap:34px;
-  background:linear-gradient(160deg,#fffef7 0%,var(--yellow) 100%);
-}
-
-.order-panel h2{
-  font-family:var(--font-heading);
-  font-size:clamp(30px,4vw,46px);
-  line-height:1.08;
-}
-
-.order-panel p{color:var(--muted)}
-
-.order-highlights{
+.order-content{
   display:grid;
-  margin-top:26px;
-  border-top:1px solid rgba(5,5,5,.18);
-  border-bottom:1px solid rgba(5,5,5,.18);
+  gap:24px;
 }
 
-.order-highlight{
+.order-content .section-copy{color:rgba(255,255,255,.78)}
+
+.order-actions{
   display:grid;
-  grid-template-columns:auto minmax(0,1fr);
-  gap:14px;
-  align-items:start;
-  padding:14px 0;
-  border-bottom:1px solid rgba(5,5,5,.12);
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
 }
 
-.order-highlight:last-child{border-bottom:0}
-
-.order-dot{
-  width:12px;
-  height:12px;
-  margin-top:7px;
-  border-radius:50%;
-  background:var(--red);
-  box-shadow:0 0 0 5px rgba(255,246,163,.85);
-}
-
-.order-highlight strong{
-  display:block;
-  color:var(--ink);
-  font-size:14px;
-  line-height:1.25;
-}
-
-.order-highlight div span{
-  display:block;
-  margin-top:3px;
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.35;
-}
-
-.signature-highlight{
-  display:grid;
-  gap:8px;
-  margin-top:22px;
-  padding:20px;
-  border-radius:8px;
-  background:linear-gradient(135deg,var(--red),#aa130e);
-  color:#fffef7;
-  box-shadow:0 18px 44px rgba(224,32,23,.28);
-}
-
-.signature-highlight span{
-  width:max-content;
-  padding:7px 10px;
-  border-radius:8px;
-  background:var(--yellow);
-  color:var(--ink);
-  font-size:12px;
-  font-weight:900;
-  letter-spacing:.12em;
-  line-height:1;
-  text-transform:uppercase;
-}
-
-.signature-highlight strong{
-  display:block;
-  max-width:420px;
-  font-family:var(--font-heading);
-  font-size:clamp(26px,3vw,36px);
-  line-height:1.02;
-}
-
-.signature-highlight p{
-  max-width:460px;
-  color:rgba(255,254,247,.9);
-  font-weight:800;
-  line-height:1.45;
-}
-
-.platform-list{
-  display:grid;
-  gap:14px;
-}
-
-.platform-pill{
+.platform-card{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:18px;
-  min-height:66px;
-  padding:18px 22px;
+  gap:16px;
+  min-height:70px;
+  padding:18px;
+  border:1px solid rgba(255,255,255,.18);
   border-radius:8px;
-  border:2px solid var(--line);
-  background:#fffef7;
-  color:var(--ink);
-  font-size:18px;
+  background:rgba(255,255,255,.08);
+  color:#fff;
   font-weight:800;
   text-decoration:none;
+  transition:transform .22s ease,background .22s ease;
 }
 
-.platform-pill span{
-  color:var(--red);
-  font-size:14px;
-  letter-spacing:.08em;
-  text-transform:uppercase;
+.platform-card:hover{
+  transform:translateY(-2px);
+  background:rgba(255,255,255,.14);
 }
 
-.footer{
-  scroll-margin-top:76px;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:1px;
-  overflow:hidden;
-  border-top:1px solid var(--line);
-  background:var(--line);
-}
-
-.footer p{
-  min-height:104px;
-  padding:24px clamp(18px,6vw,88px);
-  background:#fffef7;
-  color:var(--muted);
-  font-weight:700;
-}
-
-.footer .footer-credit{
-  grid-column:1/-1;
-  min-height:auto;
-  padding:16px clamp(18px,6vw,88px);
-  text-align:center;
-  font-size:14px;
-  line-height:1.7;
-}
-
-.footer strong{
-  display:block;
-  color:var(--red);
-  font-size:12px;
+.platform-card span{
+  color:rgba(255,255,255,.7);
+  font-size:.82rem;
   letter-spacing:.12em;
   text-transform:uppercase;
 }
 
-.map-section{
-  background:#fffef7;
+.contact-grid{
+  display:grid;
+  grid-template-columns:minmax(320px,.58fr) minmax(0,1.42fr);
+  gap:24px;
+  align-items:stretch;
+}
+
+.contact-card{
+  display:grid;
+  gap:14px;
+  padding:28px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--surface);
+  box-shadow:var(--shadow-soft);
+}
+
+.contact-link{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-height:50px;
+  padding:0 14px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  color:var(--charcoal);
+  font-weight:800;
+  text-decoration:none;
+  background:var(--paper);
+}
+
+.contact-link:hover{
+  border-color:rgba(22,79,66,.28);
+  color:var(--green);
 }
 
 .map-frame{
   overflow:hidden;
+  min-height:480px;
   border:1px solid var(--line);
   border-radius:8px;
-  background:#fffef7;
-  box-shadow:var(--shadow);
+  background:var(--surface);
+  box-shadow:var(--shadow-soft);
 }
 
 .map-frame iframe{
   display:block;
   width:100%;
-  height:min(58vw,460px);
-  min-height:320px;
+  height:100%;
+  min-height:480px;
   border:0;
 }
 
-.popup{
-  position:fixed;
+.footer{
+  position:relative;
+  overflow:hidden;
+  padding:0 var(--page);
+  background:var(--charcoal);
+  color:rgba(255,255,255,.74);
+}
+
+.footer::before{
+  content:"";
+  position:absolute;
   inset:0;
-  z-index:40;
-  display:none;
+  background:
+    linear-gradient(135deg,rgba(167,25,48,.22),rgba(22,79,66,.16) 52%,rgba(185,139,56,.12)),
+    linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,0) 46%);
+  pointer-events:none;
+}
+
+.footer-inner{
+  position:relative;
+  max-width:1260px;
+  margin:0 auto;
+}
+
+.footer-top{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:28px;
+  align-items:center;
+  padding:52px 0 34px;
+  border-bottom:1px solid rgba(255,255,255,.14);
+}
+
+.footer-brand{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr);
+  gap:18px;
+  align-items:center;
+}
+
+.footer-mark{
+  width:64px;
+  height:64px;
+  overflow:hidden;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.08);
+}
+
+.footer-mark img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.footer-title{
+  color:#fff;
+  font-family:var(--font-heading);
+  font-size:2rem;
+  line-height:1.02;
+}
+
+.footer-brand p{
+  margin-top:6px;
+  max-width:520px;
+  color:rgba(255,255,255,.72);
+}
+
+.footer-actions{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:10px;
+}
+
+.footer-main{
+  display:grid;
+  grid-template-columns:1.2fr .9fr .9fr .9fr;
+  gap:1px;
+  padding:0;
+  border-bottom:1px solid rgba(255,255,255,.14);
+}
+
+.footer-block{
+  min-height:170px;
+  padding:28px 24px;
+  border-right:1px solid rgba(255,255,255,.12);
+}
+
+.footer-block:first-child{padding-left:0}
+.footer-block:last-child{border-right:0;padding-right:0}
+
+.footer-label{
+  display:block;
+  margin-bottom:12px;
+  color:var(--gold);
+  font-size:.74rem;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.footer-block strong{
+  display:block;
+  color:#fff;
+  font-size:1.02rem;
+  line-height:1.45;
+}
+
+.footer-block p,
+.footer-block a{
+  color:rgba(255,255,255,.74);
+  text-decoration:none;
+}
+
+.footer-block a:hover{color:#fff}
+
+.footer-links{
+  display:grid;
+  gap:8px;
+}
+
+.footer-bottom{
+  display:grid;
   align-items:center;
   justify-content:center;
-  padding:20px;
-  background:rgba(23,21,19,.72);
-  backdrop-filter:blur(10px);
+  gap:6px;
+  padding:20px 0 28px;
+  color:rgba(255,255,255,.58);
+  font-size:.9rem;
+  text-align:center;
 }
 
-.popup-box{
-  position:relative;
-  width:min(420px,100%);
-  padding:34px;
+.contact-dock{
+  position:fixed;
+  right:22px;
+  bottom:18px;
+  z-index:35;
+  display:none;
+  grid-template-columns:1fr;
+  gap:8px;
+  width:220px;
+  padding:8px;
+  border:1px solid rgba(255,255,255,.42);
   border-radius:8px;
-  background:#fffef7;
-  box-shadow:0 24px 70px rgba(0,0,0,.28);
+  background:rgba(255,255,255,.9);
+  box-shadow:0 22px 60px rgba(23,19,19,.18);
+  backdrop-filter:blur(18px);
 }
 
-.popup-close-icon{
+.dock-item{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:8px;
+  min-height:48px;
+  padding:0 14px;
+  border:1px solid transparent;
+  border-radius:8px;
+  color:var(--charcoal);
+  font-size:.84rem;
+  font-weight:800;
+  text-decoration:none;
+  cursor:pointer;
+  background:transparent;
+}
+
+.dock-item:hover{
+  background:var(--mint);
+  color:var(--green);
+}
+
+.dock-item.primary{
+  background:var(--red);
+  color:#fff;
+}
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:50;
+  display:none;
+  place-items:center;
+  padding:22px;
+  background:rgba(23,19,19,.66);
+  backdrop-filter:blur(12px);
+}
+
+.modal.is-open{display:grid}
+
+.modal-panel{
+  position:relative;
+  width:min(480px,100%);
+  padding:28px;
+  border-radius:8px;
+  background:var(--surface);
+  box-shadow:0 28px 90px rgba(23,19,19,.34);
+}
+
+.modal-close{
   position:absolute;
-  top:14px;
-  right:16px;
-  width:36px;
-  height:36px;
+  top:12px;
+  right:12px;
   display:grid;
   place-items:center;
+  width:40px;
+  height:40px;
+  border:0;
   border-radius:8px;
+  background:transparent;
   color:var(--muted);
   cursor:pointer;
-  font-size:26px;
 }
 
-.popup-close-icon:hover{background:rgba(23,21,19,.06);color:var(--ink)}
-
-.popup-box h3{
-  margin:12px 0 24px;
-  font-family:var(--font-heading);
-  font-size:32px;
-  line-height:1.1;
-}
-
-.platform-link{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:16px;
-  margin-top:10px;
-  padding:16px;
-  border-radius:8px;
+.modal-close:hover{
+  background:var(--paper);
   color:var(--ink);
+}
+
+.modal-panel h2{
+  max-width:360px;
+  margin:6px 0 10px;
+  font-family:var(--font-heading);
+  font-size:2.1rem;
+  line-height:1.08;
+}
+
+.modal-panel p{
+  color:var(--muted);
+}
+
+.modal-actions{
+  display:grid;
+  gap:10px;
+  margin-top:22px;
+}
+
+.modal-link{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  min-height:58px;
+  padding:0 16px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  color:var(--charcoal);
   font-weight:800;
   text-decoration:none;
 }
 
-.foodora{background:var(--red)}
-.wolt{background:var(--yellow)}
-
-.close-btn{
-  width:100%;
-  margin-top:12px;
-  background:var(--soft);
-  color:var(--ink);
+.modal-link:hover{
+  border-color:rgba(167,25,48,.28);
+  background:var(--blush);
+  color:var(--red);
 }
 
-@media(max-width:1100px){
-  .hero{
-    grid-template-columns:minmax(280px,.78fr) clamp(190px,18vw,230px) minmax(0,1.22fr);
-    gap:14px;
+@media(max-width:1180px){
+  .nav-links{display:none}
+  .hero-inner{
+    grid-template-columns:minmax(280px,.9fr) minmax(150px,.32fr) minmax(320px,1fr);
+    gap:16px;
   }
-  .hero-media{
-    box-shadow:0 16px 38px rgba(5,5,5,.12);
-  }
-  .menu-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .customer-gallery{grid-template-columns:repeat(3,minmax(0,1fr))}
+  h1{font-size:4rem}
+  .menu-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
   .video-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 
-@media(max-width:920px){
-  .site-nav{align-items:flex-start}
-  .nav-links{display:none}
-  .hero{
+@media(max-width:980px){
+  .hero-inner{
     grid-template-columns:1fr;
-    min-height:auto;
-    padding:110px clamp(18px,6vw,64px) 64px;
-    background:linear-gradient(180deg,#fffdf4 0%,#fff9d6 100%);
+    gap:22px;
   }
-  .hero::before{
-    background:linear-gradient(180deg,rgba(255,255,255,.72),rgba(255,255,255,0));
+  .hero-copy{
+    max-width:720px;
+  }
+  h1{font-size:3.7rem}
+  .hero-cutout{
+    order:2;
+    width:min(280px,62vw);
+    margin:0 auto -62px;
   }
   .hero-media{
     order:3;
-    width:100%;
-    min-height:0;
-    aspect-ratio:3/2;
+    aspect-ratio:16/10;
   }
-  .hero-spotlight{
-    order:2;
-    width:min(280px,68vw);
-    max-width:none;
-  }
-  .hero-content{
-    order:1;
-    max-width:760px;
-  }
+  .section-title{font-size:2.6rem}
   .info-grid,
+  .price-top,
+  .signature-band{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  .story-grid,
+  .gallery-layout,
+  .order-grid,
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
+  .order-photo img{min-height:380px}
+  .map-frame,
+  .map-frame iframe{min-height:420px}
+  .footer-top,
+  .footer-main{
+    grid-template-columns:1fr;
+  }
+  .footer-actions{
+    justify-content:flex-start;
+  }
+  .footer-block,
+  .footer-block:first-child,
+  .footer-block:last-child{
+    min-height:auto;
+    padding:22px 0;
+    border-right:0;
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  .footer-block:last-child{
+    border-bottom:0;
+  }
+}
+
+@media(max-width:760px){
+  :root{
+    --nav-height:70px;
+    --dock-space:112px;
+  }
+  .site-nav{
+    padding:10px 18px;
+  }
+  .brand-mark{
+    width:42px;
+    height:42px;
+  }
+  .brand-text strong{font-size:.96rem}
+  .brand-text span{display:none}
+  .nav-phone{display:none}
+  .hero{
+    min-height:auto;
+  }
+  .hero-inner{
+    padding:102px 20px 50px;
+  }
+  h1{font-size:3rem}
+  .hero-lead{
+    font-size:1.02rem;
+  }
+  .hero-actions .btn{
+    width:100%;
+  }
+  .hero-meta{
+    display:none;
+  }
+  .hero-cutout{
+    width:min(230px,70vw);
+    margin:8px auto 16px;
+    border-width:5px;
+  }
+  .hero-media{
+    aspect-ratio:4/3;
+  }
+  .quick-info,
+  .section{
+    padding-left:20px;
+    padding-right:20px;
+  }
+  .quick-info{padding-bottom:54px}
+  .section{padding-top:62px;padding-bottom:62px}
+  .section-head{
+    display:grid;
+    gap:16px;
+  }
+  .section-title{font-size:2.25rem}
+  .info-grid,
+  .menu-grid,
+  .price-top,
   .price-grid,
   .topping-grid,
-  .footer,
-  .feature-grid{
+  .signature-band{
     grid-template-columns:1fr;
   }
-  .section-head{display:block}
-  .section-copy{margin-top:14px}
-  .storefront-grid{grid-template-columns:1fr}
-  .storefront-main{min-height:420px}
-  .feature-photo img{min-height:300px}
+  .image-collage{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:220px 220px;
+  }
+  .image-tile.large{
+    grid-column:1/3;
+    grid-row:auto;
+  }
+  .order-actions{
+    grid-template-columns:1fr;
+  }
+  .footer{
+    padding-left:20px;
+    padding-right:20px;
+    padding-bottom:24px;
+  }
+  .footer-top{padding-top:40px}
+  .footer-brand{
+    grid-template-columns:1fr;
+  }
+  .footer-actions .btn{
+    width:100%;
+  }
+  .footer-bottom{
+    display:grid;
+  }
+  .contact-dock{
+    display:grid;
+    left:10px;
+    right:10px;
+    bottom:10px;
+    width:auto;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    transform:none;
+  }
+  .dock-item{
+    min-height:54px;
+    display:grid;
+    gap:3px;
+    padding:6px 4px;
+    font-size:.72rem;
+    line-height:1.1;
+    text-align:center;
+  }
+  .dock-item svg{
+    margin:0 auto;
+  }
 }
 
-@media(max-width:780px){
-  .menu-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:440px){
+  h1{font-size:2.55rem}
+  .section-title{font-size:2rem}
   .menu-toolbar{
     display:grid;
-    grid-template-columns:1fr;
-    align-items:stretch;
   }
-  .menu-toolbar .btn{width:100%}
-  .notice{display:block}
-  .notice span{display:block;margin-top:6px}
-}
-
-@media(max-width:680px){
-  .hero{
-    gap:22px;
-    padding-top:104px;
-  }
-  .hero::before{
-    background:linear-gradient(180deg,rgba(255,255,255,.74),rgba(255,255,255,0));
-  }
-  .hero-media{
+  .menu-toolbar .btn{
     width:100%;
-    min-height:0;
-    height:auto;
-    aspect-ratio:3/2;
   }
-  .hero-media img{
-    object-position:center center;
+  .image-collage,
+  .gallery-pair,
+  .video-gallery{
+    grid-template-columns:1fr;
   }
-  .menu-item{
+  .image-tile.large{
+    grid-column:auto;
+  }
+  .price-item{
     grid-template-columns:auto minmax(0,1fr);
   }
-  .price{
+  .price-value{
     grid-column:2;
     text-align:left;
+    white-space:normal;
   }
 }
 
-@media(max-width:520px){
-  .brand span:last-child{display:none}
-  .nav-order{display:none}
-  .hero{padding:96px 20px 46px}
-  .hero-media,
-  .hero-content{
-    width:100%;
-    max-width:100%;
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,
+  *::before,
+  *::after{
+    transition:none!important;
+    animation:none!important;
   }
-  .hero-media{
-    border-width:4px;
-    box-shadow:0 14px 34px rgba(5,5,5,.12);
-  }
-  .hero-spotlight{
-    width:min(270px,76vw);
-    padding:5px;
-    outline:2px solid #fffef7;
-    box-shadow:0 14px 34px rgba(5,5,5,.12);
-  }
-  .hero-content::before{
-    width:64px;
-    height:6px;
-    margin-bottom:18px;
-    box-shadow:26px 0 0 var(--yellow);
-  }
-  .hero-text{
-    width:100%;
-    max-width:350px;
-    overflow-wrap:anywhere;
-  }
-  .hero-actions{
-    width:100%;
-    max-width:350px;
-  }
-  h1{
-    font-size:clamp(38px,12.4vw,54px);
-    line-height:.94;
-  }
-  .hero h1{
-    max-width:100%;
-    font-size:clamp(34px,10vw,40px);
-    line-height:1.03;
-  }
-  .hero-title-sub{
-    margin-top:14px;
-    padding:10px 12px;
-    font-size:clamp(17px,5.2vw,23px);
-  }
-  .hero-text{
-    font-size:16px;
-    line-height:1.55;
-  }
-  .hero-actions .btn{width:100%}
-  .section{padding-top:54px;padding-bottom:54px}
-  .info-item{min-height:auto}
-  .menu-grid{grid-template-columns:1fr}
-  .storefront-main{min-height:340px}
-  .storefront-stack{grid-template-rows:auto}
-  .storefront-stack .storefront-photo{min-height:260px}
-  .customer-gallery{
-    grid-template-columns:1fr;
-  }
-  .video-gallery{grid-template-columns:1fr}
-  .customer-photo,
-  .customer-photo.large,
-  .customer-photo.tall,
-  .customer-photo.wide{
-    aspect-ratio:auto;
-  }
-  .menu-card h3{min-height:auto}
-  .map-frame iframe{min-height:280px}
-  .popup-box{padding:28px 20px 22px}
 }
 </style>
 </head>
 
 <body>
 <nav class="site-nav" aria-label="Hlavní navigace">
-  <a class="brand" href="#home">
-    <span class="brand-mark"><img src="optimized/brand-wall.jpg" alt="Logo Chè Sài Gòn"></span>
-    <span>CHÈ SÀI GÒN PRAHA</span>
+  <a class="brand" href="#home" aria-label="Chè Sài Gòn Praha">
+    <span class="brand-mark"><img src="optimized/brand-wall.jpg" alt=""></span>
+    <span class="brand-text"><strong>Chè Sài Gòn</strong><span>Praha SAPA</span></span>
   </a>
   <ul class="nav-links">
-    <li><a href="#home">Domů</a></li>
     <li><a href="#provozovna">Provozovna</a></li>
-    <li><a href="#galerie">Galerie</a></li>
     <li><a href="#menu">Menu</a></li>
     <li><a href="#cena">Ceník</a></li>
+    <li><a href="#galerie">Galerie</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
   </ul>
-  <button class="nav-order" type="button" onclick="openPopup()">Objednat</button>
+  <div class="nav-actions">
+    <a class="nav-phone" href="tel:+420723313032"><i data-lucide="phone"></i>+420 723 313 032</a>
+    <button class="btn btn-primary" type="button" data-open-booking><i data-lucide="calendar-check"></i>Book Now</button>
+  </div>
 </nav>
 
 <main>
   <section class="hero" id="home">
-    <div class="hero-content">
-      <h1 aria-label="CHÈ SÀI GÒN PRAHA (VIETNAMSKÉ DEZERTY)">
-        <span class="hero-title-main">CHÈ SÀI GÒN<br>PRAHA</span>
-        <span class="hero-title-sub">(VIETNAMSKÉ DEZERTY)</span>
-      </h1>
-      <p class="hero-text">Vietnamské dezerty z OC SAPA: kokosové mléko, tapioka, ovoce a želé připravujeme čerstvé každý den.</p>
-      <div class="hero-actions">
-        <button class="btn btn-primary" type="button" onclick="openPopup()">Objednat teď</button>
-        <a class="btn btn-secondary" href="#menu">Zobrazit menu</a>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="eyebrow">Vietnamské dezerty v OC SAPA</div>
+        <h1>Chè Sài Gòn Praha</h1>
+        <p class="hero-lead">Autentické sladké dezerty ze Saigonu, kokosové mléko, tropické ovoce, tapioka a želé připravované každý den čerstvě.</p>
+        <div class="hero-actions" aria-label="Rychlé akce">
+          <a class="btn btn-primary" href="tel:+420723313032"><i data-lucide="phone-call"></i>Call Now</a>
+          <button class="btn btn-light" type="button" data-open-booking><i data-lucide="calendar-check"></i>Book Now</button>
+          <a class="btn btn-light" href="https://www.facebook.com/search/pages/?q=Ch%C3%A8%20S%C3%A0i%20G%C3%B2n%20Praha" target="_blank" rel="noopener"><i data-lucide="messages-square"></i>Message on Facebook</a>
+          <a class="btn btn-light" href="https://wa.me/420723313032" target="_blank" rel="noopener"><i data-lucide="message-circle"></i>WhatsApp</a>
+        </div>
+        <div class="hero-meta" aria-label="Základní informace">
+          <div>
+            <strong>20+ let</strong>
+            <span>tradiční chuť a stálá kvalita</span>
+          </div>
+          <div>
+            <strong>OC SAPA</strong>
+            <span>Libušská 319, Praha-Libuš</span>
+          </div>
+          <div>
+            <strong>10:00-20:00</strong>
+            <span>léto, v zimě 11:00-19:00</span>
+          </div>
+        </div>
       </div>
-    </div>
-    <figure class="hero-spotlight">
-      <img src="Ảnh mới/image_1780042229481-cutout.png" alt="Výloha provozovny Chè Sài Gòn v OC SAPA" decoding="async">
-    </figure>
-    <div class="hero-media" aria-hidden="true">
-      <img class="hero-main" src="hình nền.jpg" alt="" fetchpriority="high">
+      <figure class="hero-cutout" aria-hidden="true">
+        <img src="Ảnh mới/image_1780042229481-cutout.png" alt="" decoding="async">
+      </figure>
+      <figure class="hero-media">
+        <img src="hình nền.jpg" alt="Menu Chè Sài Gòn Praha s vietnamskými dezerty" fetchpriority="high" decoding="async">
+      </figure>
     </div>
   </section>
 
-  <section class="info-band">
+  <section class="quick-info" aria-label="Rychlé informace">
     <div class="info-grid">
-      <div class="info-item">
-        <div class="info-label">Adresa</div>
-        <div class="info-value">OC SAPA, Libušská 319, Praha-Libuš</div>
-      </div>
-      <div class="info-item">
-        <div class="info-label">Telefon</div>
-        <div class="info-value">+420 723 313 032</div>
-      </div>
-      <div class="info-item">
-        <div class="info-label">Otevírací doba</div>
-        <div class="info-value">Léto 10:00-20:00, zima 11:00-19:00</div>
-      </div>
+      <article class="info-item">
+        <span class="label">Adresa</span>
+        <strong>OC SAPA, Libušská 319, Praha-Libuš</strong>
+      </article>
+      <article class="info-item">
+        <span class="label">Telefon</span>
+        <strong><a href="tel:+420723313032">+420 723 313 032</a></strong>
+      </article>
+      <article class="info-item">
+        <span class="label">Otevírací doba</span>
+        <strong>Léto 10:00-20:00<br>Zima 11:00-19:00</strong>
+      </article>
+      <article class="info-item">
+        <span class="label">Objednávky</span>
+        <strong>Vyzvednutí, Foodora, Wolt, WhatsApp</strong>
+      </article>
     </div>
   </section>
 
   <section class="section alt" id="provozovna">
-    <div class="section-head">
-      <div>
-        <div class="eyebrow" style="color:var(--red)">Provozovna</div>
-        <h2 class="section-title">Poznáte nás podle nápisu u SAPA</h2>
-      </div>
-      <p class="section-copy">Před návštěvou uvidíte skutečnou fasádu, vchod i místo, kde se fotí čerstvé vietnamské dezerty.</p>
-    </div>
-    <div class="storefront-grid">
-      <figure class="storefront-photo storefront-main">
-        <img src="optimized/visit-facade-wide.jpg" alt="Fasáda Chè Sài Gòn s červeným nápisem v tržnici SAPA" loading="lazy" decoding="async">
-        <figcaption class="photo-label">Červený nápis Chè Sài Gòn u tržnice SAPA</figcaption>
-      </figure>
-      <div class="storefront-stack">
-        <figure class="storefront-photo">
-          <img src="optimized/visit-door.jpg" alt="Vchod do provozovny Chè Sài Gòn v OC SAPA" loading="lazy" decoding="async">
-          <figcaption class="photo-label">Vchod do provozovny</figcaption>
-        </figure>
-        <figure class="storefront-photo">
-          <img src="optimized/visit-table.jpg" alt="Stůl s kelímky Chè Sài Gòn a květinovou výzdobou" loading="lazy" decoding="async">
-          <figcaption class="photo-label">Kelímky focené přímo u výlohy</figcaption>
-        </figure>
+    <div class="section-inner">
+      <div class="story-grid">
+        <div class="story-copy">
+          <div>
+            <div class="eyebrow">Provozovna</div>
+            <h2 class="section-title">Malý kousek Saigonu přímo v pražské SAPA.</h2>
+          </div>
+          <p class="section-copy">Chè Sài Gòn stojí na jednoduché věci: viditelné suroviny, čistá příprava a dezerty, které jsou svěží, barevné a příjemně syté.</p>
+          <div class="point-list">
+            <div class="point">
+              <span class="point-icon"><i data-lucide="sparkles"></i></span>
+              <div>
+                <strong>Čerstvé denní porce</strong>
+                <span>Kokosové mléko, ovoce, želé, fazole mungo a tapioku skládáme tak, aby chuť zůstala lehká a vyvážená.</span>
+              </div>
+            </div>
+            <div class="point">
+              <span class="point-icon"><i data-lucide="map-pin"></i></span>
+              <div>
+                <strong>Snadno k nalezení</strong>
+                <span>Najdete nás podle výrazného nápisu Chè Sài Gòn v areálu OC SAPA.</span>
+              </div>
+            </div>
+            <div class="point">
+              <span class="point-icon"><i data-lucide="shopping-bag"></i></span>
+              <div>
+                <strong>Na místě i s sebou</strong>
+                <span>Kelímky připravíme rychle pro okamžité ochutnání, vyzvednutí nebo rozvoz.</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <a class="btn btn-outline" href="#kontakt"><i data-lucide="navigation"></i>Zobrazit cestu</a>
+          </div>
+        </div>
+        <div class="image-collage" aria-label="Fotky provozovny">
+          <figure class="image-tile large">
+            <img src="optimized/hero-cup-facade.jpg" alt="Kelímek Chè Sài Gòn před provozovnou v OC SAPA" loading="lazy" decoding="async">
+            <figcaption>Ikonický kelímek před provozovnou</figcaption>
+          </figure>
+          <figure class="image-tile">
+            <img src="optimized/visit-door.jpg" alt="Vchod do Chè Sài Gòn v OC SAPA" loading="lazy" decoding="async">
+            <figcaption>Vchod do prodejny</figcaption>
+          </figure>
+          <figure class="image-tile">
+            <img src="optimized/visit-table.jpg" alt="Kelímky Chè Sài Gòn u květinové dekorace" loading="lazy" decoding="async">
+            <figcaption>Dezerty připravené k vyzvednutí</figcaption>
+          </figure>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section" id="galerie">
-    <div class="section-head">
-      <div>
-        <div class="eyebrow" style="color:var(--red)">Fotky a videa od zákazníků</div>
-        <h2 class="section-title">Dezerty, které u nás lidé sdílejí</h2>
+  <section class="section green">
+    <div class="section-inner">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Proč se vracet</div>
+          <h2 class="section-title">Chuť, kterou si člověk zapamatuje už po prvním kelímku.</h2>
+        </div>
+        <p class="section-copy">Dezerty jsou barevné, ale stránka má zůstat klidná: jasné informace, velké fotky a rychlé možnosti kontaktu.</p>
       </div>
-      <p class="section-copy">Reálné fotky a videa kelímků, vitríny a přísad pomáhají návštěvníkům rychle vybrat, na co mají chuť.</p>
-    </div>
-    <div class="customer-gallery">
-      <figure class="customer-photo large" style="--photo:url('optimized/gallery-flower-cups.jpg')">
-        <img src="optimized/gallery-flower-cups.jpg" alt="Kelímky Chè Sài Gòn focené u květinové dekorace" loading="lazy" decoding="async">
-      </figure>
-      <figure class="customer-photo" style="--photo:url('optimized/gallery-sky-cups.jpg')">
-        <img src="optimized/gallery-sky-cups.jpg" alt="Dva kelímky Chè Sài Gòn na venkovním stole" loading="lazy" decoding="async">
-      </figure>
-      <figure class="customer-photo" style="--photo:url('optimized/gallery-branded-cups.jpg')">
-        <img src="optimized/gallery-branded-cups.jpg" alt="Kelímky s ovocem a kokosovým mlékem" loading="lazy" decoding="async">
-      </figure>
-      <figure class="customer-photo" style="--photo:url('optimized/gallery-milk-tea.jpg')">
-        <img src="optimized/gallery-milk-tea.jpg" alt="Mléčný čaj Chè Sài Gòn s tapiokou" loading="lazy" decoding="async">
-      </figure>
-      <figure class="customer-photo" style="--photo:url('optimized/gallery-orange-cups.jpg')">
-        <img src="optimized/gallery-orange-cups.jpg" alt="Oranžové dezerty Chè Sài Gòn na venkovním stole" loading="lazy" decoding="async">
-      </figure>
-      <figure class="customer-photo wide" style="--photo:url('optimized/gallery-dessert-tray.jpg')">
-        <img src="optimized/gallery-dessert-tray.jpg" alt="Podnos plný připravených dezertů Chè Sài Gòn" loading="lazy" decoding="async">
-      </figure>
-      <figure class="customer-photo" style="--photo:url('optimized/gallery-display-cups.jpg')">
-        <img src="optimized/gallery-display-cups.jpg" alt="Kelímky Chè Sài Gòn vystavené ve vitríně" loading="lazy" decoding="async">
-      </figure>
-      <figure class="customer-photo" style="--photo:url('optimized/gallery-bottles.jpg')">
-        <img src="optimized/gallery-bottles.jpg" alt="Lahve s nápoji Chè Sài Gòn" loading="lazy" decoding="async">
-      </figure>
-      <figure class="customer-photo wide" style="--photo:url('optimized/gallery-black-dessert.jpg')">
-        <img src="optimized/gallery-black-dessert.jpg" alt="Černý fazolový dezert v kelímku Chè Sài Gòn" loading="lazy" decoding="async">
-      </figure>
-      <figure class="customer-photo wide" style="--photo:url('optimized/gallery-topping.jpg')">
-        <img src="optimized/gallery-topping.jpg" alt="Miska s přísadami pro dezerty Chè Sài Gòn" loading="lazy" decoding="async">
-      </figure>
-      <figure class="customer-photo" style="--photo:url('optimized/feature-ready-cups.jpg')">
-        <img src="optimized/feature-ready-cups.jpg" alt="Kelímky Chè Sài Gòn připravené k podávání" loading="lazy" decoding="async">
-      </figure>
-      <figure class="customer-photo" style="--photo:url('optimized/gallery-latest-facade.jpg')">
-        <img src="optimized/gallery-latest-facade.jpg" alt="Provozovna Chè Sài Gòn se zákazníky před vstupem" loading="lazy" decoding="async">
-      </figure>
-      <figure class="customer-photo" style="--photo:url('optimized/gallery-latest-cups.jpg')">
-        <img src="optimized/gallery-latest-cups.jpg" alt="Čerstvé dezerty Chè Sài Gòn ve vitríně" loading="lazy" decoding="async">
-      </figure>
-      <figure class="customer-photo" style="--photo:url('optimized/gallery-latest-green-dessert.jpg')">
-        <img src="optimized/gallery-latest-green-dessert.jpg" alt="Zelený dezert Chè Sài Gòn v kelímku" loading="lazy" decoding="async">
-      </figure>
-      <figure class="customer-photo" style="--photo:url('optimized/visit-table.jpg')">
-        <img src="optimized/visit-table.jpg" alt="Kelímky Chè Sài Gòn na stolku u květin" loading="lazy" decoding="async">
-      </figure>
-    </div>
-    <div class="video-gallery" aria-label="Video galerie Chè Sài Gòn">
-      <article class="video-card">
-        <video controls muted playsinline preload="metadata" aria-label="Video Chè Sài Gòn 1">
-          <source src="videos/che-sai-gon-video-1.mp4" type="video/mp4">
-        </video>
-      </article>
-      <article class="video-card">
-        <video controls muted playsinline preload="metadata" aria-label="Video Chè Sài Gòn 2">
-          <source src="videos/che-sai-gon-video-2.mp4" type="video/mp4">
-        </video>
-      </article>
-      <article class="video-card">
-        <video controls muted playsinline preload="metadata" aria-label="Video Chè Sài Gòn 3">
-          <source src="videos/che-sai-gon-video-3.mp4" type="video/mp4">
-        </video>
-      </article>
-      <article class="video-card">
-        <video controls muted playsinline preload="metadata" aria-label="Video Chè Sài Gòn 4">
-          <source src="videos/che-sai-gon-video-4.mp4" type="video/mp4">
-        </video>
-      </article>
+      <div class="signature-band">
+        <div class="signature-item">
+          <strong>Čerstvé</strong>
+          <span>přísady připravované průběžně během dne</span>
+        </div>
+        <div class="signature-item">
+          <strong>Autentické</strong>
+          <span>tradiční vietnamské kombinace ze Saigonu</span>
+        </div>
+        <div class="signature-item">
+          <strong>Přehledné</strong>
+          <span>menu, ceny a kontakt viditelné na každém zařízení</span>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="section alt" id="menu">
-    <div class="section-head">
-      <div>
-        <div class="eyebrow" style="color:var(--red)">Dnešní výběr</div>
-        <h2 class="section-title">Menu dezertů</h2>
+  <section class="section menu-section" id="menu">
+    <div class="section-inner">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Dnešní výběr</div>
+          <h2 class="section-title">Menu dezertů</h2>
+        </div>
+        <p class="section-copy">Oblíbené kelímky, jogurty, flan, taro, pomelo i mléčné čaje. Fotky pomáhají vybrat rychleji než dlouhý popis.</p>
       </div>
-      <p class="section-copy">Fotky, názvy a rychlý přehled oblíbených vietnamských dezertů.</p>
-    </div>
-    <div class="menu-toolbar">
-      <p>16 položek v nabídce</p>
-      <a class="btn btn-primary" href="#cena">Zobrazit ceny</a>
-    </div>
-    <div class="menu-grid">
-      <article class="menu-card">
-        <img src="optimized/new2.jpg" alt="Kokosový dezert" loading="lazy" decoding="async">
-        <h3><span>01</span>Kokosový dezert</h3>
-      </article>
-      <article class="menu-card">
-        <img src="optimized/new3.jpg" alt="Dezert s jackfruitem" loading="lazy" decoding="async">
-        <h3><span>02</span>Dezert s jackfruitem</h3>
-      </article>
-      <article class="menu-card">
-        <img src="optimized/new4.jpg" alt="Karamelový dezert" loading="lazy" decoding="async">
-        <h3><span>03</span>Karamelový dezert</h3>
-      </article>
-      <article class="menu-card">
-        <img src="optimized/new5.jpg" alt="Speciální mix" loading="lazy" decoding="async">
-        <h3><span>04</span>Speciální mix</h3>
-      </article>
-      <article class="menu-card">
-        <img src="optimized/new6.jpg" alt="Pomelový dezert" loading="lazy" decoding="async">
-        <h3><span>05</span>Pomelový dezert</h3>
-      </article>
-      <article class="menu-card">
-        <img src="optimized/new7.jpg" alt="Thajský dezert" loading="lazy" decoding="async">
-        <h3><span>06</span>Thajský dezert</h3>
-      </article>
-      <article class="menu-card">
-        <img src="optimized/new8.jpg" alt="Taro dezert" loading="lazy" decoding="async">
-        <h3><span>07</span>Taro dezert</h3>
-      </article>
-      <article class="menu-card">
-        <img src="optimized/new9.jpg" alt="Jogurt s ovocem" loading="lazy" decoding="async">
-        <h3><span>08</span>Jogurt s ovocem</h3>
-      </article>
-      <article class="menu-card">
-        <img src="optimized/new10.jpg" alt="Jogurt s lepkavou rýží" loading="lazy" decoding="async">
-        <h3><span>09</span>Jogurt s lepkavou rýží</h3>
-      </article>
-      <article class="menu-card">
-        <img src="optimized/new11.jpg" alt="Jogurt s karamelem" loading="lazy" decoding="async">
-        <h3><span>10</span>Jogurt s karamelem</h3>
-      </article>
-      <article class="menu-card">
-        <img src="optimized/new12.jpg" alt="Zelená lepkavá rýže s lotosovými semínky" loading="lazy" decoding="async">
-        <h3><span>11</span>Zelená lepkavá rýže s lotosovými semínky</h3>
-      </article>
-      <article class="menu-card">
-        <img src="optimized/new13.jpg" alt="Karamelový flan" loading="lazy" decoding="async">
-        <h3><span>12</span>Karamelový flan</h3>
-      </article>
-      <article class="menu-card">
-        <img src="optimized/new14.jpg" alt="Černé fazole a lotosová semínka" loading="lazy" decoding="async">
-        <h3><span>13</span>Černé fazole a lotosová semínka</h3>
-      </article>
-      <article class="menu-card">
-        <img src="optimized/new15.jpg" alt="Želé z mladého kokosu" loading="lazy" decoding="async">
-        <h3><span>14</span>Želé z mladého kokosu</h3>
-      </article>
-      <article class="menu-card">
-        <img src="optimized/new16.jpg" alt="Želé z mladého kokosu" loading="lazy" decoding="async">
-        <h3><span>15</span>Želé z mladého kokosu</h3>
-      </article>
-      <article class="menu-card">
-        <img src="optimized/new18.jpg" alt="Sirup z palmového cukru" loading="lazy" decoding="async">
-        <h3><span>16</span>Sirup z palmového cukru</h3>
-      </article>
+      <div class="menu-toolbar">
+        <div class="menu-note"><span class="label">Nabídka</span>16 položek v aktuálním přehledu</div>
+        <a class="btn btn-outline" href="#cena"><i data-lucide="receipt-text"></i>Zobrazit ceny</a>
+      </div>
+      <div class="menu-grid">
+        <article class="menu-card">
+          <img src="optimized/new2.jpg" alt="Kokosový dezert" loading="lazy" decoding="async">
+          <div class="menu-card-body">
+            <span class="menu-number">01</span>
+            <h3>Kokosový dezert</h3>
+            <p>Kokos, kokosové mléko a tapioka.</p>
+          </div>
+        </article>
+        <article class="menu-card">
+          <img src="optimized/new3.jpg" alt="Dezert s jackfruitem" loading="lazy" decoding="async">
+          <div class="menu-card-body">
+            <span class="menu-number">02</span>
+            <h3>Dezert s jackfruitem</h3>
+            <p>Tropické ovoce, želé a kokosové mléko.</p>
+          </div>
+        </article>
+        <article class="menu-card">
+          <img src="optimized/new4.jpg" alt="Karamelový dezert" loading="lazy" decoding="async">
+          <div class="menu-card-body">
+            <span class="menu-number">03</span>
+            <h3>Karamelový dezert</h3>
+            <p>Flan, tapioka, želé a kokos.</p>
+          </div>
+        </article>
+        <article class="menu-card">
+          <img src="optimized/new5.jpg" alt="Speciální mix" loading="lazy" decoding="async">
+          <div class="menu-card-body">
+            <span class="menu-number">04</span>
+            <h3>Speciální mix</h3>
+            <p>Fazole, želé, taro a kokos.</p>
+          </div>
+        </article>
+        <article class="menu-card">
+          <img src="optimized/new6.jpg" alt="Pomelový dezert" loading="lazy" decoding="async">
+          <div class="menu-card-body">
+            <span class="menu-number">05</span>
+            <h3>Pomelový dezert</h3>
+            <p>Pomelo, mungo fazole a husté kokosové mléko.</p>
+          </div>
+        </article>
+        <article class="menu-card">
+          <img src="optimized/new7.jpg" alt="Thajský dezert" loading="lazy" decoding="async">
+          <div class="menu-card-body">
+            <span class="menu-number">06</span>
+            <h3>Thajský dezert</h3>
+            <p>Durian, jackfruit, želé a kokosové mléko.</p>
+          </div>
+        </article>
+        <article class="menu-card">
+          <img src="optimized/new8.jpg" alt="Taro dezert" loading="lazy" decoding="async">
+          <div class="menu-card-body">
+            <span class="menu-number">07</span>
+            <h3>Taro dezert</h3>
+            <p>Taro, kokosový pudink a černá lepkavá rýže.</p>
+          </div>
+        </article>
+        <article class="menu-card">
+          <img src="optimized/new9.jpg" alt="Jogurt s ovocem" loading="lazy" decoding="async">
+          <div class="menu-card-body">
+            <span class="menu-number">08</span>
+            <h3>Jogurt s ovocem</h3>
+            <p>Jogurt, jackfruit, želé a kokos.</p>
+          </div>
+        </article>
+        <article class="menu-card">
+          <img src="optimized/new10.jpg" alt="Jogurt s lepkavou rýží" loading="lazy" decoding="async">
+          <div class="menu-card-body">
+            <span class="menu-number">09</span>
+            <h3>Jogurt s lepkavou rýží</h3>
+            <p>Krémový jogurt, lepkavá rýže a želé.</p>
+          </div>
+        </article>
+        <article class="menu-card">
+          <img src="optimized/new11.jpg" alt="Jogurt s karamelem" loading="lazy" decoding="async">
+          <div class="menu-card-body">
+            <span class="menu-number">10</span>
+            <h3>Jogurt s karamelem</h3>
+            <p>Jogurt, karamel, tapioka a kokos.</p>
+          </div>
+        </article>
+        <article class="menu-card">
+          <img src="optimized/new12.jpg" alt="Zelená lepkavá rýže s lotosovými semínky" loading="lazy" decoding="async">
+          <div class="menu-card-body">
+            <span class="menu-number">11</span>
+            <h3>Zelená lepkavá rýže s lotosovými semínky</h3>
+            <p>Jemná rýže a lotosová semínka.</p>
+          </div>
+        </article>
+        <article class="menu-card">
+          <img src="optimized/new13.jpg" alt="Karamelový flan" loading="lazy" decoding="async">
+          <div class="menu-card-body">
+            <span class="menu-number">12</span>
+            <h3>Karamelový flan</h3>
+            <p>Lehký flan s karamelovou chutí.</p>
+          </div>
+        </article>
+        <article class="menu-card">
+          <img src="optimized/new14.jpg" alt="Černé fazole a lotosová semínka" loading="lazy" decoding="async">
+          <div class="menu-card-body">
+            <span class="menu-number">13</span>
+            <h3>Černé fazole a lotosová semínka</h3>
+            <p>Tradiční sladká kombinace.</p>
+          </div>
+        </article>
+        <article class="menu-card">
+          <img src="optimized/new15.jpg" alt="Želé z mladého kokosu" loading="lazy" decoding="async">
+          <div class="menu-card-body">
+            <span class="menu-number">14</span>
+            <h3>Želé z mladého kokosu</h3>
+            <p>Svěží kokosové želé.</p>
+          </div>
+        </article>
+        <article class="menu-card">
+          <img src="optimized/new16.jpg" alt="Kokosové želé" loading="lazy" decoding="async">
+          <div class="menu-card-body">
+            <span class="menu-number">15</span>
+            <h3>Kokosové želé</h3>
+            <p>Varianta z čerstvého mladého kokosu.</p>
+          </div>
+        </article>
+        <article class="menu-card">
+          <img src="optimized/new18.jpg" alt="Sirup z palmového cukru" loading="lazy" decoding="async">
+          <div class="menu-card-body">
+            <span class="menu-number">16</span>
+            <h3>Sirup z palmového cukru</h3>
+            <p>Sladký doplněk pro výraznější chuť.</p>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
   <section class="section price-section" id="cena">
-    <div class="section-head">
-      <div>
-        <div class="eyebrow" style="color:var(--red)">Ceník</div>
-        <h2 class="section-title">Dnešní menu</h2>
+    <div class="section-inner">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Ceník</div>
+          <h2 class="section-title">Přehled cen</h2>
+        </div>
+        <p class="section-copy">Čísla odpovídají nabídce na prodejně. U rozvozu se ceny mohou lišit podle platformy.</p>
       </div>
-      <p class="section-copy">Číslo kelímku odpovídá štítku v nabídce.</p>
-    </div>
-
-    <div class="notice">
-      <span><strong>Většina dezertů:</strong> 100 Kč / 4,50 €</span>
-      <span><strong>Mléčný čaj:</strong> 120 Kč / 5 €</span>
-    </div>
-
-    <div class="price-grid" aria-label="Ceník dezertů">
-      <article class="menu-item">
-        <span class="number">1</span>
-        <div>
-          <h3 class="name">Speciální mix</h3>
-          <p class="desc">fazole, želé, tapioka, taro, kokos</p>
+      <div class="price-top">
+        <div class="price-summary">
+          <strong>Většina dezertů</strong>
+          <span>100 Kč / 4,50 EUR</span>
         </div>
-        <div class="price">100 Kč / 4,50 €</div>
-      </article>
-
-      <article class="menu-item">
-        <span class="number">2</span>
-        <div>
-          <h3 class="name">Thajský dezert</h3>
-          <p class="desc">durian, jackfruit, želé, fazole mungo, tapioka, kokosové mléko</p>
+        <div class="price-summary">
+          <strong>Mléčný čaj</strong>
+          <span>120 Kč / 5 EUR</span>
         </div>
-        <div class="price">100 Kč / 4,50 €</div>
-      </article>
-
-      <article class="menu-item">
-        <span class="number">3</span>
-        <div>
-          <h3 class="name">Karamelový dezert</h3>
-          <p class="desc">karamel, tapioka, želé, kokos, kokosové mléko</p>
+        <div class="price-summary">
+          <strong>Flan</strong>
+          <span>60 Kč / 2,50 EUR</span>
         </div>
-        <div class="price">100 Kč / 4,50 €</div>
-      </article>
-
-      <article class="menu-item">
-        <span class="number">4</span>
-        <div>
-          <h3 class="name">Jackfruitový dezert</h3>
-          <p class="desc">jackfruit, černá tapioka, kokos, kokosové mléko, tapioka</p>
-        </div>
-        <div class="price">100 Kč / 4,50 €</div>
-      </article>
-
-      <article class="menu-item">
-        <span class="number">5</span>
-        <div>
-          <h3 class="name">Taro dezert</h3>
-          <p class="desc">taro, kokosový pudink, černá lepkavá rýže</p>
-        </div>
-        <div class="price">100 Kč / 4,50 €</div>
-      </article>
-
-      <article class="menu-item">
-        <span class="number">6</span>
-        <div>
-          <h3 class="name">Jogurt s ovocem</h3>
-          <p class="desc">jogurt, jackfruit, želé, kokos</p>
-        </div>
-        <div class="price">100 Kč / 4,50 €</div>
-      </article>
-
-      <article class="menu-item">
-        <span class="number">7</span>
-        <div>
-          <h3 class="name">Jogurt s karamelem</h3>
-          <p class="desc">jogurt, karamel, želé, tapioka, kokos</p>
-        </div>
-        <div class="price">100 Kč / 4,50 €</div>
-      </article>
-
-      <article class="menu-item">
-        <span class="number">8</span>
-        <div>
-          <h3 class="name">Jogurt s lepkavou rýží</h3>
-          <p class="desc">jogurt, lepkavá rýže, želé</p>
-        </div>
-        <div class="price">100 Kč / 4,50 €</div>
-      </article>
-
-      <article class="menu-item">
-        <span class="number">9</span>
-        <div>
-          <h3 class="name">Speciální kokosový dezert</h3>
-          <p class="desc">kokos, kokosové mléko, tapioka</p>
-        </div>
-        <div class="price">100 Kč / 4,50 €</div>
-      </article>
-
-      <article class="menu-item">
-        <span class="number">10</span>
-        <div>
-          <h3 class="name">Pomelový dezert</h3>
-          <p class="desc">pomelová kůra, fazole mungo, husté kokosové mléko</p>
-        </div>
-        <div class="price">100 Kč / 4,50 €</div>
-      </article>
-
-      <article class="menu-item">
-        <span class="number">11</span>
-        <div>
-          <h3 class="name">Pomelový dezert s mladou rýží</h3>
-          <p class="desc">rýže, pomelová kůra, husté kokosové mléko</p>
-        </div>
-        <div class="price">100 Kč / 4,50 €</div>
-      </article>
-
-      <article class="menu-item">
-        <span class="number">12</span>
-        <div>
-          <h3 class="name">Mléčný čaj</h3>
-          <p class="desc">černá tapioka a želé, matcha / mango / taro</p>
-        </div>
-        <div class="price">120 Kč / 5 €</div>
-      </article>
-
-      <article class="menu-item">
-        <span class="number">13</span>
-        <div>
-          <h3 class="name">Karamelový flan</h3>
-        </div>
-        <div class="price">60 Kč / 2,50 €</div>
-      </article>
-
-      <article class="menu-item">
-        <span class="number">14</span>
-        <div>
-          <h3 class="name">Kokosové želé</h3>
-          <p class="desc">želé z čerstvého kokosu</p>
-        </div>
-        <div class="price">90 Kč / 4 €<br>120 Kč / 5 €</div>
-      </article>
-    </div>
-
-    <div class="topping">
-      <h3>Přidané suroviny</h3>
-      <div class="topping-grid">
-        <p>Želé, strouhaný kokos, poleva 10 Kč</p>
-        <p>Fazole, rýže, tapioka, jackfruit, durian 20 Kč</p>
-        <p>Plastový kelímek 10 Kč</p>
       </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="feature-grid">
-      <div class="feature-photo">
-        <img src="optimized/feature-ready-cups.jpg" alt="Čerstvě připravené kelímky Chè Sài Gòn ve vitríně" loading="lazy" decoding="async">
-      </div>
-      <div class="order-panel">
-        <div>
-          <div class="eyebrow" style="color:var(--red)">Objednávky</div>
-          <h2>Vyzvednutí i rozvoz bez čekání.</h2>
-          <p>Vyberte platformu, objednejte oblíbený dezert a my ho připravíme čerstvý.</p>
-          <div class="signature-highlight">
-            <span>20+ let</span>
-            <strong>První pravé Chè Sài Gòn v Česku</strong>
-            <p>Už více než 20 let si držíme stálou kvalitu a jedinečnou chuť.</p>
+      <div class="price-grid" aria-label="Ceník dezertů">
+        <article class="price-item">
+          <span class="number">1</span>
+          <div>
+            <h3 class="price-name">Speciální mix</h3>
+            <p class="price-desc">fazole, želé, tapioka, taro, kokos</p>
           </div>
-          <div class="order-highlights" aria-label="Rychlé informace k objednávce">
-            <div class="order-highlight">
-              <span class="order-dot" aria-hidden="true"></span>
-              <div>
-                <strong>Vyzvednutí v OC SAPA</strong>
-                <span>Objednávku připravíme k rychlému vyzvednutí na provozovně.</span>
-              </div>
-            </div>
-            <div class="order-highlight">
-              <span class="order-dot" aria-hidden="true"></span>
-              <div>
-                <strong>Rozvoz přes Foodora a Wolt</strong>
-                <span>Pohodlně si vyberete platformu podle vaší lokality.</span>
-              </div>
-            </div>
-            <div class="order-highlight">
-              <span class="order-dot" aria-hidden="true"></span>
-              <div>
-                <strong>Čerstvě připravené dezerty</strong>
-                <span>Kokosové mléko, želé, ovoce a přísady chystáme každý den.</span>
-              </div>
-            </div>
+          <div class="price-value">100 Kč / 4,50 EUR</div>
+        </article>
+        <article class="price-item">
+          <span class="number">2</span>
+          <div>
+            <h3 class="price-name">Thajský dezert</h3>
+            <p class="price-desc">durian, jackfruit, želé, mungo fazole, tapioka, kokosové mléko</p>
           </div>
-        </div>
-        <div class="platform-list">
-          <a class="platform-pill" href="https://www.foodora.cz/restaurant/x06o/che-sai-gon-sapa" target="_blank" rel="noopener">
-            Foodora <span>Objednat</span>
-          </a>
-          <a class="platform-pill" href="https://wolt.com/cs/cze/prague/restaurant/che-sai-gon" target="_blank" rel="noopener">
-            Wolt <span>Objednat</span>
-          </a>
+          <div class="price-value">100 Kč / 4,50 EUR</div>
+        </article>
+        <article class="price-item">
+          <span class="number">3</span>
+          <div>
+            <h3 class="price-name">Karamelový dezert</h3>
+            <p class="price-desc">karamel, tapioka, želé, kokos, kokosové mléko</p>
+          </div>
+          <div class="price-value">100 Kč / 4,50 EUR</div>
+        </article>
+        <article class="price-item">
+          <span class="number">4</span>
+          <div>
+            <h3 class="price-name">Jackfruitový dezert</h3>
+            <p class="price-desc">jackfruit, černá tapioka, kokos, kokosové mléko, tapioka</p>
+          </div>
+          <div class="price-value">100 Kč / 4,50 EUR</div>
+        </article>
+        <article class="price-item">
+          <span class="number">5</span>
+          <div>
+            <h3 class="price-name">Taro dezert</h3>
+            <p class="price-desc">taro, kokosový pudink, černá lepkavá rýže</p>
+          </div>
+          <div class="price-value">100 Kč / 4,50 EUR</div>
+        </article>
+        <article class="price-item">
+          <span class="number">6</span>
+          <div>
+            <h3 class="price-name">Jogurt s ovocem</h3>
+            <p class="price-desc">jogurt, jackfruit, želé, kokos</p>
+          </div>
+          <div class="price-value">100 Kč / 4,50 EUR</div>
+        </article>
+        <article class="price-item">
+          <span class="number">7</span>
+          <div>
+            <h3 class="price-name">Jogurt s karamelem</h3>
+            <p class="price-desc">jogurt, karamel, želé, tapioka, kokos</p>
+          </div>
+          <div class="price-value">100 Kč / 4,50 EUR</div>
+        </article>
+        <article class="price-item">
+          <span class="number">8</span>
+          <div>
+            <h3 class="price-name">Jogurt s lepkavou rýží</h3>
+            <p class="price-desc">jogurt, lepkavá rýže, želé</p>
+          </div>
+          <div class="price-value">100 Kč / 4,50 EUR</div>
+        </article>
+        <article class="price-item">
+          <span class="number">9</span>
+          <div>
+            <h3 class="price-name">Speciální kokosový dezert</h3>
+            <p class="price-desc">kokos, kokosové mléko, tapioka</p>
+          </div>
+          <div class="price-value">100 Kč / 4,50 EUR</div>
+        </article>
+        <article class="price-item">
+          <span class="number">10</span>
+          <div>
+            <h3 class="price-name">Pomelový dezert</h3>
+            <p class="price-desc">pomelová kůra, mungo fazole, husté kokosové mléko</p>
+          </div>
+          <div class="price-value">100 Kč / 4,50 EUR</div>
+        </article>
+        <article class="price-item">
+          <span class="number">11</span>
+          <div>
+            <h3 class="price-name">Pomelový dezert s mladou rýží</h3>
+            <p class="price-desc">rýže, pomelová kůra, husté kokosové mléko</p>
+          </div>
+          <div class="price-value">100 Kč / 4,50 EUR</div>
+        </article>
+        <article class="price-item">
+          <span class="number">12</span>
+          <div>
+            <h3 class="price-name">Mléčný čaj</h3>
+            <p class="price-desc">černá tapioka a želé, matcha / mango / taro</p>
+          </div>
+          <div class="price-value">120 Kč / 5 EUR</div>
+        </article>
+        <article class="price-item">
+          <span class="number">13</span>
+          <div>
+            <h3 class="price-name">Karamelový flan</h3>
+          </div>
+          <div class="price-value">60 Kč / 2,50 EUR</div>
+        </article>
+        <article class="price-item">
+          <span class="number">14</span>
+          <div>
+            <h3 class="price-name">Kokosové želé</h3>
+            <p class="price-desc">želé z čerstvého kokosu</p>
+          </div>
+          <div class="price-value">90 Kč / 4 EUR<br>120 Kč / 5 EUR</div>
+        </article>
+      </div>
+      <div class="topping">
+        <h3>Přidané suroviny</h3>
+        <div class="topping-grid">
+          <p>Želé, strouhaný kokos, poleva 10 Kč</p>
+          <p>Fazole, rýže, tapioka, jackfruit, durian 20 Kč</p>
+          <p>Plastový kelímek 10 Kč</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section map-section" id="kontakt">
-    <div class="section-head">
-      <div>
-        <div class="eyebrow" style="color:var(--red)">Mapa</div>
-        <h2 class="section-title">Najdete nás v SAPA</h2>
+  <section class="section alt" id="galerie">
+    <div class="section-inner">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Galerie</div>
+          <h2 class="section-title">Reálné fotky dezertů a prodejny</h2>
+        </div>
+        <p class="section-copy">Velké produktové záběry pomáhají zákazníkům rychle poznat styl, porce i atmosféru místa.</p>
       </div>
-      <p class="section-copy">OC SAPA, Libušská 319, Praha-Libuš. Otevřete mapu přímo na stránce a snadno si naplánujte cestu.</p>
+      <div class="gallery-layout">
+        <div class="gallery-column">
+          <figure class="gallery-item gallery-main" style="--pos:center 52%">
+            <img src="optimized/gallery-flower-cups.jpg" alt="Kelímky Chè Sài Gòn u květinové dekorace" loading="lazy" decoding="async">
+          </figure>
+          <div class="gallery-pair">
+            <figure class="gallery-item gallery-square" style="--pos:center 58%">
+              <img src="optimized/gallery-branded-cups.jpg" alt="Kelímky s kokosovým mlékem a ovocem" loading="lazy" decoding="async">
+            </figure>
+            <figure class="gallery-item gallery-square" style="--pos:center 55%">
+              <img src="optimized/gallery-latest-green-dessert.jpg" alt="Zelený dezert v kelímku" loading="lazy" decoding="async">
+            </figure>
+          </div>
+          <figure class="gallery-item gallery-wide" style="--pos:center 48%">
+            <img src="optimized/feature-ready-cups.jpg" alt="Čerstvě připravené kelímky ve vitríně" loading="lazy" decoding="async">
+          </figure>
+        </div>
+        <div class="gallery-column">
+          <figure class="gallery-item gallery-wide" style="--pos:center 47%">
+            <img src="optimized/gallery-dessert-tray.jpg" alt="Podnos připravených dezertů" loading="lazy" decoding="async">
+          </figure>
+          <div class="gallery-pair">
+            <figure class="gallery-item gallery-soft" style="--pos:center 64%">
+              <img src="optimized/gallery-milk-tea.jpg" alt="Mléčný čaj s tapiokou" loading="lazy" decoding="async">
+            </figure>
+            <figure class="gallery-item gallery-soft" style="--pos:center 54%">
+              <img src="optimized/gallery-orange-cups.jpg" alt="Oranžové dezerty na venkovním stole" loading="lazy" decoding="async">
+            </figure>
+          </div>
+          <figure class="gallery-item gallery-panorama" style="--pos:center 62%">
+            <img src="optimized/gallery-latest-facade.jpg" alt="Provozovna Chè Sài Gòn se zákazníky před vstupem" loading="lazy" decoding="async">
+          </figure>
+          <div class="gallery-pair">
+            <figure class="gallery-item gallery-square" style="--pos:center 50%">
+              <img src="optimized/hero-cups-flower.jpg" alt="Kelímky před květinovou dekorací" loading="lazy" decoding="async">
+            </figure>
+            <figure class="gallery-item gallery-square" style="--pos:center 58%">
+              <img src="optimized/gallery-bottles.jpg" alt="Lahve s nápoji Chè Sài Gòn" loading="lazy" decoding="async">
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="video-gallery" id="videos" aria-label="Video galerie Chè Sài Gòn">
+        <article class="video-card">
+          <video controls muted playsinline preload="metadata" poster="optimized/gallery-branded-cups.jpg" aria-label="Video Chè Sài Gòn 1">
+            <source src="videos/che-sai-gon-video-1.mp4" type="video/mp4">
+          </video>
+        </article>
+        <article class="video-card">
+          <video controls muted playsinline preload="metadata" poster="optimized/gallery-display-cups.jpg" aria-label="Video Chè Sài Gòn 2">
+            <source src="videos/che-sai-gon-video-2.mp4" type="video/mp4">
+          </video>
+        </article>
+        <article class="video-card">
+          <video controls muted playsinline preload="metadata" poster="optimized/gallery-topping.jpg" aria-label="Video Chè Sài Gòn 3">
+            <source src="videos/che-sai-gon-video-3.mp4" type="video/mp4">
+          </video>
+        </article>
+        <article class="video-card">
+          <video controls muted playsinline preload="metadata" poster="optimized/feature-ready-cups.jpg" aria-label="Video Chè Sài Gòn 4">
+            <source src="videos/che-sai-gon-video-4.mp4" type="video/mp4">
+          </video>
+        </article>
+      </div>
     </div>
-    <div class="map-frame">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2564.5016738482113!2d14.4749269!3d50.0019516!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b91fe0ad0d347%3A0xa4872401e3b7c09c!2zQ2jDqCBTw6BpIEfDsm4!5e0!3m2!1scs!2s!4v1777967602279!5m2!1scs!2s" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa Chè Sài Gòn v OC SAPA"></iframe>
+  </section>
+
+  <section class="section green" id="objednat">
+    <div class="section-inner">
+      <div class="order-grid">
+        <figure class="order-photo">
+          <img src="optimized/gallery-display-cups.jpg" alt="Kelímky Chè Sài Gòn vystavené ve vitríně" loading="lazy" decoding="async">
+        </figure>
+        <div class="order-content">
+          <div>
+            <div class="eyebrow">Objednávky</div>
+            <h2 class="section-title">Vyzvednutí i rozvoz bez zbytečného čekání.</h2>
+          </div>
+          <p class="section-copy">Objednejte přes oblíbenou platformu, zavolejte na prodejnu nebo napište zprávu. Dezerty připravíme čerstvé podle aktuální nabídky.</p>
+          <div class="order-actions">
+            <a class="platform-card" href="https://www.foodora.cz/restaurant/x06o/che-sai-gon-sapa" target="_blank" rel="noopener">
+              Foodora <span>Objednat</span>
+            </a>
+            <a class="platform-card" href="https://wolt.com/cs/cze/prague/restaurant/che-sai-gon" target="_blank" rel="noopener">
+              Wolt <span>Objednat</span>
+            </a>
+            <a class="platform-card" href="tel:+420723313032">
+              Call Now <span>Zavolat</span>
+            </a>
+            <a class="platform-card" href="https://wa.me/420723313032" target="_blank" rel="noopener">
+              WhatsApp <span>Napsat</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="kontakt">
+    <div class="section-inner">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Kontakt</div>
+          <h2 class="section-title">Najdete nás v areálu SAPA.</h2>
+        </div>
+        <p class="section-copy">OC SAPA, Libušská 319, Praha-Libuš. Pro rychlou domluvu použijte telefon, WhatsApp nebo objednávku přes rozvoz.</p>
+      </div>
+      <div class="contact-grid">
+        <aside class="contact-card" aria-label="Kontaktní údaje">
+          <div>
+            <span class="label">Adresa</span>
+            <strong>OC SAPA, Libušská 319, Praha-Libuš</strong>
+          </div>
+          <a class="contact-link" href="tel:+420723313032"><i data-lucide="phone"></i>+420 723 313 032</a>
+          <a class="contact-link" href="https://wa.me/420723313032" target="_blank" rel="noopener"><i data-lucide="message-circle"></i>WhatsApp</a>
+          <a class="contact-link" href="https://www.facebook.com/search/pages/?q=Ch%C3%A8%20S%C3%A0i%20G%C3%B2n%20Praha" target="_blank" rel="noopener"><i data-lucide="messages-square"></i>Message on Facebook</a>
+          <button class="btn btn-primary" type="button" data-open-booking><i data-lucide="calendar-check"></i>Book Now</button>
+        </aside>
+        <div class="map-frame">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2564.5016738482113!2d14.4749269!3d50.0019516!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b91fe0ad0d347%3A0xa4872401e3b7c09c!2zQ2jDqCBTw6BpIEfDsm4!5e0!3m2!1scs!2s!4v1777967602279!5m2!1scs!2s" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa Chè Sài Gòn v OC SAPA"></iframe>
+        </div>
+      </div>
     </div>
   </section>
 </main>
 
-<footer class="footer">
-  <p><strong>Otevírací doba</strong>Léto 10:00-20:00, zima 11:00-19:00</p>
-  <p><strong>Adresa</strong>OC SAPA, Libušská 319, Praha-Libuš</p>
-  <p><strong>Telefon</strong>+420 723 313 032</p>
-  <p class="footer-credit">© 2026 Všechna práva vyhrazena<br>Návrh webu: Hoangcaster</p>
+<footer class="footer" id="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-mark"><img src="optimized/brand-wall.jpg" alt=""></span>
+        <div>
+          <h2 class="footer-title">Chè Sài Gòn Praha</h2>
+          <p>Autentické vietnamské dezerty, kokosové mléko, tropické ovoce a čerstvé kelímky v OC SAPA.</p>
+        </div>
+      </div>
+      <div class="footer-actions">
+        <a class="btn btn-primary" href="tel:+420723313032"><i data-lucide="phone-call"></i>Call Now</a>
+        <button class="btn btn-light" type="button" data-open-booking><i data-lucide="calendar-check"></i>Book Now</button>
+      </div>
+    </div>
+    <div class="footer-main">
+      <div class="footer-block">
+        <span class="footer-label">Adresa</span>
+        <strong>OC SAPA, Libušská 319<br>Praha-Libuš</strong>
+      </div>
+      <div class="footer-block">
+        <span class="footer-label">Otevírací doba</span>
+        <strong>Léto 10:00-20:00<br>Zima 11:00-19:00</strong>
+      </div>
+      <div class="footer-block">
+        <span class="footer-label">Kontakt</span>
+        <div class="footer-links">
+          <a href="tel:+420723313032">+420 723 313 032</a>
+          <a href="https://wa.me/420723313032" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://www.facebook.com/search/pages/?q=Ch%C3%A8%20S%C3%A0i%20G%C3%B2n%20Praha" target="_blank" rel="noopener">Facebook</a>
+        </div>
+      </div>
+      <div class="footer-block">
+        <span class="footer-label">Objednávky</span>
+        <div class="footer-links">
+          <a href="https://www.foodora.cz/restaurant/x06o/che-sai-gon-sapa" target="_blank" rel="noopener">Foodora</a>
+          <a href="https://wolt.com/cs/cze/prague/restaurant/che-sai-gon" target="_blank" rel="noopener">Wolt</a>
+          <a href="#menu">Menu dezertů</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Všechna práva vyhrazena</span>
+      <span>Návrh webu: Hoangcaster</span>
+    </div>
+  </div>
 </footer>
 
-<div class="popup" id="popup" onclick="closePopupOutside(event)">
-  <div class="popup-box" onclick="event.stopPropagation()">
-    <div class="popup-close-icon" onclick="closePopup()" aria-label="Zavřít">&times;</div>
-    <h3>Vyberte platformu</h3>
+<div class="contact-dock" aria-label="Rychlý kontakt">
+  <a class="dock-item" href="tel:+420723313032"><i data-lucide="phone-call"></i><span>Call Now</span></a>
+  <button class="dock-item primary" type="button" data-open-booking><i data-lucide="calendar-check"></i><span>Book Now</span></button>
+  <a class="dock-item" href="https://www.facebook.com/search/pages/?q=Ch%C3%A8%20S%C3%A0i%20G%C3%B2n%20Praha" target="_blank" rel="noopener"><i data-lucide="messages-square"></i><span>Facebook</span></a>
+  <a class="dock-item" href="https://wa.me/420723313032" target="_blank" rel="noopener"><i data-lucide="message-circle"></i><span>WhatsApp</span></a>
+</div>
 
-    <a class="platform-link foodora" href="https://www.foodora.cz/restaurant/x06o/che-sai-gon-sapa" target="_blank" rel="noopener">
-      Objednat přes Foodora <span>&gt;</span>
-    </a>
-
-    <a class="platform-link wolt" href="https://wolt.com/cs/cze/prague/restaurant/che-sai-gon" target="_blank" rel="noopener">
-      Objednat přes Wolt <span>&gt;</span>
-    </a>
-
-    <button class="btn close-btn" type="button" onclick="closePopup()">Zavřít</button>
+<div class="modal" id="booking-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="booking-title">
+  <div class="modal-panel">
+    <button class="modal-close" type="button" data-close-booking aria-label="Zavřít"><i data-lucide="x"></i></button>
+    <div class="eyebrow">Objednat</div>
+    <h2 id="booking-title">Vyberte způsob objednávky</h2>
+    <p>Pro rozvoz použijte Foodora nebo Wolt. Pro rychlé vyzvednutí zavolejte nebo napište přes WhatsApp.</p>
+    <div class="modal-actions">
+      <a class="modal-link" href="https://www.foodora.cz/restaurant/x06o/che-sai-gon-sapa" target="_blank" rel="noopener">Foodora <i data-lucide="arrow-up-right"></i></a>
+      <a class="modal-link" href="https://wolt.com/cs/cze/prague/restaurant/che-sai-gon" target="_blank" rel="noopener">Wolt <i data-lucide="arrow-up-right"></i></a>
+      <a class="modal-link" href="tel:+420723313032">Call Now <i data-lucide="phone"></i></a>
+      <a class="modal-link" href="https://wa.me/420723313032" target="_blank" rel="noopener">WhatsApp <i data-lucide="message-circle"></i></a>
+    </div>
   </div>
 </div>
 
 <script>
-const popup = document.getElementById('popup');
+const bookingModal = document.getElementById("booking-modal");
+const openBookingButtons = document.querySelectorAll("[data-open-booking]");
+const closeBookingButtons = document.querySelectorAll("[data-close-booking]");
 
-function openPopup(){
-  popup.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
+function openBooking(){
+  bookingModal.classList.add("is-open");
+  bookingModal.setAttribute("aria-hidden","false");
+  document.body.classList.add("modal-open");
 }
 
-function closePopup(){
-  popup.style.display = 'none';
-  document.body.style.overflow = 'auto';
+function closeBooking(){
+  bookingModal.classList.remove("is-open");
+  bookingModal.setAttribute("aria-hidden","true");
+  document.body.classList.remove("modal-open");
 }
 
-function closePopupOutside(event){
-  if(event.target === popup){
-    closePopup();
+openBookingButtons.forEach((button) => {
+  button.addEventListener("click", openBooking);
+});
+
+closeBookingButtons.forEach((button) => {
+  button.addEventListener("click", closeBooking);
+});
+
+bookingModal.addEventListener("click", (event) => {
+  if(event.target === bookingModal){
+    closeBooking();
   }
-}
-</script>
+});
 
+window.addEventListener("keydown", (event) => {
+  if(event.key === "Escape" && bookingModal.classList.contains("is-open")){
+    closeBooking();
+  }
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+  if(window.lucide){
+    window.lucide.createIcons();
+  }
+});
+</script>
 </body>
 </html>
