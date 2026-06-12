@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chè Sài Gòn Praha | Vietnamské dezerty v OC SAPA</title>
 <meta name="description" content="Autentické vietnamské dezerty Chè Sài Gòn Praha v OC SAPA. Čerstvé kokosové mléko, ovoce, tapioka, želé, jogurty a mléčné čaje.">
-<link rel="preload" as="image" href="hình nền.jpg">
+<link rel="preload" as="image" href="Chè SG.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -632,6 +632,14 @@ h1{
   grid-template-columns:1.15fr .85fr;
   grid-template-rows:260px 260px;
   gap:14px;
+}
+
+.image-collage.single{
+  display:block;
+}
+
+.image-collage.single .image-tile{
+  min-height:540px;
 }
 
 .image-tile{
@@ -1484,16 +1492,21 @@ h1{
     gap:22px;
   }
   .hero-copy{
+    order:3;
     max-width:720px;
+    justify-self:center;
   }
   h1{font-size:4rem}
   .hero-cutout{
-    order:2;
+    order:1;
+    justify-self:center;
     width:min(270px,62vw);
     margin:0 auto 4px;
   }
   .hero-media{
-    order:3;
+    order:2;
+    justify-self:center;
+    width:min(100%,720px);
     aspect-ratio:3/2;
     transform:none;
   }
@@ -1635,6 +1648,12 @@ h1{
     grid-template-columns:1fr 1fr;
     grid-template-rows:220px 220px;
   }
+  .image-collage.single{
+    display:block;
+  }
+  .image-collage.single .image-tile{
+    min-height:360px;
+  }
   .signature-layout{
     gap:24px;
   }
@@ -1766,10 +1785,10 @@ h1{
         </div>
       </div>
       <figure class="hero-cutout" aria-hidden="true">
-        <img src="Ảnh mới/image_1780042229481-cutout.png" alt="" decoding="async">
+        <img src="new1.jpg" alt="" decoding="async">
       </figure>
       <figure class="hero-media">
-        <img src="hình nền.jpg" alt="Menu Chè Sài Gòn Praha s vietnamskými dezerty" fetchpriority="high" decoding="async">
+        <img src="Chè SG.png" alt="Không gian quán Chè Sài Gòn Praha" fetchpriority="high" decoding="async">
       </figure>
     </div>
   </section>
@@ -1831,18 +1850,9 @@ h1{
             <a class="btn btn-outline" href="#kontakt"><i data-lucide="navigation"></i>Zobrazit cestu</a>
           </div>
         </div>
-        <div class="image-collage" aria-label="Fotky provozovny">
+        <div class="image-collage single" aria-label="Fotka provozovny">
           <figure class="image-tile large">
-            <img src="optimized/hero-cup-facade.jpg" alt="Kelímek Chè Sài Gòn před provozovnou v OC SAPA" loading="lazy" decoding="async">
-            <figcaption>Ikonický kelímek před provozovnou</figcaption>
-          </figure>
-          <figure class="image-tile">
-            <img src="optimized/visit-door.jpg" alt="Vchod do Chè Sài Gòn v OC SAPA" loading="lazy" decoding="async">
-            <figcaption>Vchod do prodejny</figcaption>
-          </figure>
-          <figure class="image-tile">
-            <img src="optimized/visit-table.jpg" alt="Kelímky Chè Sài Gòn u květinové dekorace" loading="lazy" decoding="async">
-            <figcaption>Dezerty připravené k vyzvednutí</figcaption>
+            <img src="anh2.png" alt="Celkový prostor provozovny Chè Sài Gòn Praha" loading="lazy" decoding="async">
           </figure>
         </div>
       </div>
