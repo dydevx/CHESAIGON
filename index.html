@@ -909,6 +909,63 @@ h1{
   line-height:1.42;
 }
 
+.menu-card-footer{
+  display:grid;
+  gap:10px;
+  margin-top:4px;
+}
+
+.menu-price{
+  color:var(--red-dark);
+  font-size:.95rem;
+  font-weight:800;
+}
+
+.add-cart-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  width:100%;
+  min-height:42px;
+  padding:0 12px;
+  border:1px solid rgba(132,51,38,.22);
+  border-radius:8px;
+  background:var(--blush);
+  color:var(--red-dark);
+  font-size:.9rem;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.add-cart-btn:hover{
+  background:var(--red);
+  color:#fff;
+}
+
+button[data-open-booking]{
+  position:relative;
+}
+
+button[data-open-booking][data-cart-count]::after{
+  content:attr(data-cart-count);
+  position:absolute;
+  top:-7px;
+  right:-7px;
+  display:grid;
+  place-items:center;
+  min-width:22px;
+  height:22px;
+  padding:0 6px;
+  border:2px solid #fffdf8;
+  border-radius:999px;
+  background:var(--gold);
+  color:#fff;
+  font-size:.72rem;
+  font-weight:900;
+  line-height:1;
+}
+
 .price-section{
   background:linear-gradient(180deg,var(--surface-2) 0%,var(--paper) 100%);
 }
@@ -1399,6 +1456,7 @@ h1{
   display:none;
   place-items:center;
   padding:22px;
+  overflow:auto;
   background:rgba(23,19,19,.66);
   backdrop-filter:blur(12px);
 }
@@ -1408,6 +1466,8 @@ h1{
 .modal-panel{
   position:relative;
   width:min(480px,100%);
+  max-height:calc(100vh - 44px);
+  overflow:auto;
   padding:28px;
   border-radius:8px;
   background:var(--surface);
@@ -1444,6 +1504,139 @@ h1{
 
 .modal-panel p{
   color:var(--muted);
+}
+
+.cart-list{
+  display:grid;
+  gap:10px;
+  max-height:min(38vh,360px);
+  margin-top:18px;
+  overflow:auto;
+  padding-right:4px;
+}
+
+.cart-empty{
+  padding:18px;
+  border:1px dashed rgba(132,51,38,.28);
+  border-radius:8px;
+  background:var(--paper);
+  color:var(--muted);
+  font-weight:700;
+}
+
+.cart-item{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:12px;
+  align-items:center;
+  padding:12px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#fffaf2;
+}
+
+.cart-item strong{
+  display:block;
+  color:var(--charcoal);
+  font-size:.95rem;
+  line-height:1.25;
+}
+
+.cart-item span{
+  color:var(--muted);
+  font-size:.84rem;
+  font-weight:700;
+}
+
+.qty-control{
+  display:grid;
+  grid-template-columns:34px 34px 34px;
+  align-items:center;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#fff;
+}
+
+.qty-control button{
+  display:grid;
+  place-items:center;
+  width:34px;
+  height:34px;
+  border:0;
+  background:#fff;
+  color:var(--red-dark);
+  font-weight:900;
+  cursor:pointer;
+}
+
+.qty-control button:hover{
+  background:var(--blush);
+}
+
+.qty-control output{
+  display:grid;
+  place-items:center;
+  min-width:34px;
+  color:var(--charcoal);
+  font-weight:900;
+}
+
+.cart-summary{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  margin-top:16px;
+  padding-top:14px;
+  border-top:1px solid var(--line);
+  color:var(--charcoal);
+  font-weight:900;
+}
+
+.cart-form{
+  display:grid;
+  gap:10px;
+  margin-top:16px;
+}
+
+.cart-form input,
+.cart-form textarea{
+  width:100%;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#fff;
+  color:var(--charcoal);
+  font:inherit;
+}
+
+.cart-form input{
+  min-height:46px;
+  padding:0 12px;
+}
+
+.cart-form textarea{
+  min-height:82px;
+  resize:vertical;
+  padding:12px;
+}
+
+.cart-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:16px;
+}
+
+.cart-whatsapp{
+  border:0;
+}
+
+.cart-whatsapp:disabled{
+  cursor:not-allowed;
+  opacity:.5;
+  transform:none;
+  box-shadow:none;
 }
 
 .modal-actions{
@@ -1498,13 +1691,13 @@ h1{
   }
   h1{font-size:4rem}
   .hero-cutout{
-    order:1;
+    order:2;
     justify-self:center;
     width:min(270px,62vw);
     margin:0 auto 4px;
   }
   .hero-media{
-    order:2;
+    order:1;
     justify-self:center;
     width:min(100%,720px);
     aspect-ratio:1/1;
@@ -1578,7 +1771,15 @@ h1{
     min-height:auto;
   }
   .hero-inner{
-    padding:102px 20px 46px;
+    grid-template-columns:minmax(0,1fr);
+    width:100%;
+    max-width:none;
+    padding:var(--nav-height) 0 46px;
+  }
+  .hero-copy{
+    width:100%;
+    min-width:0;
+    padding:0 20px;
   }
   h1{font-size:3.05rem}
   .hero-kicker{
@@ -1606,8 +1807,16 @@ h1{
     border-width:5px;
   }
   .hero-media{
+    width:100vw;
     aspect-ratio:1/1;
-    padding:4px;
+    justify-self:center;
+    padding:0;
+    border:0;
+    border-radius:0;
+    box-shadow:none;
+  }
+  .hero-media img{
+    border-radius:0;
   }
   .quick-info,
   .section{
@@ -1708,6 +1917,9 @@ h1{
   }
   .dock-item svg{
     margin:0 auto;
+  }
+  .cart-actions{
+    grid-template-columns:1fr;
   }
 }
 
@@ -2379,13 +2591,26 @@ h1{
   <div class="modal-panel">
     <button class="modal-close" type="button" data-close-booking aria-label="Zavřít"><i data-lucide="x"></i></button>
     <div class="eyebrow">Objednat</div>
-    <h2 id="booking-title">Vyberte způsob objednávky</h2>
-    <p>Pro rozvoz použijte Foodora nebo Wolt. Pro rychlé vyzvednutí zavolejte nebo napište přes WhatsApp.</p>
+    <h2 id="booking-title">Váš košík</h2>
+    <p>Vyberte položky z menu, zkontrolujte celkovou cenu a odešlete objednávku přes WhatsApp.</p>
+    <div class="cart-list" id="cart-list" aria-live="polite"></div>
+    <div class="cart-summary">
+      <span>Celkem</span>
+      <strong id="cart-total">0 Kč / 0 EUR</strong>
+    </div>
+    <div class="cart-form">
+      <input id="cart-name" type="text" autocomplete="name" placeholder="Jméno">
+      <input id="cart-phone" type="tel" autocomplete="tel" placeholder="Telefon">
+      <textarea id="cart-note" placeholder="Poznámka: čas vyzvednutí, méně ledu, topping..."></textarea>
+    </div>
+    <div class="cart-actions">
+      <button class="btn btn-outline" type="button" id="clear-cart"><i data-lucide="trash-2"></i>Vymazat košík</button>
+      <button class="btn btn-primary cart-whatsapp" type="button" id="send-whatsapp" disabled><i data-lucide="message-circle"></i>Odeslat WhatsApp</button>
+    </div>
     <div class="modal-actions">
       <a class="modal-link" href="https://www.foodora.cz/restaurant/x06o/che-sai-gon-sapa" target="_blank" rel="noopener">Foodora <i data-lucide="arrow-up-right"></i></a>
       <a class="modal-link" href="https://wolt.com/cs/cze/prague/restaurant/che-sai-gon" target="_blank" rel="noopener">Wolt <i data-lucide="arrow-up-right"></i></a>
       <a class="modal-link" href="tel:+420723313032">Zavolat <i data-lucide="phone"></i></a>
-      <a class="modal-link" href="https://wa.me/420723313032" target="_blank" rel="noopener">WhatsApp <i data-lucide="message-circle"></i></a>
     </div>
   </div>
 </div>
@@ -2394,6 +2619,156 @@ h1{
 const bookingModal = document.getElementById("booking-modal");
 const openBookingButtons = document.querySelectorAll("[data-open-booking]");
 const closeBookingButtons = document.querySelectorAll("[data-close-booking]");
+const cartList = document.getElementById("cart-list");
+const cartTotal = document.getElementById("cart-total");
+const clearCartButton = document.getElementById("clear-cart");
+const sendWhatsAppButton = document.getElementById("send-whatsapp");
+const customerNameInput = document.getElementById("cart-name");
+const customerPhoneInput = document.getElementById("cart-phone");
+const customerNoteInput = document.getElementById("cart-note");
+const whatsAppPhone = "420723313032";
+const menuPrices = {
+  "01": {czk:100, eur:4.5},
+  "02": {czk:100, eur:4.5},
+  "03": {czk:100, eur:4.5},
+  "04": {czk:100, eur:4.5},
+  "05": {czk:100, eur:4.5},
+  "06": {czk:100, eur:4.5},
+  "07": {czk:100, eur:4.5},
+  "08": {czk:100, eur:4.5},
+  "09": {czk:100, eur:4.5},
+  "10": {czk:100, eur:4.5},
+  "11": {czk:100, eur:4.5},
+  "12": {czk:60, eur:2.5},
+  "13": {czk:100, eur:4.5},
+  "14": {czk:90, eur:4},
+  "15": {czk:120, eur:5},
+  "16": {czk:100, eur:4.5}
+};
+const cart = new Map();
+
+function formatPrice(price){
+  return `${price.czk} Kč / ${price.eur.toFixed(2).replace(".",",")} EUR`;
+}
+
+function getCartTotals(){
+  return Array.from(cart.values()).reduce((total,item) => {
+    total.count += item.qty;
+    total.czk += item.price.czk * item.qty;
+    total.eur += item.price.eur * item.qty;
+    return total;
+  },{count:0,czk:0,eur:0});
+}
+
+function updateCartBadges(count){
+  openBookingButtons.forEach((button) => {
+    if(count > 0){
+      button.setAttribute("data-cart-count",count);
+    }else{
+      button.removeAttribute("data-cart-count");
+    }
+  });
+}
+
+function buildWhatsAppMessage(){
+  const lines = ["Dobrý den, chtěl/a bych objednat:"];
+  cart.forEach((item) => {
+    const itemTotal = {
+      czk:item.price.czk * item.qty,
+      eur:item.price.eur * item.qty
+    };
+    lines.push(`- ${item.qty}x ${item.name} (${formatPrice(itemTotal)})`);
+  });
+  const totals = getCartTotals();
+  lines.push(`Celkem: ${totals.czk} Kč / ${totals.eur.toFixed(2).replace(".",",")} EUR`);
+  if(customerNameInput.value.trim()){
+    lines.push(`Jméno: ${customerNameInput.value.trim()}`);
+  }
+  if(customerPhoneInput.value.trim()){
+    lines.push(`Telefon: ${customerPhoneInput.value.trim()}`);
+  }
+  if(customerNoteInput.value.trim()){
+    lines.push(`Poznámka: ${customerNoteInput.value.trim()}`);
+  }
+  return lines.join("\n");
+}
+
+function renderCart(){
+  const totals = getCartTotals();
+  cartList.innerHTML = "";
+
+  if(totals.count === 0){
+    const empty = document.createElement("div");
+    empty.className = "cart-empty";
+    empty.textContent = "Košík je prázdný. Vyberte si položku v menu.";
+    cartList.appendChild(empty);
+  }else{
+    cart.forEach((item) => {
+      const row = document.createElement("div");
+      row.className = "cart-item";
+      row.innerHTML = `
+        <div>
+          <strong>${item.name}</strong>
+          <span>${formatPrice(item.price)}</span>
+        </div>
+        <div class="qty-control" aria-label="Množství ${item.name}">
+          <button type="button" data-cart-dec="${item.id}" aria-label="Snížit">-</button>
+          <output>${item.qty}</output>
+          <button type="button" data-cart-inc="${item.id}" aria-label="Zvýšit">+</button>
+        </div>
+      `;
+      cartList.appendChild(row);
+    });
+  }
+
+  cartTotal.textContent = `${totals.czk} Kč / ${totals.eur.toFixed(2).replace(".",",")} EUR`;
+  sendWhatsAppButton.disabled = totals.count === 0;
+  updateCartBadges(totals.count);
+}
+
+function changeCartItem(id, delta){
+  const item = cart.get(id);
+  if(!item) return;
+  item.qty += delta;
+  if(item.qty <= 0){
+    cart.delete(id);
+  }
+  renderCart();
+}
+
+function addCartItem(item){
+  const existing = cart.get(item.id);
+  if(existing){
+    existing.qty += 1;
+  }else{
+    cart.set(item.id,{...item,qty:1});
+  }
+  renderCart();
+}
+
+function initMenuCart(){
+  document.querySelectorAll(".menu-card").forEach((card) => {
+    const number = card.querySelector(".menu-number")?.textContent.trim();
+    const name = card.querySelector("h3")?.textContent.trim();
+    const body = card.querySelector(".menu-card-body");
+    if(!number || !name || !body) return;
+
+    const price = menuPrices[number] || {czk:100, eur:4.5};
+    const footer = document.createElement("div");
+    footer.className = "menu-card-footer";
+    footer.innerHTML = `
+      <span class="menu-price">${formatPrice(price)}</span>
+      <button class="add-cart-btn" type="button" data-add-cart="${number}">
+        <i data-lucide="plus"></i>Přidat do košíku
+      </button>
+    `;
+    body.appendChild(footer);
+
+    footer.querySelector("[data-add-cart]").addEventListener("click", () => {
+      addCartItem({id:number,name,price});
+    });
+  });
+}
 
 function openBooking(){
   bookingModal.classList.add("is-open");
@@ -2418,7 +2793,31 @@ closeBookingButtons.forEach((button) => {
 bookingModal.addEventListener("click", (event) => {
   if(event.target === bookingModal){
     closeBooking();
+    return;
   }
+  const decButton = event.target.closest("[data-cart-dec]");
+  const incButton = event.target.closest("[data-cart-inc]");
+  if(decButton){
+    changeCartItem(decButton.dataset.cartDec,-1);
+  }
+  if(incButton){
+    changeCartItem(incButton.dataset.cartInc,1);
+  }
+});
+
+clearCartButton.addEventListener("click", () => {
+  cart.clear();
+  renderCart();
+});
+
+sendWhatsAppButton.addEventListener("click", () => {
+  if(sendWhatsAppButton.disabled) return;
+  const message = encodeURIComponent(buildWhatsAppMessage());
+  window.open(`https://wa.me/${whatsAppPhone}?text=${message}`,"_blank","noopener");
+});
+
+[customerNameInput,customerPhoneInput,customerNoteInput].forEach((input) => {
+  input.addEventListener("input", renderCart);
 });
 
 window.addEventListener("keydown", (event) => {
@@ -2428,6 +2827,8 @@ window.addEventListener("keydown", (event) => {
 });
 
 window.addEventListener("DOMContentLoaded", () => {
+  initMenuCart();
+  renderCart();
   if(window.lucide){
     window.lucide.createIcons();
   }
