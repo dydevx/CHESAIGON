@@ -1628,11 +1628,11 @@ button[data-open-booking][data-cart-count]::after{
   margin-top:16px;
 }
 
-.cart-whatsapp{
+.cart-facebook{
   border:0;
 }
 
-.cart-whatsapp:disabled{
+.cart-facebook:disabled{
   cursor:not-allowed;
   opacity:.5;
   transform:none;
@@ -2021,7 +2021,7 @@ button[data-open-booking][data-cart-count]::after{
       </article>
       <article class="info-item">
         <span class="label">Objednávky</span>
-        <strong>Vyzvednutí, Foodora, Wolt, WhatsApp</strong>
+        <strong>Vyzvednutí, Foodora, Wolt, Facebook</strong>
       </article>
     </div>
   </section>
@@ -2495,8 +2495,8 @@ button[data-open-booking][data-cart-count]::after{
             <a class="platform-card" href="tel:+420723313032">
             Zavolat <span>Telefon</span>
             </a>
-            <a class="platform-card" href="https://wa.me/420723313032" target="_blank" rel="noopener">
-              WhatsApp <span>Napsat</span>
+            <a class="platform-card" href="https://m.me/doan.tuanngo" target="_blank" rel="noopener">
+              Facebook <span>Napsat</span>
             </a>
           </div>
         </div>
@@ -2511,7 +2511,7 @@ button[data-open-booking][data-cart-count]::after{
           <div class="eyebrow">Kontakt</div>
           <h2 class="section-title">Najdete nás v areálu SAPA.</h2>
         </div>
-        <p class="section-copy">OC SAPA, Libušská 319, Praha-Libuš. Pro rychlou domluvu použijte telefon, WhatsApp nebo objednávku přes rozvoz.</p>
+        <p class="section-copy">OC SAPA, Libušská 319, Praha-Libuš. Pro rychlou domluvu použijte telefon, Facebook nebo objednávku přes rozvoz.</p>
       </div>
       <div class="contact-grid">
         <aside class="contact-card" aria-label="Kontaktní údaje">
@@ -2520,8 +2520,7 @@ button[data-open-booking][data-cart-count]::after{
             <strong>OC SAPA, Libušská 319, Praha-Libuš</strong>
           </div>
           <a class="contact-link" href="tel:+420723313032"><i data-lucide="phone"></i>+420 723 313 032</a>
-          <a class="contact-link" href="https://wa.me/420723313032" target="_blank" rel="noopener"><i data-lucide="message-circle"></i>WhatsApp</a>
-          <a class="contact-link" href="https://www.facebook.com/search/pages/?q=Ch%C3%A8%20S%C3%A0i%20G%C3%B2n%20Praha" target="_blank" rel="noopener"><i data-lucide="messages-square"></i>Facebook</a>
+          <a class="contact-link" href="https://www.facebook.com/doan.tuanngo" target="_blank" rel="noopener"><i data-lucide="messages-square"></i>Facebook</a>
           <button class="btn btn-primary" type="button" data-open-booking><i data-lucide="shopping-bag"></i>Objednat</button>
         </aside>
         <div class="map-frame">
@@ -2560,8 +2559,7 @@ button[data-open-booking][data-cart-count]::after{
         <span class="footer-label">Kontakt</span>
         <div class="footer-links">
           <a href="tel:+420723313032">+420 723 313 032</a>
-          <a href="https://wa.me/420723313032" target="_blank" rel="noopener">WhatsApp</a>
-          <a href="https://www.facebook.com/search/pages/?q=Ch%C3%A8%20S%C3%A0i%20G%C3%B2n%20Praha" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.facebook.com/doan.tuanngo" target="_blank" rel="noopener">Facebook</a>
         </div>
       </div>
       <div class="footer-block">
@@ -2583,8 +2581,7 @@ button[data-open-booking][data-cart-count]::after{
 <div class="contact-dock" aria-label="Rychlý kontakt">
   <a class="dock-item" href="tel:+420723313032"><i data-lucide="phone-call"></i><span>Zavolat</span></a>
   <button class="dock-item primary" type="button" data-open-booking><i data-lucide="shopping-bag"></i><span>Objednat</span></button>
-  <a class="dock-item" href="https://www.facebook.com/search/pages/?q=Ch%C3%A8%20S%C3%A0i%20G%C3%B2n%20Praha" target="_blank" rel="noopener"><i data-lucide="messages-square"></i><span>Facebook</span></a>
-  <a class="dock-item" href="https://wa.me/420723313032" target="_blank" rel="noopener"><i data-lucide="message-circle"></i><span>WhatsApp</span></a>
+  <a class="dock-item" href="https://www.facebook.com/doan.tuanngo" target="_blank" rel="noopener"><i data-lucide="messages-square"></i><span>Facebook</span></a>
 </div>
 
 <div class="modal" id="booking-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="booking-title">
@@ -2592,7 +2589,7 @@ button[data-open-booking][data-cart-count]::after{
     <button class="modal-close" type="button" data-close-booking aria-label="Zavřít"><i data-lucide="x"></i></button>
     <div class="eyebrow">Objednat</div>
     <h2 id="booking-title">Váš košík</h2>
-    <p>Vyberte položky z menu, zkontrolujte celkovou cenu a odešlete objednávku přes WhatsApp.</p>
+    <p>Vyberte položky z menu, zkontrolujte cenu a odešlete objednávku přes Facebook. Text objednávky se automaticky zkopíruje.</p>
     <div class="cart-list" id="cart-list" aria-live="polite"></div>
     <div class="cart-summary">
       <span>Celkem</span>
@@ -2605,7 +2602,7 @@ button[data-open-booking][data-cart-count]::after{
     </div>
     <div class="cart-actions">
       <button class="btn btn-outline" type="button" id="clear-cart"><i data-lucide="trash-2"></i>Vymazat košík</button>
-      <button class="btn btn-primary cart-whatsapp" type="button" id="send-whatsapp" disabled><i data-lucide="message-circle"></i>Odeslat WhatsApp</button>
+      <button class="btn btn-primary cart-facebook" type="button" id="send-facebook" disabled><i data-lucide="messages-square"></i>Odeslat přes Facebook</button>
     </div>
     <div class="modal-actions">
       <a class="modal-link" href="https://www.foodora.cz/restaurant/x06o/che-sai-gon-sapa" target="_blank" rel="noopener">Foodora <i data-lucide="arrow-up-right"></i></a>
@@ -2622,11 +2619,11 @@ const closeBookingButtons = document.querySelectorAll("[data-close-booking]");
 const cartList = document.getElementById("cart-list");
 const cartTotal = document.getElementById("cart-total");
 const clearCartButton = document.getElementById("clear-cart");
-const sendWhatsAppButton = document.getElementById("send-whatsapp");
+const sendFacebookButton = document.getElementById("send-facebook");
 const customerNameInput = document.getElementById("cart-name");
 const customerPhoneInput = document.getElementById("cart-phone");
 const customerNoteInput = document.getElementById("cart-note");
-const whatsAppPhone = "420723313032";
+const facebookMessengerUrl = "https://m.me/doan.tuanngo";
 const menuPrices = {
   "01": {czk:100, eur:4.5},
   "02": {czk:100, eur:4.5},
@@ -2670,7 +2667,7 @@ function updateCartBadges(count){
   });
 }
 
-function buildWhatsAppMessage(){
+function buildOrderMessage(){
   const lines = ["Dobrý den, chtěl/a bych objednat:"];
   cart.forEach((item) => {
     const itemTotal = {
@@ -2722,7 +2719,7 @@ function renderCart(){
   }
 
   cartTotal.textContent = `${totals.czk} Kč / ${totals.eur.toFixed(2).replace(".",",")} EUR`;
-  sendWhatsAppButton.disabled = totals.count === 0;
+  sendFacebookButton.disabled = totals.count === 0;
   updateCartBadges(totals.count);
 }
 
@@ -2810,10 +2807,22 @@ clearCartButton.addEventListener("click", () => {
   renderCart();
 });
 
-sendWhatsAppButton.addEventListener("click", () => {
-  if(sendWhatsAppButton.disabled) return;
-  const message = encodeURIComponent(buildWhatsAppMessage());
-  window.open(`https://wa.me/${whatsAppPhone}?text=${message}`,"_blank","noopener");
+sendFacebookButton.addEventListener("click", async () => {
+  if(sendFacebookButton.disabled) return;
+  const message = buildOrderMessage();
+  const messengerWindow = window.open(facebookMessengerUrl,"_blank","noopener");
+  try{
+    await navigator.clipboard.writeText(message);
+    sendFacebookButton.innerHTML = '<i data-lucide="check"></i>Objednávka zkopírována – vložte ji do chatu';
+  }catch(error){
+    window.prompt("Zkopírujte objednávku a vložte ji do chatu na Facebooku:",message);
+  }
+  if(!messengerWindow){
+    window.location.href = facebookMessengerUrl;
+  }
+  if(window.lucide){
+    window.lucide.createIcons();
+  }
 });
 
 [customerNameInput,customerPhoneInput,customerNoteInput].forEach((input) => {
